@@ -2,6 +2,271 @@
 
 % Packages goes here
 % snytax \usepackage{amsmath}
+\usepackage {lipsum}
+\usepackage{todonotes}
+
+% Start ipython-notebook
+
+
+
+\usepackage[T1]{fontenc}
+% Nicer default font (+ math font) than Computer Modern for most use cases
+\usepackage{mathpazo}
+
+% Basic figure setup, for now with no caption control since it's done
+% automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+\usepackage{graphicx}
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+	\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+% Set max figure width to be 80% of text width, for now hardcoded.
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+% Ensure that by default, figures have no caption (until we provide a
+% proper Figure object with a Caption API and a way to capture that
+% in the conversion process - todo).
+\usepackage{caption}
+\DeclareCaptionLabelFormat{nolabel}{}
+\captionsetup{labelformat=nolabel}
+
+\usepackage{adjustbox} % Used to constrain images to a maximum size 
+\usepackage{xcolor} % Allow colors to be defined
+\usepackage{enumerate} % Needed for markdown enumerations to work
+\usepackage{geometry} % Used to adjust the document margins
+\usepackage{amsmath} % Equations
+\usepackage{amssymb} % Equations
+\usepackage{textcomp} % defines textquotesingle
+% Hack from http://tex.stackexchange.com/a/47451/13684:
+\AtBeginDocument{%
+	\def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+}
+\usepackage{upquote} % Upright quotes for verbatim code
+\usepackage{eurosym} % defines \euro
+\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+\usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+\usepackage{fancyvrb} % verbatim replacement that allows latex
+\usepackage{grffile} % extends the file name processing of package graphics 
+% to support a larger range 
+% The hyperref package gives us a pdf with properly built
+% internal navigation ('pdf bookmarks' for the table of contents,
+% internal cross-reference links, web links for URLs, etc.)
+\usepackage{hyperref}
+\usepackage{longtable} % longtable support required by pandoc >1.10
+\usepackage{booktabs}  % table support for pandoc > 1.12.2
+\usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+\usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+% normalem makes italics be italics, not underlines
+
+
+
+
+% Colors for the hyperref package
+\definecolor{urlcolor}{rgb}{0,.145,.698}
+\definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+\definecolor{citecolor}{rgb}{.12,.54,.11}
+
+% ANSI colors
+\definecolor{ansi-black}{HTML}{3E424D}
+\definecolor{ansi-black-intense}{HTML}{282C36}
+\definecolor{ansi-red}{HTML}{E75C58}
+\definecolor{ansi-red-intense}{HTML}{B22B31}
+\definecolor{ansi-green}{HTML}{00A250}
+\definecolor{ansi-green-intense}{HTML}{007427}
+\definecolor{ansi-yellow}{HTML}{DDB62B}
+\definecolor{ansi-yellow-intense}{HTML}{B27D12}
+\definecolor{ansi-blue}{HTML}{208FFB}
+\definecolor{ansi-blue-intense}{HTML}{0065CA}
+\definecolor{ansi-magenta}{HTML}{D160C4}
+\definecolor{ansi-magenta-intense}{HTML}{A03196}
+\definecolor{ansi-cyan}{HTML}{60C6C8}
+\definecolor{ansi-cyan-intense}{HTML}{258F8F}
+\definecolor{ansi-white}{HTML}{C5C1B4}
+\definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+% commands and environments needed by pandoc snippets
+% extracted from the output of `pandoc -s`
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+% Additional commands for more recent versions of Pandoc
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+
+
+% Define a nice break command that doesn't care if a line doesn't already
+% exist.
+\def\br{\hspace*{\fill} \\* }
+% Math Jax compatability definitions
+\def\gt{>}
+\def\lt{<}
+% Document parameters
+\title{androguard\_demo}
+
+
+
+
+% Pygments definitions
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+	\let\PY@ul=\relax \let\PY@tc=\relax%
+	\let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+	\PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+				\PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+% Exact colors from NB
+\definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+\definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+
+% Prevent overflowing lines due to hard-to-break entities
+\sloppy 
+% Setup hyperref package
+\hypersetup{
+	breaklinks=true,  % so long urls are correctly broken across lines
+	colorlinks=true,
+	urlcolor=urlcolor,
+	linkcolor=linkcolor,
+	citecolor=citecolor,
+}
+% Slightly bigger margins than the latex defaults
+
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+
+% End ipythonnotebook
 
 \begin{document}
 
@@ -16,6 +281,302 @@
 	
 	
 	\section{Introduction}\label{sec:intro}
-	To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts. Here goes some lipsum 
+		\todo{Structure of an APK file}
+		\lipsum[1]
+		\todo{structure of Dex file}
+		\lipsum[1]
+		\todo{TODO: Write introduction section after the significant part of report is done and the structure is more clear}
+		\lipsum[1]
+		\todo{Discuss static analysis and dynamic analysis}
+		To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts. Here goes some lipsum
+		\lipsum
+		
+		\pagebreak
+		
+	\section{Static Analysis}\label{sec:static_analysis}
+		There are several static analysis tools available for APKs, each one having its own strengths and weaknesses.
+		\todo{Add some info about common tools}
+	
+		
+		\lipsum[1]
+			\subsection{Apktool}\label{sec:apktool}
+			APKTool is one of the major reverse engineering tool for android applications. \todo{Add more info}
+			\lipsum[2]
+			\subsection{Androguard}\label{sec:androguard}
+			\todo{Introduce androguard}
+			Androguard is an open source tool written in python for analyzing android applications. Its been in a several of tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. The classes in androguard can be generally divided into two categories: Classes used for parsing and the analysis classes. We will go into more details about these classes but first we will show some basic usage of androguard.
+			
+			% begin ipython code
+
+			\todo{Add markup instructions}
+			
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{androguard.misc} \PY{k+kn}{import} \PY{o}{*}
+			    \PY{n}{apk}\PY{p}{,} \PY{n}{dvm}\PY{p}{,} \PY{n}{vmx} \PY{o}{=} \PY{n}{AnalyzeAPK}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{3f33367040dc423ff97aab7196aa6748ff11cc45}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+			    \PY{n}{apk}\PY{o}{.}\PY{n}{get\PYZus{}activities}\PY{p}{(}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}1}]:} ['com.spynote.software.stubspynote.MainActivity',
+			    'com.spynote.software.stubspynote.screamon']
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{apk}\PY{o}{.}\PY{n}{get\PYZus{}app\PYZus{}name}\PY{p}{(}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}2}]:} u'wifi\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00'
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}3}]:} \PY{n}{apk}\PY{o}{.}\PY{n}{get\PYZus{}permissions}\PY{p}{(}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}3}]:} ['android.permission.WRITE\_SETTINGS',
+			    'android.permission.SYSTEM\_ALERT\_WINDOW',
+			    'android.permission.WRITE\_EXTERNAL\_STORAGE',
+			    'android.permission.SET\_WALLPAPER',
+			    'android.permission.SET\_WALLPAPER\_HINTS',
+			    'android.permission.SEND\_SMS',
+			    'android.permission.RECEIVE\_BOOT\_COMPLETED',
+			    'android.permission.KILL\_BACKGROUND\_PROCESSES',
+			    'android.permission.VIBRATE',
+			    'android.permission.CAMERA',
+			    'android.permission.GET\_ACCOUNTS',
+			    'android.permission.WAKE\_LOCK',
+			    'android.permission.ACCESS\_NETWORK\_STATE',
+			    'android.permission.WRITE\_CONTACTS',
+			    'android.permission.READ\_CONTACTS',
+			    'android.permission.WRITE\_EXTERNAL\_STORAGE',
+			    'android.permission.RECORD\_AUDIO',
+			    'android.permission.READ\_SMS',
+			    'android.permission.ACCESS\_WIFI\_STATE',
+			    'android.permission.CHANGE\_WIFI\_STATE',
+			    'android.permission.READ\_CALL\_LOG',
+			    'android.permission.INTERNET',
+			    'android.permission.READ\_PHONE\_STATE',
+			    'android.permission.CALL\_PHONE',
+			    'android.permission.ACCESS\_COARSE\_LOCATION',
+			    'android.permission.ACCESS\_FINE\_LOCATION',
+			    'android.permission.RECEIVE\_BOOT\_COMPLETED']
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dvm}\PY{o}{.}\PY{n}{get\PYZus{}strings}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{:}\PY{l+m+mi}{20}\PY{p}{]}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}4}]:} [u'  \#',
+			    u'  Canceling: ',
+			    u'  Created new loader ',
+			    u'  Current loader is running; attempting to cancel',
+			    u'  Current loader is stopped; replacing',
+			    u'  Destroying: ',
+			    u'  Enqueuing as new pending loader',
+			    u'  Filter did not match: ',
+			    u'  Filter matched!  match=0x',
+			    u"  Filter's target already added"]
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}5}]:} \PY{n}{dvm}\PY{o}{.}\PY{n}{get\PYZus{}classes}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}5}]:} [<androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3050>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c30d0>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3110>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3150>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3190>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c31d0>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3210>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3250>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c3290>,
+			    <androguard.core.bytecodes.dvm.ClassDefItem at 0x7f8a807c32d0>]
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}6}]:} \PY{n}{dvm}\PY{o}{.}\PY{n}{get\PYZus{}methods}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}6}]:} [<androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251dd0>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251e50>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251e90>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251ed0>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251f10>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251f90>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a251fd0>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a25b090>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a25b0d0>,
+			    <androguard.core.bytecodes.dvm.EncodedMethod at 0x7f8a7a25b150>]
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}7}]:} \PY{n}{method} \PY{o}{=} \PY{n}{dvm}\PY{o}{.}\PY{n}{get\PYZus{}methods}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{535}\PY{p}{]}
+			    \PY{n}{method}\PY{o}{.}\PY{n}{get\PYZus{}class\PYZus{}name}\PY{p}{(}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}7}]:} u'Landroid/support/v4/app/ActivityCompat;'
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}8}]:} \PY{k}{print}\PY{p}{(}\PY{n}{method}\PY{o}{.}\PY{n}{get\PYZus{}source}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    
+			    public android.net.Uri getReferrer(android.app.Activity p6)
+			    \{
+			    int v1\_0;
+			    if (android.os.Build\$VERSION.SDK\_INT < 22) \{
+			    android.content.Intent v0 = p6.getIntent();
+			    v1\_0 = ((android.net.Uri) v0.getParcelableExtra("android.intent.extra.REFERRER"));
+			    if (v1\_0 == 0) \{
+			    String v2 = v0.getStringExtra("android.intent.extra.REFERRER\_NAME");
+			    if (v2 == null) \{
+			    v1\_0 = 0;
+			    \} else \{
+			    v1\_0 = android.net.Uri.parse(v2);
+			    \}
+			    \}
+			    \} else \{
+			    v1\_0 = android.support.v4.app.ActivityCompat22.getReferrer(p6);
+			    \}
+			    return v1\_0;
+			    \}
+			    
+			    
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}9}]:} \PY{n}{method}\PY{o}{.}\PY{n}{get\PYZus{}name}\PY{p}{(}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}9}]:} u'getReferrer'
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{from} \PY{n+nn}{androguard.core.bytecode} \PY{k+kn}{import} \PY{n}{PrettyShow}
+			    \PY{n}{method\PYZus{}analysis} \PY{o}{=} \PY{n}{vmx}\PY{o}{.}\PY{n}{get\PYZus{}method}\PY{p}{(}\PY{n}{method}\PY{p}{)}
+			    \PY{n}{method\PYZus{}analysis}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{outcolor}Out[{\color{outcolor}10}]:} <androguard.core.analysis.analysis.MethodAnalysis at 0x7f8a71f2fd50>
+			    \end{Verbatim}
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    {\color{incolor}In [{\color{incolor}11}]:} \PY{n}{PrettyShow}\PY{p}{(}\PY{n}{method\PYZus{}analysis}\PY{p}{,} \PY{n}{method\PYZus{}analysis}\PY{o}{.}\PY{n}{basic\PYZus{}blocks}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+			    \end{Verbatim}
+			    
+			    
+			    \begin{Verbatim}[commandchars=\\\{\}]
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x0} : 
+			    \textcolor{ansi-yellow}{0  }(\textcolor{ansi-green}{00000000}) \textcolor{ansi-yellow}{sget                }v3, \textcolor{ansi-green}{Landroid/os/Build\$VERSION;->SDK\_INT I}
+			    \textcolor{ansi-yellow}{1  }(\textcolor{ansi-green}{00000004}) \textcolor{ansi-yellow}{const/16            }v4, \textcolor{ansi-green}{22}
+			    \textcolor{ansi-yellow}{2  }(\textcolor{ansi-green}{00000008}) \textcolor{ansi-yellow}{if-lt               }v3, v4, \textcolor{ansi-magenta}{7} \textcolor{ansi-red}{[ getReferrer-BB@0xc}\textcolor{ansi-green}{ getReferrer-BB@0x16 ]}
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0xc} : 
+			    \textcolor{ansi-yellow}{3  }(\textcolor{ansi-green}{0000000c}) \textcolor{ansi-yellow}{invoke-static       }v6, \textcolor{ansi-cyan}{Landroid/support/v4/app/ActivityCompat22;->getReferrer(Landroid/app/Activity;)Landroid/net/Uri;}
+			    \textcolor{ansi-yellow}{4  }(\textcolor{ansi-green}{00000012}) \textcolor{ansi-yellow}{move-result-object  }v1 \textcolor{ansi-blue}{[ getReferrer-BB@0x14 ]}
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x14} : 
+			    \textcolor{ansi-yellow}{5  }(\textcolor{ansi-green}{00000014}) \textcolor{ansi-yellow}{return-object       }v1
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x16} : 
+			    \textcolor{ansi-yellow}{6  }(\textcolor{ansi-green}{00000016}) \textcolor{ansi-yellow}{invoke-virtual      }v6, \textcolor{ansi-cyan}{Landroid/app/Activity;->getIntent()Landroid/content/Intent;}
+			    \textcolor{ansi-yellow}{7  }(\textcolor{ansi-green}{0000001c}) \textcolor{ansi-yellow}{move-result-object  }v0
+			    \textcolor{ansi-yellow}{8  }(\textcolor{ansi-green}{0000001e}) \textcolor{ansi-yellow}{const-string        }v3, \textcolor{ansi-red}{u'android.intent.extra.REFERRER'}
+			    \textcolor{ansi-yellow}{9  }(\textcolor{ansi-green}{00000022}) \textcolor{ansi-yellow}{invoke-virtual      }v0, v3, \textcolor{ansi-cyan}{Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;}
+			    \textcolor{ansi-yellow}{10 }(\textcolor{ansi-green}{00000028}) \textcolor{ansi-yellow}{move-result-object  }v1
+			    \textcolor{ansi-yellow}{11 }(\textcolor{ansi-green}{0000002a}) \textcolor{ansi-yellow}{check-cast          }v1, \textcolor{ansi-blue}{Landroid/net/Uri;}
+			    \textcolor{ansi-yellow}{12 }(\textcolor{ansi-green}{0000002e}) \textcolor{ansi-yellow}{if-nez              }v1, \textcolor{ansi-magenta}{-13} \textcolor{ansi-red}{[ getReferrer-BB@0x32}\textcolor{ansi-green}{ getReferrer-BB@0x14 ]}
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x32} : 
+			    \textcolor{ansi-yellow}{13 }(\textcolor{ansi-green}{00000032}) \textcolor{ansi-yellow}{const-string        }v3, \textcolor{ansi-red}{u'android.intent.extra.REFERRER\_NAME'}
+			    \textcolor{ansi-yellow}{14 }(\textcolor{ansi-green}{00000036}) \textcolor{ansi-yellow}{invoke-virtual      }v0, v3, \textcolor{ansi-cyan}{Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;}
+			    \textcolor{ansi-yellow}{15 }(\textcolor{ansi-green}{0000003c}) \textcolor{ansi-yellow}{move-result-object  }v2
+			    \textcolor{ansi-yellow}{16 }(\textcolor{ansi-green}{0000003e}) \textcolor{ansi-yellow}{if-eqz              }v2, \textcolor{ansi-magenta}{7} \textcolor{ansi-red}{[ getReferrer-BB@0x42}\textcolor{ansi-green}{ getReferrer-BB@0x4c ]}
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x42} : 
+			    \textcolor{ansi-yellow}{17 }(\textcolor{ansi-green}{00000042}) \textcolor{ansi-yellow}{invoke-static       }v2, \textcolor{ansi-cyan}{Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;}
+			    \textcolor{ansi-yellow}{18 }(\textcolor{ansi-green}{00000048}) \textcolor{ansi-yellow}{move-result-object  }v1
+			    \textcolor{ansi-yellow}{19 }(\textcolor{ansi-green}{0000004a}) \textcolor{ansi-yellow}{goto                }\textcolor{ansi-magenta}{-27} \textcolor{ansi-blue}{[ getReferrer-BB@0x14 ]}
+			    
+			    \textcolor{ansi-magenta}{getReferrer-BB@0x4c} : 
+			    \textcolor{ansi-yellow}{20 }(\textcolor{ansi-green}{0000004c}) \textcolor{ansi-yellow}{const/4             }v1, \textcolor{ansi-green}{0}
+			    \textcolor{ansi-yellow}{21 }(\textcolor{ansi-green}{0000004e}) \textcolor{ansi-yellow}{goto                }\textcolor{ansi-magenta}{-29} \textcolor{ansi-blue}{[ getReferrer-BB@0x14 ]}
+			    
+			    
+			    \end{Verbatim}
+			    
+			    
+			    
+			
+			% end ipython code
+			
+			
+			\todo{TODO: Do androguard basic usage examples}
+			\lipsum[1]
+			\todo{Discuss the changes we made including normalization, canonical hasing for similarity search}
+			\lipsum[1]
+			\todo{Discuss the info we are extracting from apks for platform}
+			\lipsum[1]
+			\todo{TODO: Do androguard comparison apks to see how many functions has added and how many removed, make a
+			table out of it}
+			\lipsum[1]
+			\todo{TODO: Find reused code section in sonicspy or bankbots or lokibot}
+			\lipsum[1]
+			\todo{Usage of androguard for extracting features for AI/ML, prepare for talk in AIOLI-FFM group}
+			\lipsum[1]
+			\todo{Ask lukas for some results from platform}
+			\lipsum[1]
+			\todo{Improvements in androguard}
+			\lipsum[1]
+			\pagebreak
+	\section{Dynamic Analysis: Cuckoodroid based on Cuckoo sandbox}\label{sec:cuckoodroid}
+		
+		\todo{Introduction to cuckoodroid}
+		\lipsum[1]
+		\todo{Fixing cuckoodroid}
+		\lipsum[1]
+		\todo{Persistent root problem}
+		\lipsum[1]
+		\todo{Lates android}
+		\lipsum[1]
+		\todo{python compilation workaround, termux}
+		\lipsum[1]
+		\todo{Slow android emulator}
+		\lipsum[1]
+		\pagebreak
+	
+	\section{Dynamic Analysis: Anti-Emulator Detection}
+		\todo{Common methods employed for emulator detection, some literature}
+		\lipsum[1]
+		\todo{Good and bad uses of anti-emulator detection}
+		\lipsum[1]
+		\todo{Testing results of cuckoodroid against common emulator detection methods}
+		\lipsum[1]
+		\todo{Adding some new anti-emulator detection features to cuckoodroid}
+		\lipsum[1]
+		\todo{result of analysis before and after}
+		\lipsum[1]
+		\pagebreak
+	
 	
 \end{document}

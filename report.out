@@ -1,0 +1,6 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Static Analysis}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Apktool}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Androguard}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Dynamic Analysis: Cuckoodroid based on Cuckoo sandbox}{}% 5
+\BOOKMARK [1][-]{section.4}{Dynamic Analysis: Anti-Emulator Detection}{}% 6
