@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{android_assets}
+``Using android assets.''
+
+\bibitem{lim2016android}
+K.~Lim, Y.~Jeong, S.-j. Cho, M.~Park, and S.~Han, ``An android application
+  protection scheme against dynamic reverse engineering attacks.,'' {\em
+  JoWUA}, vol.~7, no.~3, pp.~40--52, 2016.
+
+\bibitem{APK_structure}
+``Reduce the apk size.''
+
+\bibitem{afonso2016going}
+V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
+  A.~Doup{\'e}, and M.~Polino, ``Going native: Using a large-scale analysis of
+  android apps to create a practical native-code sandboxing policy.,'' in {\em
+  NDSS}, 2016.
+
+\end{thebibliography}
