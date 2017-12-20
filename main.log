@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  19 DEC 2017 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  20 DEC 2017 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report.tex
-(./report.tex
+**main.tex
+(./main.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -371,21 +371,30 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Cskip=\skip45
 )
 \c@@todonotes@numberoftodonotes=\count112
-) (./report.aux)
-\openout1 = `report.aux'.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.sty
+Package: subfiles 2012/05/23 Federico Garcia
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks28
+\verbatim@line=\toks29
+\verbatim@in@stream=\read2
+)) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -394,12 +403,12 @@ LaTeX Font Info:    ... okay on input line 13.
 \scratchbox=\box37
 \nofMPsegments=\count114
 \nofMParguments=\count115
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks30
 \MPscratchCnt=\count116
 \MPscratchDim=\dimen154
 \MPnumerator=\count117
 \makeMPintoPDFobject=\count118
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks31
 ) ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -451,79 +460,126 @@ e
 ))
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
 )
 \tf@toc=\write4
-\openout4 = `report.toc'.
+\openout4 = `main.toc'.
 
  [1]
+(./chapters/chapter1_introduction.tex
 <images/apk_contents.png, id=15, 671.50874pt x 319.1925pt>
 File: images/apk_contents.png Graphic file (type png)
 
 <use images/apk_contents.png>
-Package pdftex.def Info: images/apk_contents.png used on input line 35.
+Package pdftex.def Info: images/apk_contents.png used on input line 14.
 (pdftex.def)             Requested size: 345.0pt x 163.98901pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 39.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
  [2
 
- <./images/apk_contents.png>] [3] [4] [5]
+ <./images/apk_contents.png>] [3] <images/dex_format.png, id=23, 1570.86874pt x
+ 2191.18625pt>
+File: images/dex_format.png Graphic file (type png)
 
-LaTeX Warning: Marginpar on page 6 moved.
+<use images/dex_format.png>
+Package pdftex.def Info: images/dex_format.png used on input line 46.
+(pdftex.def)             Requested size: 345.0pt x 481.22661pt.
 
-[6]
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 103--103
+Overfull \hbox (80.30309pt too wide) in paragraph at lines 56--99
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 211.42908pt on input line 101.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+)
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+[4] [5 <./images/dex_format.png (PNG copy)>] [6]
+(./chapters/chapter2_static_analysis.tex
+
+LaTeX Warning: Marginpar on page 7 moved.
+
+
+LaTeX Warning: Marginpar on page 7 moved.
+
+[7] [8]
+
+LaTeX Warning: Marginpar on page 9 moved.
+
+
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
 [][][][]\OT1/cmr/m/n/10 Improvements 
  []
 
 
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 103--103
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
 [][][][]\OT1/cmr/m/n/10 Improvements 
  []
 
 
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 103--103
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
 [][][][]\OT1/cmr/m/n/10 Improvements 
  []
 
 
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 103--103
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
 [][][][]\OT1/cmr/m/n/10 Improvements 
  []
 
-[7]
-Overfull \hbox (25.80289pt too wide) in paragraph at lines 106--106
-[]\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuck-oodroid based on Cuckoo
+) [9]
+Overfull \hbox (30.75288pt too wide) in paragraph at lines 36--36
+[]\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuckoo-droid based on Cuckoo
  []
 
-[8] [9] [10] [11] (./report.bbl) [12] (./report.aux) ) 
+(./chapters/chapter3_dynamic_analysis_1.tex [10]) [11]
+(./chapters/chapter4_dynamic_analysis_2.tex [12]) [13] (./main.bbl) [14]
+
+! LaTeX Error: Float(s) lost.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{document}
+                   
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(./main.aux) ) 
 Here is how much of TeX's memory you used:
- 12394 strings out of 494953
- 251606 string characters out of 6180976
- 461438 words of memory out of 5000000
- 15447 multiletter control sequences out of 15000+600000
+ 12474 strings out of 494953
+ 253447 string characters out of 6180976
+ 466514 words of memory out of 5000000
+ 15507 multiletter control sequences out of 15000+600000
  6110 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,9n,76p,1106b,847s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (13 pages, 142755 bytes).
+ 62i,11n,77p,1145b,1050s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on main.pdf (15 pages, 891605 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 78 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

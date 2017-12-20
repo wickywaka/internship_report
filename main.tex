@@ -1,0 +1,46 @@
+\documentclass{article}
+
+% Packages goes here
+% snytax \usepackage{amsmath}
+\usepackage {lipsum}
+\usepackage{todonotes}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} {../images/}}
+
+\usepackage{subfiles}
+%\usepackage[margin=0.5in]{geometry}
+
+
+
+\begin{document}
+
+	% Make the title page here
+	\begin{titlepage}
+		\begin{center}
+			\line(1,0){300}\\
+			\huge{\bfseries Automatic Android Malware Analysis}\\
+			\line(1,0){300}\\
+		\end{center}
+	\end{titlepage}
+	
+	\tableofcontents
+	\cleardoublepage
+	
+	\section{Introduction}\label{sec:intro}
+		\subfile{chapters/chapter1_introduction}
+		\pagebreak
+	\section{Static Analysis}\label{sec:static_analysis}
+		\subfile{chapters/chapter2_static_analysis}
+		\pagebreak
+	\section{Dynamic Analysis: Cuckoo-droid based on Cuckoo sandbox}\label{sec:cuckoodroid}
+		\subfile{chapters/chapter3_dynamic_analysis_1}
+		\pagebreak
+	
+	\section{Dynamic Analysis: Anti-Emulator Detection}
+		\subfile{chapters/chapter4_dynamic_analysis_2}
+		\pagebreak
+	
+	\bibliographystyle{ieeetr}
+	\bibliography{References}
+\end{document}

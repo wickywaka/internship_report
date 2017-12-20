@@ -1,0 +1,107 @@
+% For help on subfiles see https://www.sharelatex.com/learn/Multi-file_LaTeX_projects
+\documentclass[../main.tex]{subfile}
+
+
+\begin{document}
+	\subsection{APK file}\label{sec:apk}	
+		\paragraph{} Android Application Package(APK) is the file format used for an android application. It contains all the resources required for an application to run on android operating system. Its basically a zip file or a jar file with extension of ".apk"\cite{APK_structure}.
+		\subsubsection{APK file contents}
+		\paragraph{} Normally an apk file contains following files or folders:
+		
+		\todo{Add captions and made the picture available in list of figures}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{apk_contents.png}
+			\caption{Files inside an APK}
+		\end{figure}
+		
+		\begin{itemize}
+			\item \textbf{assets/:} It provides a way to include arbitrary files like text, xml, fonts, music and video in your application and allow you to access your data raw/untouched. AssetManager is used to read this data\cite{android_assets}. Due to raw access sometimes this directory contains executable payloads and dynamically loaded code. One interesting usage is storing Dex files in it to avoid its reverse engineering. \cite{lim2016android}
+			
+			\item \textbf{lib/:} This directory is for natively compiled code. This directory contains a subdirectory for each platform type, like armeabi, armeabi-v7a, arm64-v8a, x86, x86\textunderscore64, and mips \cite{APK_structure}. This code is run directly on CPU and have access to android API using Java Native Interface(JNI). Natively compiled code is more suitable for CPU intensive jobs because of less overhead and good performance of programming language like c/c++. Most of the android  static analysis tools work on Java level- that is, they process either the decompiled Java source code or Dalvik Byte Code\cite{afonso2016going}. This rises several interesting scenarios in which malware authors can avoid detection, can redistributing benign applications with malicious injections or completely modifying behavior of an application. Readers interested in this topic are encouraged to have a look at \cite{afonso2016going}. Android NDK can be used to compile native code for android. \todo{compile hello world in c for android in apendix}
+			
+			
+			\item \textbf{META-INF/:} This directory contains the following three files:
+			\begin{enumerate}
+				\item \textbf{MANIFEST.MF:} Its a text file and contains a list and base64 encoded SHA-1 hashes of all files included in the APK.
+				\item \textbf{CERT.SF:} This file again contain a list of all files but this time with the base64 encoded SHA-1 hashes of the corresponding lines in the MANIFEST.MF file. It also contain based64 encoded SHA-1 hash of MANIFEST.MF file.
+				\item \textbf{CERT.RSA:} It contains developers public signature, used for validation of upgrades. Its basically singed content of CERT.SF file along with public key to validate the contents.
+			\end{enumerate}
+			
+			\item \textbf{res/:} This directory contain resource which are not compiled into "resources.arsc" (see below) \cite{APK_structure}. These resources can be accessed from inside the application code using resource ID. All resource IDs are defined in "R" class of the project. Application developers can specify alternate resources to support specific device configurations e.g, alternative drawable resources for different screen sizes, alternative strings for different languages etc.
+			
+			\item \textbf{AndroidManifest.xml:} Every application must have an AndroidManifest.xml file. This file provide essential information about the application like entry points, package name, components, permissions, minimum level of Android API, libraries, intents etc. For static analysis purposes a lot of information can be extracted from this file.
+			
+			\item \textbf{classes.dex:} This is the most important file insude an apk. It contains classes compiled in the DEX file format which can be understood by the Dalvik/ART virtual machine \cite{APK_structure}. In the next section we will describe this file in more details.
+			
+			\item \textbf{resources.arsc:} This file contain compiled resources. This file contains the XML content from all configurations of the res/values/ folder. The packaging tool extracts this XML content, compiles it to binary form, and archives the content. This content includes language strings and styles, as well as paths to content that is not included directly in the resources.arsc file, such as layout files and images \cite{APK_structure}. These resources can also be accessed using the "R" class.
+		\end{itemize}
+		
+	\subsection{Dex file}\label{sec:dex}
+		\paragraph{} Dex file is the heart of an android application. First Java source code of an application is compiled to Java byte code (".class" extension). Then this Java byte code is compiled to Dalvik Byte Code or Dalvik Executable(DEX) using Dex-compiler or dexer tool. This code is then executed on Dalvik Virtual Machine (deprecated) or in case of Android Runtime (ART), this code is compiled at install time to the native code. 
+			\subsubsection{Dex file format}
+			\paragraph{} In this section we will briefly discuss the file format for dex files. For more in depth and up to date specifications readers are encouraged to have a look at android official documentation on dex format \cite{dex_format}. A more graphical representation of dex file is shown in Figure \ref{fig:dex_format}. 
+			\todo{structure of Dex file}
+				\begin{figure}
+					\includegraphics[width=\textwidth]{dex_format.png}
+					\caption{Dex file format \cite{dex_image_albertini}}
+					\label{fig:dex_format}
+				\end{figure}
+				
+				\begin{table}
+								\todo{change table to multipage table}
+								\todo{Add information about Janus vulnerability to make the reading interesting}
+								
+					\begin{center}
+						\begin{tabular}{|l|l|p{7cm}|}
+							\hline
+							\textbf{Name} & \textbf{Format} & \textbf{Description}\\
+							\hline
+																			
+							header & header\textunderscore item & The header contain information about how the dex file is organized, sizes of different sections inside the dex file, size of dex file, size of data section, version of dex format etc.\\
+							\hline
+							
+							string\textunderscore ids & list of string\textunderscore id\textunderscore items & Its a list of string identifiers. These are identifiers for all the strings used by this file e.g, class names, method names, constant objects. Each item points to a location in data section (see below) where the original string is stored.\\
+							\hline						
+							
+							type\textunderscore ids & list of type\textunderscore id\textunderscore items & This list contain type identifiers for all types (classes, arrays or primitive types) referred to by this file, whether defined in the file or not. The actual identifier string is stored in data section. Items in this list points to items in string\textunderscore ids list and which in turn points to type identifier string stored in data section.\\
+							\hline
+							
+							proto\textunderscore ids & list of proto\textunderscore id\textunderscore items & Its a method prototype identifier list. Each item of this list contain three elements: \begin{itemize}
+								\item \textbf{shorty\textunderscore idx} Points to string\textunderscore id\textunderscore item of shorty descriptor for this prototype
+								\item \textbf{return\textunderscore type\textunderscore id} Specify return type by pointing to corresponding type\textunderscore id \textunderscore item
+								\item \textbf{parameter\textunderscore off} Offset from start of file to the list of parameter types for this prototype. It must point to location in data section. The data there should be in "type\textunderscore list" format. This value would be zero in case no parameters.
+							\end{itemize}\\
+							\hline
+							
+							field\textunderscore ids & list of field\textunderscore id\textunderscore items & These are identifiers for all fields referred to by this file, whether defined in the file or not.\\
+							\hline
+							
+							method\textunderscore ids & list of method\textunderscore id\textunderscore items & These are identifiers for all methods referred to by this file, whether defined in the file or not. \\
+							\hline
+							
+							class\textunderscore defs & list of class\textunderscore def\textunderscore items & The classes must be ordered such that a given class's superclass and implemented interfaces appear in the list earlier than the referring class. Furthermore, it is invalid for a definition for the same-named class to appear more than once in the list. \\
+							\hline
+							
+							call\textunderscore site\textunderscore ids & list of call\textunderscore site\textunderscore id\textunderscore items & These are identifiers for all call sites referred to by this file, whether defined in the file or not.\\
+							\hline
+							
+							method\textunderscore handles & list of method\textunderscore handle\textunderscore items & A list of all method handles referred to by this file, whether defined in the file or not. This list is not sorted and may contain duplicates which will logically correspond to different method handle instances. \\
+							\hline
+							
+							data & unsigned bytes & Containing all the support data for the tables listed above. Different items have different alignment requirements, and padding bytes are inserted before each item if necessary to achieve proper alignment. \\
+							\hline
+							
+							link\textunderscore data & unsigned bytes &  The format of the data in this section is left unspecified by this document. This section is empty in unlinked files, and runtime implementations may use it as they see fit. \\
+							\hline
+		
+						\end{tabular}
+					\end{center}
+				\label{table:Dex_file_format}
+				\end{table}
+		
+		
+		\todo{TODO: Write introduction section after the significant part of report is done and the structure is more clear}
+		\todo{Discuss static analysis and dynamic analysis}
+		\todo{To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts.}
+\end{document}
