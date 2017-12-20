@@ -8,7 +8,7 @@
 		\subsubsection{APK file contents}
 		\paragraph{} Normally an apk file contains following files or folders:
 		
-		\todo{Add captions and made the picture available in list of figures}
+		\todo[inline]{Add captions and made the picture available in list of figures}
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=\textwidth]{apk_contents.png}
@@ -18,7 +18,7 @@
 		\begin{itemize}
 			\item \textbf{assets/:} It provides a way to include arbitrary files like text, xml, fonts, music and video in your application and allow you to access your data raw/untouched. AssetManager is used to read this data\cite{android_assets}. Due to raw access sometimes this directory contains executable payloads and dynamically loaded code. One interesting usage is storing Dex files in it to avoid its reverse engineering. \cite{lim2016android}
 			
-			\item \textbf{lib/:} This directory is for natively compiled code. This directory contains a subdirectory for each platform type, like armeabi, armeabi-v7a, arm64-v8a, x86, x86\textunderscore64, and mips \cite{APK_structure}. This code is run directly on CPU and have access to android API using Java Native Interface(JNI). Natively compiled code is more suitable for CPU intensive jobs because of less overhead and good performance of programming language like c/c++. Most of the android  static analysis tools work on Java level- that is, they process either the decompiled Java source code or Dalvik Byte Code\cite{afonso2016going}. This rises several interesting scenarios in which malware authors can avoid detection, can redistributing benign applications with malicious injections or completely modifying behavior of an application. Readers interested in this topic are encouraged to have a look at \cite{afonso2016going}. Android NDK can be used to compile native code for android. \todo{compile hello world in c for android in apendix}
+			\item \textbf{lib/:} This directory is for natively compiled code. This directory contains a subdirectory for each platform type, like armeabi, armeabi-v7a, arm64-v8a, x86, x86\textunderscore64, and mips \cite{APK_structure}. This code is run directly on CPU and have access to android API using Java Native Interface(JNI). Natively compiled code is more suitable for CPU intensive jobs because of less overhead and good performance of programming language like c/c++. Most of the android  static analysis tools work on Java level- that is, they process either the decompiled Java source code or Dalvik Byte Code\cite{afonso2016going}. This rises several interesting scenarios in which malware authors can avoid detection, can redistributing benign applications with malicious injections or completely modifying behavior of an application. Readers interested in this topic are encouraged to have a look at \cite{afonso2016going}. Android NDK can be used to compile native code for android. \todo[inline]{compile hello world in c for android in apendix}
 			
 			
 			\item \textbf{META-INF/:} This directory contains the following three files:
@@ -41,7 +41,7 @@
 		\paragraph{} Dex file is the heart of an android application. First Java source code of an application is compiled to Java byte code (".class" extension). Then this Java byte code is compiled to Dalvik Byte Code or Dalvik Executable(DEX) using Dex-compiler or dexer tool. This code is then executed on Dalvik Virtual Machine (deprecated) or in case of Android Runtime (ART), this code is compiled at install time to the native code. 
 			\subsubsection{Dex file format}
 			\paragraph{} In this section we will briefly discuss the file format for dex files. For more in depth and up to date specifications readers are encouraged to have a look at android official documentation on dex format \cite{dex_format}. A more graphical representation of dex file is shown in Figure \ref{fig:dex_format}. 
-			\todo{structure of Dex file}
+			\todo[inline]{structure of Dex file}
 				\begin{figure}
 					\includegraphics[width=\textwidth]{dex_format.png}
 					\caption{Dex file format \cite{dex_image_albertini}}
@@ -49,8 +49,8 @@
 				\end{figure}
 				
 				\begin{table}
-								\todo{change table to multipage table}
-								\todo{Add information about Janus vulnerability to make the reading interesting}
+								\todo[inline]{change table to multipage table}
+								\todo[inline]{Add information about Janus vulnerability to make the reading interesting}
 								
 					\begin{center}
 						\begin{tabular}{|l|l|p{7cm}|}
@@ -99,9 +99,14 @@
 					\end{center}
 				\label{table:Dex_file_format}
 				\end{table}
+			\subsubsection{Multiple Dex files in single APK}
+				\paragraph{}  Android app (APK) files contain executable bytecode files in the form of Dalvik Executable (DEX) files, which contain the compiled code used to run your app. The Dalvik Executable specification limits the total number of methods that can be referenced within a single DEX file to 65,536—including Android framework methods, library methods, and methods in your own code. This limit is referred to as the '64K reference limit' \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}.
+				
+				\paragraph{} Versions of the platform prior to Android 5.0 (API level 21) use the Dalvik runtime for executing app code. By default, Dalvik limits apps to a single classes.dex bytecode file per APK.Multidex support library can be used to workaround this limitation. Android 5.0 (API level 21) and higher uses a runtime called ART which natively supports loading multiple DEX files from APK files \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}. Because of this support its not uncommon these days to come across APKs that contain multiple dex files e.g, Facebook, instagram etc.
+			
 		
 		
-		\todo{TODO: Write introduction section after the significant part of report is done and the structure is more clear}
-		\todo{Discuss static analysis and dynamic analysis}
-		\todo{To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts.}
+		\todo[inline]{TODO: Write introduction section after the significant part of report is done and the structure is more clear}
+		\todo[inline]{Discuss static analysis and dynamic analysis}
+		\todo[inline]{To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts.}
 \end{document}

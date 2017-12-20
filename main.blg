@@ -10,7 +10,12 @@ Warning--entry type for "APK_structure" isn't style-file defined
 Warning--entry type for "dex_format" isn't style-file defined
 --line 58 of file References.bib
 Warning--entry type for "dex_image_albertini" isn't style-file defined
---line 70 of file References.bib
+--line 65 of file References.bib
+You're missing a field name---line 68 of file References.bib
+ :  
+ :  %url = {https://github.com/corkami/pics/blob/master/binary/DEX.png}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 You've used 6 entries,
             1876 wiz_defined-function locations,
             497 strings with 4143 characters,
@@ -52,4 +57,4 @@ warning$ -- 0
 while$ -- 5
 width$ -- 7
 write$ -- 41
-(There were 4 warnings)
+(There was 1 error message)

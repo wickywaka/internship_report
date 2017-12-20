@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  20 DEC 2017 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  20 DEC 2017 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -499,87 +499,37 @@ Overfull \hbox (80.30309pt too wide) in paragraph at lines 56--99
  []
 
 
-LaTeX Warning: Float too large for page by 211.42908pt on input line 101.
+LaTeX Warning: Float too large for page by 241.75546pt on input line 101.
 
-
-LaTeX Warning: Marginpar on page 4 moved.
-
-)
-
-LaTeX Warning: Marginpar on page 4 moved.
-
-
-LaTeX Warning: Marginpar on page 4 moved.
-
-[4] [5 <./images/dex_format.png (PNG copy)>] [6]
-(./chapters/chapter2_static_analysis.tex
-
-LaTeX Warning: Marginpar on page 7 moved.
-
-
-LaTeX Warning: Marginpar on page 7 moved.
-
-[7] [8]
-
-LaTeX Warning: Marginpar on page 9 moved.
-
-
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
-[][][][]\OT1/cmr/m/n/10 Improvements 
- []
-
-
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
-[][][][]\OT1/cmr/m/n/10 Improvements 
- []
-
-
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
-[][][][]\OT1/cmr/m/n/10 Improvements 
- []
-
-
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 37--37
-[][][][]\OT1/cmr/m/n/10 Improvements 
- []
-
-) [9]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+) [4] [5 <./images/dex_format.png (PNG copy)>] [6]
+(./chapters/chapter2_static_analysis.tex [7] [8] [9]) [10]
 Overfull \hbox (30.75288pt too wide) in paragraph at lines 36--36
 []\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuckoo-droid based on Cuckoo
  []
 
-(./chapters/chapter3_dynamic_analysis_1.tex [10]) [11]
-(./chapters/chapter4_dynamic_analysis_2.tex [12]) [13] (./main.bbl) [14]
-
-! LaTeX Error: Float(s) lost.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \end{document}
-                   
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+(./chapters/chapter3_dynamic_analysis_1.tex [11]) [12]
+(./chapters/chapter4_dynamic_analysis_2.tex [13]) [14] (./main.bbl) [15]
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 12474 strings out of 494953
- 253447 string characters out of 6180976
- 466514 words of memory out of 5000000
- 15507 multiletter control sequences out of 15000+600000
+ 12374 strings out of 494953
+ 250985 string characters out of 6180976
+ 415200 words of memory out of 5000000
+ 15407 multiletter control sequences out of 15000+600000
  6110 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,77p,1145b,1050s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,81p,1152b,984s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (15 pages, 891605 bytes).
+Output written on main.pdf (16 pages, 892684 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
