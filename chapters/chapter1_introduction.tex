@@ -3,9 +3,33 @@
 
 
 \begin{document}
+	\paragraph{} \todo[inline]{Write introductory paragraph here}
+	\subsection{Android application fundamentals}\label{sec:app_fundamentals}
+		\paragraph{} Android application are mostly written in Java. The Android SDK tool compile this code along with any data and resources files into an APK, an Android Package. One APK file contain all contents of an Android app and is the file that Android devices use to install the application \cite{app_fundamentals}. We will discuss the structure of an APK file in section \ref{sec:apk}. In this section we will discuss some basic parts of an Android application.
+		
+		\subsubsection{Application components}
+		\paragraph{} The essential building blocks of an Android application are called App components. Each component is an entry point to the application. Each type serves a distinct purpose and has a distinct life-cycle that defines how the component is created and destroyed. The communication between these components (except Content providers) is done using messages called "Intents" (section \ref{sec:intents}). It is also important to note that all of these components needs to be listed in AndroidManifest.xml file, for more detailed description of this file please look at section \ref{sec:apk_file_contents}. There are four different types of app components:
+			\begin{itemize}
+				\item \textbf{Activities} An activity is the entry point for interacting with the user. It represents a single screen with a user interface. Each activity is independent from others \cite{app_fundamentals}.
+				\item \textbf{Services} A service is a general-purpose entry point for keeping an app running in the background for all kinds of reasons. It is a component that runs in the background to perform long-running operations or to perform work for remote processes. A service does not provide a user interface\cite{app_fundamentals}. 
+				\item \textbf{Broadcast receivers} A broadcast receiver is a component that enables the system to deliver events to the app outside of a regular user flow, allowing the app to respond to system-wide broadcast announcements. Because broadcast receivers are another well-defined entry into the app, the system can deliver broadcasts even to apps that aren't currently running. Although broadcast receivers don't display a user interface, they may create a status bar notification to alert the user when a broadcast event occurs. More commonly, though, a broadcast receiver is just a gateway to other components and is intended to do a very minimal amount of work \cite{app_fundamentals}.
+				\item \textbf{Content providers} A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, on the web, or on any other persistent storage location that your app can access. Through the content provider, other apps can query or modify the data if the content provider allows it. For example, the Android system provides a content provider that manages the user's contact information. As such, any app with the proper permissions can query the content provider, such as ContactsContract.Data, to read and write information about a particular person \cite{app_fundamentals}.
+			\end{itemize}
+		\subsubsection{Intents messages}\label{sec:intents}
+			\paragraph{} Three of the four component types—activities, services, and broadcast receivers—are activated by an asynchronous message called an intent. Intents bind individual components to each other at runtime. You can think of them as the messengers that request an action from other components, whether the component belongs to your app or another \cite{app_fundamentals}. Although intents facilitate communication between components in several ways, there are three fundamental use cases:
+				\begin{itemize}
+					\item Starting an activity
+					\item Starting a service
+					\item Delivering a broadcast
+				\end{itemize}
+			\paragraph{} Readers more interested in this topic are recommend to have a look at \cite{intents}.
+			\todo[inline]{Add ref to section describing the use of am and broadcast to fire activities and intents}
+			
+			
 	\subsection{APK file}\label{sec:apk}	
 		\paragraph{} Android Application Package(APK) is the file format used for an android application. It contains all the resources required for an application to run on android operating system. Its basically a zip file or a jar file with extension of ".apk"\cite{APK_structure}.
-		\subsubsection{APK file contents}
+		
+		\subsubsection{APK file contents} \label{sec:apk_file_contents}
 		\paragraph{} Normally an apk file contains following files or folders:
 		
 		\todo[inline]{Add captions and made the picture available in list of figures}
@@ -37,10 +61,11 @@
 			\item \textbf{resources.arsc:} This file contain compiled resources. This file contains the XML content from all configurations of the res/values/ folder. The packaging tool extracts this XML content, compiles it to binary form, and archives the content. This content includes language strings and styles, as well as paths to content that is not included directly in the resources.arsc file, such as layout files and images \cite{APK_structure}. These resources can also be accessed using the "R" class.
 		\end{itemize}
 		
+
 	\subsection{Dex file}\label{sec:dex}
 		\paragraph{} Dex file is the heart of an android application. First Java source code of an application is compiled to Java byte code (".class" extension). Then this Java byte code is compiled to Dalvik Byte Code or Dalvik Executable(DEX) using Dex-compiler or dexer tool. This code is then executed on Dalvik Virtual Machine (deprecated) or in case of Android Runtime (ART), this code is compiled at install time to the native code. 
 			\subsubsection{Dex file format}
-			\paragraph{} In this section we will briefly discuss the file format for dex files. For more in depth and up to date specifications readers are encouraged to have a look at android official documentation on dex format \cite{dex_format}. A more graphical representation of dex file is shown in Figure \ref{fig:dex_format}. 
+			\paragraph{} In this section we will briefly discuss the file format for dex files. For more in depth and up to date specifications readers are encouraged to have a look at android official documentation on dex format \cite{dex_format}. A more graphical representation of dex file is shown in Figure \ref{fig:dex_format}. In \ref{fig:dex_format} we had shown that how one element of proto\textunderscore ids points to different locations in a dex file with the help of lines.
 			\todo[inline]{structure of Dex file}
 				\begin{figure}
 					\includegraphics[width=\textwidth]{dex_format.png}
@@ -100,13 +125,13 @@
 				\label{table:Dex_file_format}
 				\end{table}
 			\subsubsection{Multiple Dex files in single APK}
-				\paragraph{}  Android app (APK) files contain executable bytecode files in the form of Dalvik Executable (DEX) files, which contain the compiled code used to run your app. The Dalvik Executable specification limits the total number of methods that can be referenced within a single DEX file to 65,536—including Android framework methods, library methods, and methods in your own code. This limit is referred to as the '64K reference limit' \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}.
+				\paragraph{}  Android app (APK) files contain executable bytecode files in the form of Dalvik Executable (DEX) files, which contain the compiled code used to run your app. The Dalvik Executable specification limits the total number of methods that can be referenced within a single DEX file to 65,536 — including Android framework methods, library methods, and methods in your own code. This limit is referred to as the '64K reference limit' \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}. \cite{multidex}
 				
-				\paragraph{} Versions of the platform prior to Android 5.0 (API level 21) use the Dalvik runtime for executing app code. By default, Dalvik limits apps to a single classes.dex bytecode file per APK.Multidex support library can be used to workaround this limitation. Android 5.0 (API level 21) and higher uses a runtime called ART which natively supports loading multiple DEX files from APK files \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}. Because of this support its not uncommon these days to come across APKs that contain multiple dex files e.g, Facebook, instagram etc.
-			
+				\paragraph{} Versions of the platform prior to Android 5.0 (API level 21) use the Dalvik runtime for executing app code. By default, Dalvik limits apps to a single classes.dex bytecode file per APK.Multidex support library can be used to workaround this limitation. Android 5.0 (API level 21) and higher uses a runtime called ART which natively supports loading multiple DEX files from APK files \todo[inline]{Cite https://developer.android.com/studio/build/multidex.html}. Because of this support its not uncommon these days to come across APKs that contain multiple dex files e.g, Facebook, instagram etc. \cite{multidex}
+		\subsection{Android Application Analysis}\label{sec:application_analysis}
 		
 		
 		\todo[inline]{TODO: Write introduction section after the significant part of report is done and the structure is more clear}
-		\todo[inline]{Discuss static analysis and dynamic analysis}
 		\todo[inline]{To be done later, In this chapter we include the problem statement, See fh kiel project report structure for missing parts.}
+
 \end{document}

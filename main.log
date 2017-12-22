@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  20 DEC 2017 17:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  22 DEC 2017 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,74 +462,162 @@ e
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
+(Font)              <7> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
+(Font)              <5> on input line 3.
 )
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
  [1]
 (./chapters/chapter1_introduction.tex
-<images/apk_contents.png, id=15, 671.50874pt x 319.1925pt>
-File: images/apk_contents.png Graphic file (type png)
+Overfull \hbox (9.50002pt too wide) in paragraph at lines 6--6
+ [] [] 
+ []
 
-<use images/apk_contents.png>
-Package pdftex.def Info: images/apk_contents.png used on input line 14.
-(pdftex.def)             Requested size: 345.0pt x 163.98901pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 19.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 13.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
  [2
 
- <./images/apk_contents.png>] [3] <images/dex_format.png, id=23, 1570.86874pt x
- 2191.18625pt>
+]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+
+<images/apk_contents.png, id=19, 671.50874pt x 319.1925pt>
+File: images/apk_contents.png Graphic file (type png)
+
+<use images/apk_contents.png>
+Package pdftex.def Info: images/apk_contents.png used on input line 38.
+(pdftex.def)             Requested size: 345.0pt x 163.98901pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] [4 <./images/apk_contents.png>]
+<images/dex_format.png, id=26, 1570.86874pt x 2191.18625pt>
 File: images/dex_format.png Graphic file (type png)
 
 <use images/dex_format.png>
-Package pdftex.def Info: images/dex_format.png used on input line 46.
+Package pdftex.def Info: images/dex_format.png used on input line 71.
 (pdftex.def)             Requested size: 345.0pt x 481.22661pt.
 
-Overfull \hbox (80.30309pt too wide) in paragraph at lines 56--99
+Overfull \hbox (80.30309pt too wide) in paragraph at lines 81--124
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 241.75546pt on input line 101.
+LaTeX Warning: Float too large for page by 241.75546pt on input line 126.
 
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-) [4] [5 <./images/dex_format.png (PNG copy)>] [6]
-(./chapters/chapter2_static_analysis.tex [7] [8] [9]) [10]
+[5] [6 <./images/dex_format.png>] [7]) [8]
+(./chapters/chapter2_static_analysis.tex
+Overfull \hbox (4.81094pt too wide) in paragraph at lines 5--5
+[][][][]\OT1/cmr/m/n/10 Add info from http://orbilu.uni.lu/bitstream/10993/2687
+9/1/tr[]slr[]article.pdf  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[][][][]\OT1/cmr/m/n/10 MalloDroid, ex-ten-sion of an-dro-guard https://www.dfn
+- 
+ []
+
+
+Overfull \hbox (87.43332pt too wide) in paragraph at lines 16--16
+[][][][]\OT1/cmr/m/n/10 Androguard used in http://lilicoding.github.io/SA3Repo/
+papers/2013[]guo2013characterizing.pdf  
+ []
+
+
+Underfull \hbox (badness 5245) in paragraph at lines 25--26
+[]\OT1/cmr/bx/n/10 APK \OT1/cmr/m/n/10 Used for ac-cess-
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 25--26
+\OT1/cmr/m/n/10 APK, in-clud-ing in-for-ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+[]\OT1/cmr/bx/n/10 DalvikVMFormat \OT1/cmr/m/n/10 It
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 26--27
+\OT1/cmr/m/n/10 parses the dex file and
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 27--28
+[]\OT1/cmr/bx/n/10 ClassDefItem \OT1/cmr/m/n/10 Class for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+[]\OT1/cmr/bx/n/10 EncodedMethod \OT1/cmr/m/n/10 Class
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+\OT1/cmr/m/n/10 for in-ter-act-ing with
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 35--36
+[]\OT1/cmr/bx/n/10 Analysis \OT1/cmr/m/n/10 Its the main
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+[]\OT1/cmr/bx/n/10 MethodAnalysis \OT1/cmr/m/n/10 Con-
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 37--38
+\OT1/cmr/m/n/10 tain anal-y-sis in-for-ma-tion
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 38--39
+[]\OT1/cmr/bx/n/10 DvmBasicBlock \OT1/cmr/m/n/10 Rep-re-
+ []
+
+[9] [10]) [11]
 Overfull \hbox (30.75288pt too wide) in paragraph at lines 36--36
 []\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuckoo-droid based on Cuckoo
  []
 
-(./chapters/chapter3_dynamic_analysis_1.tex [11]) [12]
-(./chapters/chapter4_dynamic_analysis_2.tex [13]) [14] (./main.bbl) [15]
-(./main.aux) ) 
+(./chapters/chapter3_dynamic_analysis_1.tex) [12]
+(./chapters/chapter4_dynamic_analysis_2.tex) [13] (./main.bbl) [14] (./main.aux
+) ) 
 Here is how much of TeX's memory you used:
- 12374 strings out of 494953
- 250985 string characters out of 6180976
- 415200 words of memory out of 5000000
- 15407 multiletter control sequences out of 15000+600000
+ 12297 strings out of 494953
+ 249215 string characters out of 6180976
+ 390788 words of memory out of 5000000
+ 15329 multiletter control sequences out of 15000+600000
  6110 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,81p,1152b,984s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (16 pages, 892684 bytes).
+ 62i,11n,81p,1154b,1021s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on main.pdf (15 pages, 1036768 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 78 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

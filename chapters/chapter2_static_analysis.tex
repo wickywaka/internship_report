@@ -1,39 +1,62 @@
 % For help on subfiles see https://www.sharelatex.com/learn/Multi-file_LaTeX_projects
 \documentclass[../main.tex]{subfile}
-
-
 \begin{document}
-
-
-		There are several static analysis tools available for APKs, each one having its own strengths and weaknesses.
+		\paragraph{} There are several static analysis tools available for APKs, each one having its own strengths and weaknesses.
+		\todo[inline]{Add info from http://orbilu.uni.lu/bitstream/10993/26879/1/tr\textunderscore slr\textunderscore article.pdf}
 		\todo[inline]{Add some info about common tools}
-		
-		
-		\lipsum[1]
+		\subsection{Smali/Backsmali}
+		\subsection{IDA pro}
+		\subsection{JADX - Dex to Java decompiler}
+		% https://github.com/skylot/jadx
 		\subsection{Apktool}\label{sec:apktool}
-		APKTool is one of the major reverse engineering tool for android applications.  \todo[inline]{Add more info}
-		\lipsum[2]
+		APKTool is one of the major reverse engineering tools for android applications.  \todo[inline]{Add more info}
 		\subsection{Androguard}\label{sec:androguard}
 		\todo[inline]{Introduce androguard}
-		Androguard is an open source tool written in python for analyzing android applications. Its been in a several of tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. The classes in androguard can be generally divided into two categories: Classes used for parsing and the analysis classes. We will go into more details about these classes but first we will show some basic usage of androguard.
+		\todo[inline]{MalloDroid, extension of androguard https://www.dfn-cert.de/dokumente/workshop/2013/FolienSmith.pdf}
+		\todo[inline]{Androguard used in http://lilicoding.github.io/SA3Repo/papers/2013\textunderscore guo2013characterizing.pdf}
+		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process and one can make desired improvements.
+		\paragraph{} Androguard doesn't have a lot of documentation available online and most of the time one has to figure it out from source code of androguard. For easier understanding and use, we can generalize the classes androgaurd contain into two groups. Table
 		
+		\begin{table} \todo[inline]{Fix the position of table}
+			\begin{center}
+				\begin{tabular}{|p{5cm}|p{5cm}|}
+					\hline \textbf{Classes for Parsing} & \textbf{Classes for Analysis}\\ \hline
+					\begin{itemize}
+						\item \textbf{APK} Used for accessing all elements inside an APK, including information from Manifest.xml like permissions, activities etc.
+						\item \textbf{DalvikVMFormat}	It parses the dex file and gives access classes, methods, strings etc. defined inside the dex file.
+						\item \textbf{ClassDefItem} Class for interacting with class information inside the dex file.
+						\item \textbf{EncodedMethod} Class for interacting with method information inside the dex file. 
+						\item \textbf{Instuction} Class for interacting with instructions, it contains mnem, opcodes etc. Its a base class and a androguard derive a class for each instruction format from this class.
+					\end{itemize}
+					
+					&
+					
+					\begin{itemize}
+						\item \textbf{Analysis} Its the main analysis class and contain instances of all other analysis classes discussed below. create\textunderscore xref() method needs to be called after an instance of this class is created to populate all defined fields in this class.
+						\item \textbf{ClassAnalysis} This class contain analysis data of a class like cross references and external methods etc.
+						\item \textbf{MethodAnalysis} Contain analysis information of a method like the basic blocks it is composed of etc.
+						\item \textbf{DvmBasicBlock} Represents a simple basic block of a method. It contains information about that basic block like its parents, children etc.
+						\end{itemize}\\ \hline
+					
+				\end{tabular}
+			\end{center}
+			\caption{Some classes of androguard and their description}
+			\label{table:androguard_classes}
+		\end{table}
 		
+		\todo[inline]{Add androguard demos}
+
+
+		\subsection{Dex2Jar and jd-gui}
+		% dex2jar : https://sourceforge.net/projects/dex2jar/
+		% jd-gui : http://jd.benow.ca/
 		
 		\todo[inline]{TODO: Do androguard basic usage examples}
-		\lipsum[1]
 		\todo[inline]{Discuss the changes we made including normalization, canonical hasing for similarity search}
-		\lipsum[1]
 		\todo[inline]{Discuss the info we are extracting from apks for platform}
-		\lipsum[1]
-		\todo[inline]{TODO: Do androguard comparison apks to see how many functions has added and how many removed, make a
-			table out of it}
-		\lipsum[1]
+		\todo[inline]{TODO: Do androguard comparison apks to see how many functions has added and how many removed, make a table out of it}
 		\todo[inline]{TODO: Find reused code section in sonicspy or bankbots or lokibot}
-		\lipsum[1]
 		\todo[inline]{Usage of androguard for extracting features for AI/ML, prepare for talk in AIOLI-FFM group}
-		\lipsum[1]
 		\todo[inline]{Ask lukas for some results from platform}
-		\lipsum[1]
 		\todo[inline]{Improvements in androguard}
-		\lipsum[1]
 \end{document}

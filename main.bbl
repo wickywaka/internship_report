@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{app_fundamentals}
+``Android application fundamentals.''
+
+\bibitem{intents}
+``Intents.''
+
 \bibitem{APK_structure}
 ``Reduce the apk size.''
 
@@ -22,5 +28,8 @@ V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
 
 \bibitem{dex_image_albertini}
 ``Dalvik executable picture by ange albertini.''
+
+\bibitem{multidex}
+``Enable multidex for apps with over 64k methods.''
 
 \end{thebibliography}

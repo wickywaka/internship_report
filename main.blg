@@ -11,41 +11,42 @@ Warning--entry type for "dex_format" isn't style-file defined
 --line 58 of file References.bib
 Warning--entry type for "dex_image_albertini" isn't style-file defined
 --line 65 of file References.bib
-You're missing a field name---line 68 of file References.bib
- :  
- :  %url = {https://github.com/corkami/pics/blob/master/binary/DEX.png}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-You've used 6 entries,
+Warning--entry type for "multidex" isn't style-file defined
+--line 71 of file References.bib
+Warning--entry type for "app_fundamentals" isn't style-file defined
+--line 77 of file References.bib
+Warning--entry type for "intents" isn't style-file defined
+--line 83 of file References.bib
+You've used 9 entries,
             1876 wiz_defined-function locations,
-            497 strings with 4143 characters,
-and the built_in function-call counts, 982 in all, are:
-= -- 73
-> -- 47
+            503 strings with 4259 characters,
+and the built_in function-call counts, 1264 in all, are:
+= -- 94
+> -- 50
 < -- 0
-+ -- 19
++ -- 22
 - -- 13
-* -- 61
-:= -- 131
+* -- 67
+:= -- 152
 add.period$ -- 2
-call.type$ -- 6
-change.case$ -- 6
+call.type$ -- 9
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 44
-empty$ -- 124
+cite$ -- 9
+duplicate$ -- 56
+empty$ -- 178
 format.name$ -- 13
-if$ -- 242
+if$ -- 323
 int.to.chr$ -- 0
-int.to.str$ -- 6
+int.to.str$ -- 9
 missing$ -- 2
-newline$ -- 21
+newline$ -- 30
 num.names$ -- 2
-pop$ -- 33
+pop$ -- 51
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 45
+skip$ -- 69
 stack$ -- 0
 substring$ -- 24
 swap$ -- 8
@@ -55,6 +56,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 5
-width$ -- 7
-write$ -- 41
-(There was 1 error message)
+width$ -- 10
+write$ -- 56
+(There were 7 warnings)

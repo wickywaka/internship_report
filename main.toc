@@ -1,17 +1,33 @@
 \contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {subsection}{\numberline {1.1}APK file}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {subsubsection}{\numberline {1.1.1}APK file contents}{2}
+\contentsline {subsection}{\numberline {1.1}Android application fundamentals}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {subsection}{\numberline {1.2}Dex file}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {subsubsection}{\numberline {1.2.1}Dex file format}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {subsubsection}{\numberline {1.2.2}Multiple Dex files in single APK}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {paragraph}{}{4}
-\contentsline {section}{\numberline {2}Static Analysis}{7}
-\contentsline {subsection}{\numberline {2.1}Apktool}{7}
-\contentsline {subsection}{\numberline {2.2}Androguard}{7}
-\contentsline {section}{\numberline {3}Dynamic Analysis: Cuckoo-droid based on Cuckoo sandbox}{11}
+\contentsline {subsubsection}{\numberline {1.1.1}Application components}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}Intents messages}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {1.2}APK file}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsubsection}{\numberline {1.2.1}APK file contents}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {1.3}Dex file}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {subsubsection}{\numberline {1.3.1}Dex file format}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {subsubsection}{\numberline {1.3.2}Multiple Dex files in single APK}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {subsection}{\numberline {1.4}Android Application Analysis}{8}
+\contentsline {section}{\numberline {2}Static Analysis}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {2.1}Smali/Backsmali}{9}
+\contentsline {subsection}{\numberline {2.2}IDA pro}{9}
+\contentsline {subsection}{\numberline {2.3}JADX - Dex to Java decompiler}{9}
+\contentsline {subsection}{\numberline {2.4}Apktool}{9}
+\contentsline {subsection}{\numberline {2.5}Androguard}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {2.6}Dex2Jar and jd-gui}{9}
+\contentsline {section}{\numberline {3}Dynamic Analysis: Cuckoo-droid based on Cuckoo sandbox}{12}
 \contentsline {section}{\numberline {4}Dynamic Analysis: Anti-Emulator Detection}{13}
