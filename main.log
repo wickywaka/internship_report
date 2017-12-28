@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  22 DEC 2017 14:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  28 DEC 2017 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,7 +380,31 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks28
 \verbatim@line=\toks29
 \verbatim@in@stream=\read2
-)) (./main.aux)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
+Package: dirtytalk 2010/11/21 A package making "quoting" easier
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+\c@dirtytalk@qdepth=\count113
+)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -395,29 +419,24 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
+\scratchcounter=\count114
 \scratchdimen=\dimen153
 \scratchbox=\box37
-\nofMPsegments=\count114
-\nofMParguments=\count115
+\nofMPsegments=\count115
+\nofMParguments=\count116
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count116
+\MPscratchCnt=\count117
 \MPscratchDim=\dimen154
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
+\MPnumerator=\count118
+\makeMPintoPDFobject=\count119
 \everyMPtoPDFconversion=\toks31
 ) ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
@@ -436,19 +455,6 @@ Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -521,103 +527,135 @@ Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
 [5] [6 <./images/dex_format.png>] [7]) [8]
 (./chapters/chapter2_static_analysis.tex
-Overfull \hbox (4.81094pt too wide) in paragraph at lines 5--5
+Overfull \hbox (4.81094pt too wide) in paragraph at lines 6--6
 [][][][]\OT1/cmr/m/n/10 Add info from http://orbilu.uni.lu/bitstream/10993/2687
 9/1/tr[]slr[]article.pdf  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
 [][][][]\OT1/cmr/m/n/10 MalloDroid, ex-ten-sion of an-dro-guard https://www.dfn
 - 
  []
 
 
-Overfull \hbox (87.43332pt too wide) in paragraph at lines 16--16
+Overfull \hbox (87.43332pt too wide) in paragraph at lines 17--17
 [][][][]\OT1/cmr/m/n/10 Androguard used in http://lilicoding.github.io/SA3Repo/
 papers/2013[]guo2013characterizing.pdf  
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 25--26
+Underfull \hbox (badness 5245) in paragraph at lines 27--28
 []\OT1/cmr/bx/n/10 APK \OT1/cmr/m/n/10 Used for ac-cess-
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 25--26
+Underfull \hbox (badness 1810) in paragraph at lines 27--28
 \OT1/cmr/m/n/10 APK, in-clud-ing in-for-ma-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 []\OT1/cmr/bx/n/10 DalvikVMFormat \OT1/cmr/m/n/10 It
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 26--27
+Underfull \hbox (badness 2334) in paragraph at lines 28--29
 \OT1/cmr/m/n/10 parses the dex file and
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 27--28
+Underfull \hbox (badness 1527) in paragraph at lines 29--30
 []\OT1/cmr/bx/n/10 ClassDefItem \OT1/cmr/m/n/10 Class for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 []\OT1/cmr/bx/n/10 EncodedMethod \OT1/cmr/m/n/10 Class
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 \OT1/cmr/m/n/10 for in-ter-act-ing with
  []
 
 
-Underfull \hbox (badness 4699) in paragraph at lines 35--36
+Underfull \hbox (badness 4699) in paragraph at lines 37--38
 []\OT1/cmr/bx/n/10 Analysis \OT1/cmr/m/n/10 Its the main
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 []\OT1/cmr/bx/n/10 MethodAnalysis \OT1/cmr/m/n/10 Con-
  []
 
 
-Underfull \hbox (badness 1502) in paragraph at lines 37--38
+Underfull \hbox (badness 1502) in paragraph at lines 39--40
 \OT1/cmr/m/n/10 tain anal-y-sis in-for-ma-tion
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 38--39
+Underfull \hbox (badness 3557) in paragraph at lines 40--41
 []\OT1/cmr/bx/n/10 DvmBasicBlock \OT1/cmr/m/n/10 Rep-re-
  []
 
-[9] [10]) [11]
-Overfull \hbox (30.75288pt too wide) in paragraph at lines 36--36
-[]\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuckoo-droid based on Cuckoo
+[9] [10] <images/information_extracted.png, id=46, 597.432pt x 579.766pt>
+File: images/information_extracted.png Graphic file (type png)
+
+<use images/information_extracted.png>
+Package pdftex.def Info: images/information_extracted.png used on input line 57
+.
+(pdftex.def)             Requested size: 345.0pt x 334.80484pt.
+ [11 <./images/information_extracted.png>]
+Overfull \hbox (0.66423pt too wide) in paragraph at lines 67--68
+[]\OT1/cmr/bx/n/10 Control Flow Graph \OT1/cmr/m/n/10 Con-trol flow graph con-t
+ain edges and nodes. Nodes
  []
 
-(./chapters/chapter3_dynamic_analysis_1.tex) [12]
-(./chapters/chapter4_dynamic_analysis_2.tex) [13] (./main.bbl) [14] (./main.aux
+<images/sonicspy_freq.png, id=52, 734.745pt x 565.11125pt>
+File: images/sonicspy_freq.png Graphic file (type png)
+
+<use images/sonicspy_freq.png>
+Package pdftex.def Info: images/sonicspy_freq.png used on input line 75.
+(pdftex.def)             Requested size: 345.0pt x 265.35225pt.
+ [12] [13 <./images/sonicspy_freq.png>]) [14]
+Overfull \hbox (28.76958pt too wide) in paragraph at lines 36--36
+[]\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuck-ooDroid based on Cuckoo
+ []
+
+(./chapters/chapter3_dynamic_analysis_1.tex
+<images/android_avd_arch.png, id=63, 1017.8025pt x 613.29124pt>
+File: images/android_avd_arch.png Graphic file (type png)
+
+<use images/android_avd_arch.png>
+Package pdftex.def Info: images/android_avd_arch.png used on input line 19.
+(pdftex.def)             Requested size: 345.0pt x 207.87991pt.
+ [15]
+Overfull \hbox (1.38159pt too wide) in paragraph at lines 32--33
+[]\OT1/cmr/bx/n/10 Emulator Anti-Detection: \OT1/cmr/m/n/10 Im-ple-ments some k
+now Em-u-la-tor Anti-
+ []
+
+[16 <./images/android_avd_arch.png>]) [17]
+(./chapters/chapter4_dynamic_analysis_2.tex) [18] (./main.bbl) [19] (./main.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 12297 strings out of 494953
- 249215 string characters out of 6180976
- 390788 words of memory out of 5000000
- 15329 multiletter control sequences out of 15000+600000
+ 12394 strings out of 494953
+ 251328 string characters out of 6180976
+ 393212 words of memory out of 5000000
+ 15419 multiletter control sequences out of 15000+600000
  6110 words of font info for 22 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,81p,1154b,1021s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,81p,1154b,1042s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (15 pages, 1036768 bytes).
+Output written on main.pdf (20 pages, 1192307 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

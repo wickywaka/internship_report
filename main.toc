@@ -28,6 +28,25 @@
 \contentsline {subsection}{\numberline {2.5}Androguard}{9}
 \contentsline {paragraph}{}{9}
 \contentsline {paragraph}{}{9}
-\contentsline {subsection}{\numberline {2.6}Dex2Jar and jd-gui}{9}
-\contentsline {section}{\numberline {3}Dynamic Analysis: Cuckoo-droid based on Cuckoo sandbox}{12}
-\contentsline {section}{\numberline {4}Dynamic Analysis: Anti-Emulator Detection}{13}
+\contentsline {subsubsection}{\numberline {2.5.1}Androguard usage example}{9}
+\contentsline {subsubsection}{\numberline {2.5.2}Information Extracted from an APK using Androguard}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsubsection}{\numberline {2.5.3}Example usage}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsection}{\numberline {2.6}Dex2Jar and jd-gui}{14}
+\contentsline {section}{\numberline {3}Dynamic Analysis: CuckooDroid based on Cuckoo sandbox}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {subsection}{\numberline {3.1}CuckooDroid architecture}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {subsection}{\numberline {3.2}CuckooDroid required patching}{16}
+\contentsline {subsection}{\numberline {3.3}Android emulator and its rooting}{16}
+\contentsline {subsection}{\numberline {3.4}Upgrading to higher versions of Android}{17}
+\contentsline {subsubsection}{\numberline {3.4.1}NDK hello world, python termux}{17}
+\contentsline {subsection}{\numberline {3.5}Future work}{17}
+\contentsline {section}{\numberline {4}Dynamic Analysis: Anti-Emulator Detection}{18}

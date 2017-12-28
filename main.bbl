@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{app_fundamentals}
 ``Android application fundamentals.''
@@ -31,5 +31,14 @@ V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
 
 \bibitem{multidex}
 ``Enable multidex for apps with over 64k methods.''
+
+\bibitem{cuckoodroid_docs}
+``Cuckoo-droid documentation.''
+
+\bibitem{cuckoo_website}
+``Cuckoo website.''
+
+\bibitem{cuckoodroid_github}
+``Cuckoo-droid github.''
 
 \end{thebibliography}

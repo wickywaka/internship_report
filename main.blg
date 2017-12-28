@@ -17,36 +17,42 @@ Warning--entry type for "app_fundamentals" isn't style-file defined
 --line 77 of file References.bib
 Warning--entry type for "intents" isn't style-file defined
 --line 83 of file References.bib
-You've used 9 entries,
+Warning--entry type for "cuckoodroid_docs" isn't style-file defined
+--line 89 of file References.bib
+Warning--entry type for "cuckoo_website" isn't style-file defined
+--line 95 of file References.bib
+Warning--entry type for "cuckoodroid_github" isn't style-file defined
+--line 101 of file References.bib
+You've used 12 entries,
             1876 wiz_defined-function locations,
-            503 strings with 4259 characters,
-and the built_in function-call counts, 1264 in all, are:
-= -- 94
-> -- 50
+            509 strings with 4366 characters,
+and the built_in function-call counts, 1548 in all, are:
+= -- 115
+> -- 53
 < -- 0
-+ -- 22
++ -- 25
 - -- 13
-* -- 67
-:= -- 152
+* -- 73
+:= -- 175
 add.period$ -- 2
-call.type$ -- 9
-change.case$ -- 9
+call.type$ -- 12
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 56
-empty$ -- 178
+cite$ -- 12
+duplicate$ -- 68
+empty$ -- 232
 format.name$ -- 13
-if$ -- 323
+if$ -- 404
 int.to.chr$ -- 0
-int.to.str$ -- 9
+int.to.str$ -- 12
 missing$ -- 2
-newline$ -- 30
+newline$ -- 39
 num.names$ -- 2
-pop$ -- 51
+pop$ -- 69
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 69
+skip$ -- 92
 stack$ -- 0
 substring$ -- 24
 swap$ -- 8
@@ -56,6 +62,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 5
-width$ -- 10
-write$ -- 56
-(There were 7 warnings)
+width$ -- 14
+write$ -- 71
+(There were 10 warnings)
