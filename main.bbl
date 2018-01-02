@@ -32,6 +32,9 @@ V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
 \bibitem{multidex}
 ``Enable multidex for apps with over 64k methods.''
 
+\bibitem{smali/backsmali_github}
+``smali/backsmali github.''
+
 \bibitem{cuckoodroid_docs}
 ``Cuckoo-droid documentation.''
 
@@ -40,5 +43,23 @@ V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
 
 \bibitem{cuckoodroid_github}
 ``Cuckoo-droid github.''
+
+\bibitem{xposed_module_repo}
+``Xposed module repository.''
+
+\bibitem{cuckoodroid_root_issue}
+``Android avd root access fail.''
+
+\bibitem{subprocess_management_library}
+``Subprocess management python 2.7.''
+
+\bibitem{subprocess.popen_issue16255}
+``Subprocess.popen issue 16255.''
+
+\bibitem{android_emulator_7.1_root_stackexchange}
+``Android emulator 7.1 rooting procedure.''
+
+\bibitem{termux_website}
+``Termux website.''
 
 \end{thebibliography}

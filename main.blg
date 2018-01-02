@@ -23,36 +23,50 @@ Warning--entry type for "cuckoo_website" isn't style-file defined
 --line 95 of file References.bib
 Warning--entry type for "cuckoodroid_github" isn't style-file defined
 --line 101 of file References.bib
-You've used 12 entries,
+Warning--entry type for "xposed_module_repo" isn't style-file defined
+--line 107 of file References.bib
+Warning--entry type for "subprocess_management_library" isn't style-file defined
+--line 113 of file References.bib
+Warning--entry type for "subprocess.popen_issue16255" isn't style-file defined
+--line 119 of file References.bib
+Warning--entry type for "cuckoodroid_root_issue" isn't style-file defined
+--line 125 of file References.bib
+Warning--entry type for "android_emulator_7.1_root_stackexchange" isn't style-file defined
+--line 131 of file References.bib
+Warning--entry type for "termux_website" isn't style-file defined
+--line 137 of file References.bib
+Warning--entry type for "smali/backsmali_github" isn't style-file defined
+--line 143 of file References.bib
+You've used 19 entries,
             1876 wiz_defined-function locations,
-            509 strings with 4366 characters,
-and the built_in function-call counts, 1548 in all, are:
-= -- 115
-> -- 53
+            523 strings with 4723 characters,
+and the built_in function-call counts, 2206 in all, are:
+= -- 164
+> -- 60
 < -- 0
-+ -- 25
++ -- 32
 - -- 13
-* -- 73
-:= -- 175
+* -- 87
+:= -- 224
 add.period$ -- 2
-call.type$ -- 12
-change.case$ -- 12
+call.type$ -- 19
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 68
-empty$ -- 232
+cite$ -- 19
+duplicate$ -- 96
+empty$ -- 358
 format.name$ -- 13
-if$ -- 404
+if$ -- 593
 int.to.chr$ -- 0
-int.to.str$ -- 12
+int.to.str$ -- 19
 missing$ -- 2
-newline$ -- 39
+newline$ -- 60
 num.names$ -- 2
-pop$ -- 69
+pop$ -- 111
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 92
+skip$ -- 148
 stack$ -- 0
 substring$ -- 24
 swap$ -- 8
@@ -62,6 +76,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 5
-width$ -- 14
-write$ -- 71
-(There were 10 warnings)
+width$ -- 21
+write$ -- 106
+(There were 17 warnings)
