@@ -35,47 +35,47 @@ Warning--entry type for "android_emulator_7.1_root_stackexchange" isn't style-fi
 --line 131 of file References.bib
 Warning--entry type for "termux_website" isn't style-file defined
 --line 137 of file References.bib
-Warning--entry type for "smali/backsmali_github" isn't style-file defined
---line 143 of file References.bib
-You've used 19 entries,
+Warning--entry type for "bliss" isn't style-file defined
+--line 149 of file References.bib
+You've used 20 entries,
             1876 wiz_defined-function locations,
-            523 strings with 4723 characters,
-and the built_in function-call counts, 2206 in all, are:
-= -- 164
-> -- 60
+            530 strings with 5002 characters,
+and the built_in function-call counts, 2556 in all, are:
+= -- 201
+> -- 68
 < -- 0
-+ -- 32
-- -- 13
-* -- 87
-:= -- 224
-add.period$ -- 2
-call.type$ -- 19
-change.case$ -- 19
++ -- 35
+- -- 15
+* -- 108
+:= -- 266
+add.period$ -- 3
+call.type$ -- 20
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 96
-empty$ -- 358
-format.name$ -- 13
-if$ -- 593
+cite$ -- 20
+duplicate$ -- 117
+empty$ -- 395
+format.name$ -- 15
+if$ -- 682
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 2
-newline$ -- 60
-num.names$ -- 2
-pop$ -- 111
+int.to.str$ -- 20
+missing$ -- 3
+newline$ -- 63
+num.names$ -- 3
+pop$ -- 117
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 148
+skip$ -- 164
 stack$ -- 0
-substring$ -- 24
-swap$ -- 8
+substring$ -- 56
+swap$ -- 17
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 5
-width$ -- 21
-write$ -- 106
+while$ -- 9
+width$ -- 22
+write$ -- 116
 (There were 17 warnings)

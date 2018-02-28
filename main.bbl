@@ -32,8 +32,14 @@ V.~M. Afonso, P.~L. de~Geus, A.~Bianchi, Y.~Fratantonio, C.~Kruegel, G.~Vigna,
 \bibitem{multidex}
 ``Enable multidex for apps with over 64k methods.''
 
-\bibitem{smali/backsmali_github}
-``smali/backsmali github.''
+\bibitem{bliss}
+``bliss: A tool for computing automorphism groups and canonical labelings of
+  graphs.''
+
+\bibitem{junttila2007engineering}
+T.~Junttila and P.~Kaski, ``Engineering an efficient canonical labeling tool
+  for large and sparse graphs,'' in {\em 2007 Proceedings of the Ninth Workshop
+  on Algorithm Engineering and Experiments (ALENEX)}, pp.~135--149, SIAM, 2007.
 
 \bibitem{cuckoodroid_docs}
 ``Cuckoo-droid documentation.''

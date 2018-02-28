@@ -9,15 +9,22 @@
 \graphicspath{ {images/} {../images/}}
 
 \usepackage{subfiles}
+
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
 %\usepackage[margin=0.5in]{geometry}
 \usepackage{dirtytalk}
 
 \usepackage{xcolor}
 \usepackage{listings}
-\lstset{basicstyle=\ttfamily,
+\usepackage{lstautogobble}
+\lstset{basicstyle=\ttfamily\small,
 	showstringspaces=false,
 	commentstyle=\color{red},
-	keywordstyle=\color{blue}
+	keywordstyle=\color{blue},
+	autogobble=true,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }
 
 

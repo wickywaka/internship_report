@@ -38,18 +38,24 @@
 		\paragraph{} The basic components of CuckooDroid can be seen in figure \ref{fig:cuckoodroid_avd_arch}. There are two basic parts of CuckooDroid host and guest. We run the cuckoo sandbox on host which handles the emulator. In order to do analysis our guest needs to be a rooted AVD with Xposed Framework \cite{xposed_module_repo} two of its modules Droidmon and Emulator Anti-Detection. We also need Python 2.7 to run the python agent and analyzer code on our guest.
 		\paragraph{} Once we run the Cuckoo sandbox and submit a sample to it, it makes a new copy of our specified AVD and launches it. Once the machine boots, the cuckoo sandbox runs the python agent using Android Debugger (adb) and sends the APK file, configuration file, and analysis code to it and orders it to start executing the analysis code. The analysis code uses the apk module to install the sample and executes it. The DroidMon module of xposed Framework monitors the specified function calls using hooks and prints it on the logcat. Screenshot modules takes screenshots of the android screen and sends it to host. Once the analysis is completed, the analyzer sends all the required files back to host and terminates. Then host kills the emulator and starts making a report out of these files.
 		\subsection{CuckooDroid required patching for Android 4.1}\label{sec:cuckoodroid_patching}
-		\todo[inline]{Fixing cuckoodroid}
-		\paragraph{} In this section we will talk about some of the changes which were required to make CuckooDroid work with Android 4.1.
-		\paragraph{} The first problem to was that the root wasn't staying persistent across reboots and it was the result of changes in Android emulator. More details and solutions about this problem can be found in issue4 of CuckooDroid github repository \cite{cuckoodroid_root_issue}. At the time of writing this report the instructions for preparing the AVD worked fine for Android 4.1 on Android Emulator version 26. The only change we needed to make was to add "-writable-system" flag to the cmd string inside the start\textunderscore emulator() method in cuckoodroid/modules/machinery/guest.py file.
+		\paragraph{} In this section we will talk about some of the changes which were required to make CuckooDroid work with Android 4.1. There are two main steps, one is the persistent root problem and the second one is some bug fixes in python analyzer code.
 		
-		\paragraph{} The second fix is in the python code that is executed on Android. The CuckooDroid analyzer and agent code heavily relies on Subprocess Management library \cite{subprocess_management_library} (specifically subprocess.Popen() method). During debugging we noticed that Most of the calls to subprocess.Popen() method never returns resulting in analysis critical time out. Upon further research we found an issue relating to a similar problem in python 3.7 \cite{subprocess.popen_issue16255}, which seems to be the case here. The subprocess.Popen function uses /bin/sh in Unix environments. Android is detected as a Unix environment, but has moved that executable to /system/bin/sh. This can be worked around by adding a parameter "executable='/system/bin/sh'" to all the subprocess.Popen calls.
+		\subsubsection{Android 4.1 Persistent Rooting}
+		\paragraph{} Now coming towards the first fix which was that the root wasn't staying persistent across reboots. It was the result of changes in Android emulator. More details and solutions about this problem can be found in issue 4 of CuckooDroid github repository \cite{cuckoodroid_root_issue}. The solution can be found in the same issue, according to which we needed to copy the system.img file from the android SDK directory to the AVD directory. The following command can be used to do that, make sure you replace the paths according to the location of your android SDK and AVD.
+		\begin{lstlisting}
+			cp ~/Android/Sdk/system-images/android-16/default/armeabi-v7a/system.img ~/.android/avd/aosx.avd/system-qemu.img
+		\end{lstlisting}
+				
+		\subsubsection{Bug fixes in Analyzer code}
+		\paragraph{} The second fix is in the python code that is executed on Android. The CuckooDroid analyzer and agent code heavily relies on Subprocess Management library \cite{subprocess_management_library} (specifically subprocess.Popen() method). During debugging we noticed that Most of the calls to subprocess.Popen() method never returns resulting in analysis critical time out. Upon further research we found an issue relating to a similar problem in python 3.7 \cite{subprocess.popen_issue16255}, which seems to be the case here. The subprocess.Popen function uses /bin/sh in Unix environments. Android is detected as a Unix environment, but has moved that executable to /system/bin/sh. This can be worked around by adding a parameter "executable='/system/bin/sh'" to all the subprocess.Popen calls. One related problem was that in some parts of the analyzer, like in adb.py os.popen was used to execute shell commands. This function was also failing to return so we have to replace it with subprocess.Popen.
+		
+		\paragraph{} The next limitation that we faced was that CuckooDroid only supports Android upto 4.1, which is quiet older and in order to analyze applications that are targeting higher version of androids we need to find a way to run CuckooDroid on higher version of Androids. In the next sections we will describe the steps and results of our attempts to upgrade to Android 5.1 and Android 7.0.
 
-		\subsection{Upgrading to higher versions of Android}
-		\todo[inline]{Latest android}
-		\paragraph{} As we said earlier, currently CuckooDroid only supports Android 4.1 which is a bit outdated. To effectively use CuckooDroid it is important to be able to run latest Android versions. In this section we will describe the steps to add support for Android 5.1. In section \ref{sec:android_5.1_root} we will talk about how to persistently root Android 5.1 emulator and in section \ref{sec:android_5.1_python} we will talk about installing python on Android 5.1 emulator.
+		\subsection{CuckooDroid with Android 5.1}
+		\paragraph{} Just like with Android 4.1, here we again faced the persistent root problem. Another problem was that we couldn't use the python binaries for android that comes with CuckooDroid because from this version Android make it a requirement for binaries to support PIE mode. In the following subsections we will describe in more detail about how did we solved these problems. Here we used the x86 image just to save time during testing. This rooting procedure works on arm image too but that speed of arm image is very slow and was wasting a lot of time during the development and debugging.
 		
-		\subsubsection{Android 5.1 AVD persistent rooting procedure} \label{sec:android_5.1_root} \todo[inline]{Make video tutorial} The rooting procedure for Android 5.1 is a bit different than that of Android 4.1 and a workaround is required to keep the root persistent. Below are the required steps to root Android 5.1 AVD and keep the root persistent.
-		\todo[inline]{Apply text formating to command}
+		\subsubsection{Android 5.1 AVD persistent rooting procedure} \label{sec:android_5.1_root}
+		\paragraph{} The rooting procedure for Android 5.1 is a bit different than that of Android 4.1 in the sense that we needed updated version of tools like SuperSU, XposedFramework etc. Below are the required steps to root Android 5.1 AVD and keep the root persistent.
 		\begin{enumerate}
 			\item First copy the system.img to your avd directory and rename it as system-qemu.img: For example for Nexus One API 22 x86: \newline 
 			\begin{lstlisting}[language=bash]
@@ -65,7 +71,7 @@
 			
 			\item Run the script located in utils/android\textunderscore emulator\textunderscore creator and named create\textunderscore guest\textunderscore avd\textunderscore x86/arm\textunderscore 5.1+.sh. Below is a snippet from one of the scripts which was made with the help of stackexchange answer by a user with the name xavier\textunderscore fakerat \cite{android_emulator_7.1_root_stackexchange} \newline
 			\begin{lstlisting}[language=bash]
-			#/usr/bin/env bash
+			#!/usr/bin/env bash
 			# Inspired by: https://android.stackexchange.com/questions/171442/root-android-virtual-device-with-android-7-1-1/176447
 			#this script is meant for easy creation on an analysis machine for android emulator avd
 			
@@ -112,21 +118,13 @@
 			$ADB shell chmod 06755 /data/local/aapt
 			$ADB shell chmod 06755 /data/local/get_terminal.sh
 			$ADB shell chmod 06755 /data/local/run_agent.sh
-			$ADB shell cd /system/bin/
-			$ADB shell su root&
-			$ADB shell su --install
-			$ADB shell su --daemon&
-			$ADB shell setenforce 0
-			#$ADB shell chmod 06755 /data/local/agent.sh
-			#$ADB shell chmod 06755 /data/local/python/bin/python
-			# Not sure which su to use, the one in xbin or the one in bin
-			#echo -e "\n***** Run the following commands and you are good to go*****\n"
-			#echo "adb shell"
-			#echo "cd /system/bin/"
-			#echo "su root"
-			#echo "su --install"
-			#echo "su --daemon&"
-			#echo "setenforce 0"
+			echo -e "\n***** Run the following commands and you are good to go*****\n"
+			echo "adb shell"
+			echo "cd /system/bin/"
+			echo "su root"
+			echo "su --install"
+			echo "su --daemon&"
+			echo "setenforce 0"
 			echo -e "\n"
 			echo -e "*NOTE"
 			echo " To make sure everything is working fine after the rooting is done, do the following:"
@@ -146,7 +144,9 @@
 					
 		\end{enumerate}
 		\subsubsection{Python 2.7 on Android 5.1} \label{sec:android_5.1_python}
-		\paragraph{} In order to do the analysis we need to have python 2.7 in our Android 5.1 guest. CuckooDroid comes with python 2.7 binaries which are compiled for Android 4.1, which doesn't work with Android 5.1 because with the release of Android 5.1 Android requires all dynamically linked executables to support PIE (position-independent executables). So we either need python compiled with PIE support. We can either compile it ourselves or we can use pre-compiled python with PIE support. We opted for the pre-compiled solution because of simplicity. Readers interested in compiling native code for android can have a look at appendix for an example. \todo[inline]{Do video tutorial for NDK hello world} \todo[inline]{Add Appendix}
+		\paragraph{} In order to do the analysis we need to have python 2.7 in our Android 5.1 guest. CuckooDroid comes with python 2.7 binaries which are compiled for Android 4.1, which doesn't work with Android 5.1 because with the release of Android 5.1 Android requires all dynamically linked executables to support PIE (position-independent executables). So we either need python compiled with PIE support. We can either compile it ourselves or we can use pre-compiled python with PIE support. We opted for the pre-compiled solution because of simplicity. Below is an example on how to compile a C program with PIE support using Android Native Development Kit (NDK).
+		
+		\paragraph{Compiling C code for Android 5.1+}
 		\begin{enumerate}
 				\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
 				\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
@@ -181,11 +181,9 @@
 				\end{lstlisting}
 		\end{enumerate}
 		
-		\paragraph{} We used the pre-compiled python 2.7 that can installed inside the Termux application \cite{termux_website}. Termux is an Android terminal emulator and Linux environment application that provides several linux command line tools an android making it really powerful. The app doesn't require root permissions which means it can't access or modify files outside of application. We needed a workaround so that we can run termux shell as root and have access to all system. Below are steps required to achieve that:	
-		
-		\todo[inline]{python compilation workaround, termux}
-		\todo[inline]{Video tutorial Termux}
-		
+		\paragraph{Pre-Compiled python for Android 5.1+}
+		\paragraph{} Now, as we said above we used the pre-compiled python 2.7 that can be installed inside the Termux application \cite{termux_website}. Termux is an Android terminal emulator and Linux environment application that provides several linux command line tools an android making it really powerful. The app doesn't require root permissions which means it can't access or modify files outside of application. We needed a workaround so that we can run termux shell as root and have access to all system. Below are steps required to achieve that:	
+				
 		\begin{enumerate}
 		\item Download Termux apk from google playstore or apkmirror and install it to rooted emulator
 		\item Open the installed app and type "pkg search python"
@@ -247,8 +245,18 @@
 		
 		\end{enumerate}
 		
-		\subsection{Future work}
+		\subsection{CuckooDroid with Android 7.0}
+		\paragraph{} We didn't have much success with Android 7.0. We could't pass the persistent rooting problem and the machine wouldn't boot after the rooting procedure as described for Android 5.1.
+		
+		\subsection{Chapter Conclusion}
+		\paragraph{} After the work described in this chapter we came to some conclusions which will be described in this section.
+		\paragraph{Emulator Anti Detection} 
+				\todo[inline]{Emulator anti detection}
+		\paragraph{} Although during our dynamic analysis we didn't analyzed enough malicous samples make an estimate the usage of emulation detection techniques in malicious samples, but a little search on the Internet revealed a several techniques that were very easy to implement and or integrate into an application.
+		\todo[inline]{Frida good because can adapt quickly to new threats and good support for higher version of android}
+		\paragraph{Support for higher version android}
+		\paragraph{Slow emulator performance}
+		
 		\todo[inline]{Slow android emulator}
-		\todo[inline]{Emulator anti detection}
 
 \end{document}

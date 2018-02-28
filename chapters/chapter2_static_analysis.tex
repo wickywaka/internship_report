@@ -3,7 +3,7 @@
 \begin{document}
 	
 		\todo[inline]{Add info from tutorials on http://www.fasteque.com/android-reverse-engineering-101-part-5/}
-		\paragraph{} There are several static analysis tools available for APKs, each one having its own strengths and weaknesses. We will be using androguard because of it can be easily automated to analyze large amount of applications and store the result in a database. Other popular static analysis tools include Smali/Backsmali, apktool, JADX-Dex to java decompiler, Dex2Jar, Jd-gui etc.
+		\paragraph{} There are several static analysis tools available for APKs, each one having its own strengths and weaknesses. We will be using androguard because it can be easily automated to analyze large amount of applications and store the result in a database. Other popular static analysis tools include Smali/Backsmali, apktool, JADX-Dex to java decompiler, Dex2Jar, Jd-gui etc.
 		%\todo[inline]{Add info about similarity search to identify malwares or relation between them}
 		%\todo[inline]{Add info from http://orbilu.uni.lu/bitstream/10993/26879/1/tr\textunderscore slr\textunderscore article.pdf}
 		%\todo[inline]{Add some info about common tools}
@@ -22,9 +22,9 @@
 		\todo[inline]{Introduce androguard}
 		\todo[inline]{MalloDroid, extension of androguard https://www.dfn-cert.de/dokumente/workshop/2013/FolienSmith.pdf}
 		\todo[inline]{Androguard used in http://lilicoding.github.io/SA3Repo/papers/2013\textunderscore guo2013characterizing.pdf}
-		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process and one can make desired improvements.
+		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process and one can make desired improvements. The analysis is done on need-to basis which means we only use our CPU for the stuff that we need. It has the also the option to be used in interactive mode using androlyze.py script. We will give more information about how to use androgaurd in \ref{subsec:androguard_usage}.
 		
-		\paragraph{} Androguard doesn't have a lot of documentation available online and most of the time one has to figure it out from source code of androguard. For easier understanding and use, we can generalize the classes androgaurd contain into two groups as shown in table \ref{table:androguard_classes}.
+		\paragraph{} Since its an Open source project and as is the case with most open source projects, the available documentation is not that much detailed and . For easier understanding and use, we can generalize the classes androgaurd contain into two groups as shown in table \ref{table:androguard_classes}.
 				
 		\begin{table} \todo[inline]{Fix the position of table}
 			\begin{center}
@@ -53,10 +53,148 @@
 			\label{table:androguard_classes}
 		\end{table}
 		
-		\subsubsection{Androguard usage example}
-				\todo[inline]{Add androguard demos}
+		\subsubsection{Androguard usage example}\label{subsec:androguard_usage}
+			\paragraph{} As we mentioned above, androgaurd can be used in two way, its a good idea to start with interactive CLI mode of androguard just to get some idea of what it is capable of. You can use the below command in your terminal to start the interactive shell. It will import all the required androguard packages and you can start analyzing APKs right away. Depending on how you installed androguard, you may need to execute androlyze.py or just androlyze.
+				\begin{lstlisting}[language=bash, xrightmargin = 0.7\textwidth]
+					androlyze -s
+				\end{lstlisting}
+			\paragraph{} This will open a python interactive shell and you can now specify the APK file as show below:
+				\begin{lstlisting}[language=python]
+					apk, dvm, dx = AnalyzeAPK("path/to/app.apk")
+				\end{lstlisting}
+			\paragraph{} The analyzeAPK method returned three objects. These classes are also mentioned in \ref{table:androguard_classes}. The first returned class is an object of APK class. This one can be used to get information about the APK most of which are extracted from manifest.xml file. Below is the example on how to extract some information:
+			
+				\begin{lstlisting}[language=python]
+					user@workstation:~$ androlyze.py -s
+					Androguard version 3.1.0
+					In [1]: pwd
+					Out[1]: '/home/user'
+					
+					In [2]: apk, dvm, dx = AnalyzeAPK("/home/user/workspace/apps/evasion.apk")
+					
+					In [3]: apk.get_activities()
+					Out[3]: [b'com.ouz.evasion.EvasionMainActivity']
+					
+					In [4]: apk.get_permissions()
+					Out[4]: []
+					
+					In [5]: apk.get_libraries()
+					Out[5]: []
+					
+					In [6]: apk.get_package()
+					Out[6]: 'com.ouz.evasion'
+					
+					In [7]: apk.get_max_sdk_version()
+					
+					In [8]: apk.get_min_sdk_version()
+					Out[8]: '14'
+					
+					In [9]: apk.get_files()
+					Out[9]: 
+					['res/layout/activity_evasion_main.xml',
+					'res/menu/evasion_main.xml',
+					'AndroidManifest.xml',
+					'resources.arsc',
+					'res/drawable-hdpi/ic_launcher.png',
+					'res/drawable-mdpi/ic_launcher.png',
+					'res/drawable-xhdpi/ic_launcher.png',
+					'res/drawable-xxhdpi/ic_launcher.png',
+					'classes.dex',
+					'META-INF/MANIFEST.MF',
+					'META-INF/CERT.SF',
+					'META-INF/CERT.RSA']
+				\end{lstlisting}
+			\paragraph{} There are a lot of methods that can be called on the APK object, to see them just type "apk." in the CLI and then press tab. The auto-complete feature will show you all the possible methods you can call. For more details you can have a look at the source code or the documentation for this class.
+			
+			\paragraph{} The dvm class represent DalvikVMFormat class, which basically parse the dex file contained inside the apk and gives us information about the classes, methods, Basic Blocks and instructions.
+				\begin{lstlisting}[language=python]
+					In [12]: type(dvm)
+					Out[12]: androguard.core.bytecodes.dvm.DalvikVMFormat
+				\end{lstlisting}
+			\paragraph{} In below script we will demonstrate how to get name of some of the methods using this dvm object:
+				\begin{lstlisting}[language=python]
+					In [13]: methods = dvm.get_methods()[10:15]
+					
+					In [14]: for method in methods:
+					...:     print(method.get_name())
+					...:     
+					getSettingsActivityName
+					<clinit>
+					<init>
+					capabilityToString
+					feedbackTypeToString
+				\end{lstlisting}
+				
+			\paragraph{} The auto-complete feature, documentation or source code can be used in similar way as mentioned above to discover more features more methods or fields of this objects. The dx object is an instance of Analysis class which also provide access to analysis parts classes and methods like cross references, string analysis as shown below:
+				\begin{lstlisting}[language=python]
+					In [23]: for key in dx.get_strings_analysis():
+					...:     print(key)
+					...:     
+					Unable to create files subdir 
+					
+					mCommitted=
+					mDeliveredData=
+					Resolving type 
+					No fake drag in progress. Call beginFakeDrag first.
+					android.app.Notification$Action
+					mAvailIndices: 
+					; boundsInScreen: 
+					RemoteInput
+					Can't change tag of fragment 
+					mAvailBackStackIndices: 
+					Couldn't fetch mRecreateDisplayList field; dimming will be slow.
+					Operations:
+					is not a sliding drawer
+					NULL
+					mRetaining=
+					command cannot be null or empty
+					mAccessibilityDelegate
+					mProcessingChange=
+					op #
+					Callback may not be null
+					onCreateView: id=0x
+					.
+					.
+					.
+					.
+					 => 
+					 : 
+					 Unable to instantiate fragment 
+					 onLoadComplete: 
+					 android:fragment:
+					 icon
+					 .
+					 , tag 
+					 Can not perform this action after onSaveInstanceState
+					 mediaSession is not a valid MediaSession object
+					 mMenuVisible=
+					 tag must not be null or empty
+					 
+				\end{lstlisting}
+			\paragraph{} Below script demonstrates how to further examine the results provided by Analysis class object dx.
+				\begin{lstlisting}[language=python]
+					In [30]: string_analysis = list(dx.get_strings_analysis().values())[10]
+					
+					In [31]: string_analysis.get_orig_value
+					Out[31]: <bound method StringAnalysis.get_orig_value of <androguard.core.analysis.analysis.StringAnalysis object at 0x7fd6247ff7b8>>
+					
+					In [32]: string_analysis.get_orig_value()
+					Out[32]: "Can't change tag of fragment "
+					
+					In [33]: string_analysis.get_xref_from()
+					Out[33]: 
+					{(<androguard.core.analysis.analysis.ClassAnalysis at 0x7fd62588d320>,
+					<androguard.core.bytecodes.dvm.EncodedMethod at 0x7fd626197b00>)}
+					
+					In [35]: string_analysis.get_value()
+					Out[35]: "Can't change tag of fragment "
+					
+				\end{lstlisting}
+				
+			\paragraph{} We encourage reader to play with the androguard interactive CLI. After you have some idea of what can you do, then you proceed to write some python scripts and automate some of the tasks. In section \ref{sec:androgaurd_static_analysis} we will talk about the information that we extracted from APK files using androgaurd.
+			
 		
-		\subsubsection{Information Extracted from an APK using Androguard}
+		\subsection{Information Extracted from an APK using Androguard}\label{sec:androgaurd_static_analysis}
 		\paragraph{} Before getting into details, we would like to mention that the information we extract will be stored in a database and similarity search would be performed on this data to figure out its relations other malware or goodware samples. The more information we have about an APK, more relations we can figure out.
 		\paragraph{} Now coming towards, the extracted information, we divide it into different groups as shown in figure \ref{fig:info_extracted}.
 		
@@ -68,15 +206,15 @@
 		
 		
 		\begin{itemize}
-			\item \textbf{APK information} This contain general information about the APK like Permissions, Package name, Libraries, Certificates, components (activities,services, receivers) and information about all classes contained in this APK.
+			\item \textbf{APK information} This contain general information about the APK like Permissions, Package name, Libraries, Certificates, components (activities,services, receivers) and information about all classes contained in this APK. We also wrote some code to extract strings from layout files and other binary xml files contained in the APK. Most of Malwares bitcoin wallet addresses were hard coded in the those files.
 			\item \textbf{Class information} It represent a single element of the class\textunderscore dictionary contained in APK information. It contains information like fields in the class, its access flags, name, superclass name, number of internal methods, inherited methods etc. It also contain information about methods which are part of this class in the form of a list.
 			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, Java decompiled source code for that method, Control flow graph of that method and the calculated hash for this method.
 			\item \textbf{Control Flow Graph} Control flow graph contain edges and nodes. Nodes are basic blocks and are basically a list of instructions.
-			\item \textbf{Hash} Using the control flow graph a canonical hash for is computed for each method. Before computing this hash, the smali instructions are normalized according to a specific criteria so that compilation specific changes are ignored like offsets etc, \todo [inline] {Ask lukas about adding information about the hash} \todo[inline]{How much details about the normalization}
+			\item \textbf{Canonical Certificate} In order to compare two control flow graphs, we need to find the Canonical form of this Control flow graph. Fore more details about the topic readers are encouraged to search the Internet for "Graph canonization" and also have a look at the webpage of "bliss" \cite{bliss}. We used pybliss python library \cite{bliss} \cite{junttila2007engineering} to get the canonical certificate of this graph. Before computing this certificate, the smali instructions are normalized according to a specific criteria so that compilation specific changes are ignored like offsets etc.
 		\end{itemize}
 		
 		\subsubsection{Example usage}
-		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code the share. We analyzed 16 samples \todo[inline]{Add hashes, probably redo the whole analysis} and the result is shown in figure \ref{fig:sonicspy_freq}.
+		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code they share. We analyzed 16 samples \todo[inline]{Add hashes, probably redo the whole analysis} and the result is shown in figure \ref{fig:sonicspy_freq}.
 		
 		\begin{figure}
 			\includegraphics[width=\textwidth]{sonicspy_freq.png}

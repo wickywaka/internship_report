@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  5 JAN 2018 12:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.15)  22 FEB 2018 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -381,6 +381,33 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks29
 \verbatim@in@stream=\read2
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count113
+\Gm@cntv=\count114
+\c@Gm@tempcnt=\count115
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
+\Gm@dimlist=\toks30
+)
 (/usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
 Package: dirtytalk 2010/11/21 A package making "quoting" easier
 
@@ -402,69 +429,69 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-\c@dirtytalk@qdepth=\count113
+\c@dirtytalk@qdepth=\count116
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count114
+\lst@mode=\count117
 \lst@gtempboxa=\box37
-\lst@token=\toks30
-\lst@length=\count115
-\lst@currlwidth=\dimen153
-\lst@column=\count116
-\lst@pos=\count117
-\lst@lostspace=\dimen154
-\lst@width=\dimen155
-\lst@newlines=\count118
-\lst@lineno=\count119
-\lst@maxwidth=\dimen156
+\lst@token=\toks31
+\lst@length=\count118
+\lst@currlwidth=\dimen161
+\lst@column=\count119
+\lst@pos=\count120
+\lst@lostspace=\dimen162
+\lst@width=\dimen163
+\lst@newlines=\count121
+\lst@lineno=\count122
+\lst@maxwidth=\dimen164
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count120
-\lst@skipnumbers=\count121
+\c@lstnumber=\count123
+\lst@skipnumbers=\count124
 \lst@framebox=\box38
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
- (./main.aux)
+
+(/usr/share/texlive/texmf-dist/tex/latex/lstaddons/lstautogobble.sty
+Package: lstautogobble 2012/05/03 v0.1 Implements 'autogobble' option for 'list
+ings'
+\lstag@spacecount=\count125
+)
+(./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen157
+\scratchcounter=\count126
+\scratchdimen=\dimen165
 \scratchbox=\box39
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen158
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks32
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen166
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks33
 ) ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -489,8 +516,41 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count128
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(81.94394pt, 433.62pt, 81.94394pt)
+* v-part:(T,H,B)=(106.75473pt, 578.15999pt, 160.13213pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=433.62pt
+* \textheight=578.15999pt
+* \oddsidemargin=9.67395pt
+* \evensidemargin=9.67395pt
+* \topmargin=-2.51526pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\c@lstlisting=\count132
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc
@@ -514,55 +574,43 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
  [2
 
 ]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
-
 <images/apk_contents.png, id=19, 671.50874pt x 319.1925pt>
 File: images/apk_contents.png Graphic file (type png)
 
 <use images/apk_contents.png>
 Package pdftex.def Info: images/apk_contents.png used on input line 38.
-(pdftex.def)             Requested size: 345.0pt x 163.98901pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4 <./images/apk_contents.png>]
+(pdftex.def)             Requested size: 433.62pt x 206.1138pt.
+ [3 <./images/apk_contents.png>] [4]
 <images/dex_format.png, id=26, 1570.86874pt x 2191.18625pt>
 File: images/dex_format.png Graphic file (type png)
 
 <use images/dex_format.png>
 Package pdftex.def Info: images/dex_format.png used on input line 71.
-(pdftex.def)             Requested size: 345.0pt x 481.22661pt.
-
-Overfull \hbox (80.30309pt too wide) in paragraph at lines 81--124
- [] 
- []
+(pdftex.def)             Requested size: 433.62pt x 604.83493pt.
 
 
-LaTeX Warning: Float too large for page by 253.75546pt on input line 126.
+LaTeX Warning: Float too large for page by 51.17494pt on input line 74.
+
+
+LaTeX Warning: Float too large for page by 213.59547pt on input line 126.
 
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-[5] [6 <./images/dex_format.png>] [7]) [8]
+) [5] [6 <./images/dex_format.png>] [7]
 (./chapters/chapter2_static_analysis.tex
 Underfull \hbox (badness 10000) in paragraph at lines 23--23
 [][][][]\OT1/cmr/m/n/10 MalloDroid, ex-ten-sion of an-dro-guard https://www.dfn
 - 
- []
-
-
-Overfull \hbox (87.43332pt too wide) in paragraph at lines 24--24
-[][][][]\OT1/cmr/m/n/10 Androguard used in http://lilicoding.github.io/SA3Repo/
-papers/2013[]guo2013characterizing.pdf  
  []
 
 
@@ -620,67 +668,46 @@ Underfull \hbox (badness 3557) in paragraph at lines 47--48
 []\OT1/cmr/bx/n/10 DvmBasicBlock \OT1/cmr/m/n/10 Rep-re-
  []
 
-<images/information_extracted.png, id=40, 597.432pt x 579.766pt>
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 59.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 59.
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [8] [9]
+[10] [11] <images/information_extracted.png, id=50, 597.432pt x 579.766pt>
 File: images/information_extracted.png Graphic file (type png)
 
 <use images/information_extracted.png>
-Package pdftex.def Info: images/information_extracted.png used on input line 64
-.
-(pdftex.def)             Requested size: 345.0pt x 334.80484pt.
- [9] [10] [11 <./images/information_extracted.png>]
-Overfull \hbox (0.66423pt too wide) in paragraph at lines 74--75
-[]\OT1/cmr/bx/n/10 Control Flow Graph \OT1/cmr/m/n/10 Con-trol flow graph con-t
-ain edges and nodes. Nodes
- []
-
-<images/sonicspy_freq.png, id=52, 734.745pt x 565.11125pt>
+Package pdftex.def Info: images/information_extracted.png used on input line 20
+2.
+(pdftex.def)             Requested size: 433.62pt x 420.81056pt.
+ [12] [13 <./images/information_extracted.png>] <images/sonicspy_freq.png, id=6
+2, 734.745pt x 565.11125pt>
 File: images/sonicspy_freq.png Graphic file (type png)
 
 <use images/sonicspy_freq.png>
-Package pdftex.def Info: images/sonicspy_freq.png used on input line 82.
-(pdftex.def)             Requested size: 345.0pt x 265.35225pt.
- [12] [13 <./images/sonicspy_freq.png>]) [14]
-Overfull \hbox (28.76958pt too wide) in paragraph at lines 44--44
-[]\OT1/cmr/bx/n/14.4 Dynamic Anal-y-sis: Cuck-ooDroid based on Cuckoo
- []
-
+Package pdftex.def Info: images/sonicspy_freq.png used on input line 220.
+(pdftex.def)             Requested size: 433.62pt x 333.51622pt.
+ [14] [15 <./images/sonicspy_freq.png>]) [16]
 (./chapters/chapter3_dynamic_analysis_1.tex
-<images/android_avd_arch.png, id=63, 1017.8025pt x 613.29124pt>
+<images/android_avd_arch.png, id=72, 1017.8025pt x 613.29124pt>
 File: images/android_avd_arch.png Graphic file (type png)
 
 <use images/android_avd_arch.png>
 Package pdftex.def Info: images/android_avd_arch.png used on input line 19.
-(pdftex.def)             Requested size: 345.0pt x 207.87991pt.
- [15]
-Overfull \hbox (1.38159pt too wide) in paragraph at lines 32--33
-[]\OT1/cmr/bx/n/10 Emulator Anti-Detection: \OT1/cmr/m/n/10 Im-ple-ments some k
-now Em-u-la-tor Anti-
- []
-
-[16 <./images/android_avd_arch.png>] [17]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
-
-
-Overfull \hbox (587.19827pt too wide) in paragraph at lines 56--57
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
+(pdftex.def)             Requested size: 433.62pt x 261.28635pt.
+ [17] [18 <./images/android_avd_arch.png>]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
- []
-
-
-Overfull \hbox (183.99905pt too wide) in paragraph at lines 62--63
-[][][][][][][][][][][][][][] 
  []
 
 
@@ -689,454 +716,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
  []
 
 
-Overfull \hbox (580.89828pt too wide) in paragraph at lines 69--70
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][] 
+Overfull \hbox (36.59206pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/m/n/10 Run the script lo-cated in util-s/an-droid[]emulator[]creator
+ and named cre-ate[]guest[]avd[]x86/arm[]5.1+.sh.
  []
 
 
-Overfull \hbox (379.29868pt too wide) in paragraph at lines 70--72
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][] 
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+[20] [21]
+Overfull \hbox (1.68634pt too wide) in paragraph at lines 142--143
+[]\OT1/cmr/m/n/10 start the ma-chine with -writable-system op-tion (with-out it
+ the loaded ma-chine is not rooted)and
  []
 
 
-Overfull \hbox (297.39883pt too wide) in paragraph at lines 72--73
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][] 
- []
-
-
-Overfull \hbox (114.69919pt too wide) in paragraph at lines 73--74
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][] 
- []
-
-[18]
-Overfull \hbox (95.79922pt too wide) in paragraph at lines 77--78
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (32.79935pt too wide) in paragraph at lines 80--81
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 81--82
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][] 
- []
-
-
-Overfull \hbox (102.09921pt too wide) in paragraph at lines 82--83
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (215.499pt too wide) in paragraph at lines 85--86
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (272.19888pt too wide) in paragraph at lines 86--87
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (70.59927pt too wide) in paragraph at lines 87--88
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (265.8989pt too wide) in paragraph at lines 88--89
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (64.29929pt too wide) in paragraph at lines 89--90
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (114.69919pt too wide) in paragraph at lines 90--91
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (139.89914pt too wide) in paragraph at lines 91--92
-[][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (7.5994pt too wide) in paragraph at lines 92--93
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (95.79922pt too wide) in paragraph at lines 93--94
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (114.69919pt too wide) in paragraph at lines 94--95
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (20.19937pt too wide) in paragraph at lines 95--96
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 96--97
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (39.09933pt too wide) in paragraph at lines 97--98
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (7.5994pt too wide) in paragraph at lines 98--99
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (45.39932pt too wide) in paragraph at lines 99--100
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (114.69919pt too wide) in paragraph at lines 100--101
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (202.89902pt too wide) in paragraph at lines 101--102
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (102.09921pt too wide) in paragraph at lines 102--103
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (146.19913pt too wide) in paragraph at lines 103--104
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (127.29916pt too wide) in paragraph at lines 104--105
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (127.29916pt too wide) in paragraph at lines 105--106
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (1.29941pt too wide) in paragraph at lines 106--107
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (89.49924pt too wide) in paragraph at lines 107--108
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (57.9993pt too wide) in paragraph at lines 108--109
-[][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (89.49924pt too wide) in paragraph at lines 109--110
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][] 
- []
-
-
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 110--111
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (190.29904pt too wide) in paragraph at lines 111--112
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (76.89926pt too wide) in paragraph at lines 112--113
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (146.19913pt too wide) in paragraph at lines 113--114
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (127.29916pt too wide) in paragraph at lines 114--115
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[19]
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 120--121
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (165.09909pt too wide) in paragraph at lines 121--122
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (215.499pt too wide) in paragraph at lines 122--123
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (303.69882pt too wide) in paragraph at lines 123--124
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (410.79861pt too wide) in paragraph at lines 132--133
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][] 
- []
-
-
-Overfull \hbox (486.39847pt too wide) in paragraph at lines 133--134
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][] 
- []
-
-
-Overfull \hbox (461.19852pt too wide) in paragraph at lines 134--135
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][] 
- []
-
-
-Overfull \hbox (561.99832pt too wide) in paragraph at lines 135--136
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][] 
- []
-
-[20]
-Overfull \hbox (162.58995pt too wide) in paragraph at lines 152--153
+Overfull \hbox (73.96996pt too wide) in paragraph at lines 152--153
 []\OT1/cmr/m/n/10 Create a new stan-dalone toolchain us-ing the script  /androi
 d-ndk-r16/build/tools/make[]standalone[]toolchain.py 
  []
 
+[22]
+Overfull \hbox (50.88086pt too wide) in paragraph at lines 192--193
+[]\OT1/cmr/m/n/10 To be able to run python as root from adb, we will need to do
+wn-load the script https://github.com/cswl/tsu
+ []
 
-Overfull \hbox (732.09799pt too wide) in paragraph at lines 154--155
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
+[23] [24]
+Overfull \hbox (132.74242pt too wide) in paragraph at lines 254--254
+ \OT1/cmr/bx/n/10 Em-u-la-tor Anti De-tec-tion[] [] 
  []
 
 
-Overfull \hbox (146.19913pt too wide) in paragraph at lines 158--159
-[][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (145.25626pt too wide) in paragraph at lines 260--260
+ \OT1/cmr/bx/n/10 Slow em-u-la-tor per-for-mance[] [] 
  []
 
-
-Overfull \hbox (39.09933pt too wide) in paragraph at lines 165--166
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 169--170
-[][][][][][][][][][][][][][][][][][][][]
- []
-
-
-Overfull \hbox (133.59915pt too wide) in paragraph at lines 170--171
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (177.69907pt too wide) in paragraph at lines 174--175
-[][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (45.39932pt too wide) in paragraph at lines 175--176
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (114.69919pt too wide) in paragraph at lines 176--177
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (39.09933pt too wide) in paragraph at lines 177--178
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (372.99869pt too wide) in paragraph at lines 178--179
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-
- []
-
-
-Overfull \hbox (360.39871pt too wide) in paragraph at lines 179--180
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-
- []
-
-[21]
-Overfull \hbox (297.39883pt too wide) in paragraph at lines 200--201
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (404.49863pt too wide) in paragraph at lines 204--205
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [22]
-Overfull \hbox (228.09897pt too wide) in paragraph at lines 215--216
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (89.49924pt too wide) in paragraph at lines 216--218
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (272.19888pt too wide) in paragraph at lines 218--219
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (45.39932pt too wide) in paragraph at lines 220--221
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (291.09885pt too wide) in paragraph at lines 221--222
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (246.99893pt too wide) in paragraph at lines 222--223
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (372.99869pt too wide) in paragraph at lines 223--224
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (89.49924pt too wide) in paragraph at lines 224--225
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (32.79935pt too wide) in paragraph at lines 226--227
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (20.19937pt too wide) in paragraph at lines 231--232
-[][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (763.59793pt too wide) in paragraph at lines 232--233
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (26.49936pt too wide) in paragraph at lines 233--234
-[][][][][][][][][] 
- []
-
-
-Overfull \hbox (26.49936pt too wide) in paragraph at lines 235--236
-[][][][][][][][][] 
- []
-
-
-Overfull \hbox (57.9993pt too wide) in paragraph at lines 236--237
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (108.3992pt too wide) in paragraph at lines 237--239
-[][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (171.39908pt too wide) in paragraph at lines 240--241
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (171.39908pt too wide) in paragraph at lines 242--244
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (202.89902pt too wide) in paragraph at lines 244--245
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (146.19913pt too wide) in paragraph at lines 245--246
-[][][][][][][][][][][][][][][][][][] 
- []
-
-) [23] (./chapters/chapter4_dynamic_analysis_2.tex) [24] (./main.bbl) [25]
+) [25] (./chapters/chapter4_dynamic_analysis_2.tex) [26] (./main.bbl) [27]
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 13961 strings out of 494953
- 273084 string characters out of 6180976
- 459398 words of memory out of 5000000
- 16965 multiletter control sequences out of 15000+600000
- 6278 words of font info for 23 fonts, out of 8000000 for 9000
+ 14565 strings out of 494953
+ 281866 string characters out of 6180976
+ 650530 words of memory out of 5000000
+ 17549 multiletter control sequences out of 15000+600000
+ 8268 words of font info for 30 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,100p,1154b,1986s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,100p,1154b,1804s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (26 pages, 1231250 bytes).
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (28 pages, 1257854 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
