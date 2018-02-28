@@ -68,4 +68,18 @@ T.~Junttila and P.~Kaski, ``Engineering an efficient canonical labeling tool
 \bibitem{termux_website}
 ``Termux website.''
 
+\bibitem{geist2016jailbreak}
+D.~Geist, M.~Nigmatullin, and R.~Bierens, ``Jailbreak/root detection evasion
+  study on ios and android,'' 2016.
+
+\bibitem{sun2015android}
+S.-T. Sun, A.~Cuadros, and K.~Beznosov, ``Android rooting: methods, detection,
+  and evasion,'' in {\em Proceedings of the 5th Annual ACM CCS Workshop on
+  Security and Privacy in Smartphones and Mobile Devices}, pp.~3--14, ACM,
+  2015.
+
+\bibitem{amro2018malware}
+B.~Amro, ``Malware detection techniques for mobile devices,'' {\em arXiv
+  preprint arXiv:1801.02837}, 2018.
+
 \end{thebibliography}
