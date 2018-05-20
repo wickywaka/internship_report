@@ -2,8 +2,11 @@
 \documentclass[../main.tex]{subfile}
 \begin{document}
 	
-		\todo[inline]{Add info from tutorials on http://www.fasteque.com/android-reverse-engineering-101-part-5/}
-		\paragraph{} There are several static analysis tools available for APKs, each one having its own strengths and weaknesses. We will be using androguard because it can be easily automated to analyze large amount of applications and store the result in a database. Other popular static analysis tools include Smali/Backsmali, apktool, JADX-Dex to java decompiler, Dex2Jar, Jd-gui etc.
+		\paragraph{} Static analysis is the analysis of a sample without actually executing its code. Various techniques and tools are used like decompiling, string searches, data flow analysis etc. The purpose is to understand the behavior of a malware and sometimes extract some useful intel for dynamic analysis. In this project there are two kinds of static analysis being performed.
+		\paragraph{} Frist type of analysis is being performed during or before dynamic analysis to improve code coverage during. It include extracting activites, intent messages(experimental stages), services which are later used as parameters to the android Activity Manager Utitliy to increase code coverage. Have a look to apendix \ref{app::android_am} for more on Activity Manager and how to use it. We will talk about this type in next chapter.
+		
+		\paragraph{} Second type of static analysis is performed to extract as much useful information from a sample as possible. The goal of later is to have a lot of information about sample statically analyzed that will be stored in a database and can be used detect similarities between different malware families. We will talk about this type of static analysis in more details in this chapter. For tools, Androguard is used for these analysis because it can be easily automated and had a very rich community support.
+
 		%\todo[inline]{Add info about similarity search to identify malwares or relation between them}
 		%\todo[inline]{Add info from http://orbilu.uni.lu/bitstream/10993/26879/1/tr\textunderscore slr\textunderscore article.pdf}
 		%\todo[inline]{Add some info about common tools}
@@ -19,12 +22,10 @@
 		% jd-gui : http://jd.benow.ca/
 		
 		\subsection{Androguard}\label{sec:androguard}
-		\todo[inline]{Introduce androguard}
-		\todo[inline]{MalloDroid, extension of androguard https://www.dfn-cert.de/dokumente/workshop/2013/FolienSmith.pdf}
-		\todo[inline]{Androguard used in http://lilicoding.github.io/SA3Repo/papers/2013\textunderscore guo2013characterizing.pdf}
+		%\todo[inline]{Introduce androguard}
+		%\todo[inline]{MalloDroid, extension of androguard https://www.dfn-cert.de/dokumente/workshop/2013/FolienSmith.pdf}
+		%\todo[inline]{Androguard used in http://lilicoding.github.io/SA3Repo/papers/2013\textunderscore guo2013characterizing.pdf}
 		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process and one can make desired improvements. The analysis is done on need-to basis which means we only use our CPU for the stuff that we need. It has the also the option to be used in interactive mode using androlyze.py script. We will give more information about how to use androgaurd in \ref{subsec:androguard_usage}.
-		
-		\paragraph{} Since its an Open source project and as is the case with most open source projects, the available documentation is not that much detailed and . For easier understanding and use, we can generalize the classes androgaurd contain into two groups as shown in table \ref{table:androguard_classes}.
 				
 		\begin{table} \todo[inline]{Fix the position of table}
 			\begin{center}
