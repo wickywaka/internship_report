@@ -1,11 +1,12 @@
 \contentsline {section}{\numberline {1}Introduction}{2}
 \contentsline {paragraph}{}{2}
+\contentsline {paragraph}{}{2}
 \contentsline {subsection}{\numberline {1.1}Android application fundamentals}{2}
 \contentsline {paragraph}{}{2}
 \contentsline {subsubsection}{\numberline {1.1.1}Application components}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {subsubsection}{\numberline {1.1.2}Intents messages}{2}
-\contentsline {paragraph}{}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}Intents messages}{3}
+\contentsline {paragraph}{}{3}
 \contentsline {paragraph}{}{3}
 \contentsline {subsection}{\numberline {1.2}APK file}{3}
 \contentsline {paragraph}{}{3}
@@ -15,66 +16,72 @@
 \contentsline {paragraph}{}{5}
 \contentsline {subsubsection}{\numberline {1.3.1}Dex file format}{5}
 \contentsline {paragraph}{}{5}
-\contentsline {subsubsection}{\numberline {1.3.2}Multiple Dex files in single APK}{5}
-\contentsline {paragraph}{}{5}
-\contentsline {paragraph}{}{5}
-\contentsline {subsection}{\numberline {1.4}Android Application Analysis}{5}
-\contentsline {section}{\numberline {2}Static Analysis}{8}
-\contentsline {paragraph}{}{8}
-\contentsline {subsection}{\numberline {2.1}Androguard}{8}
+\contentsline {subsubsection}{\numberline {1.3.2}Multiple Dex files in single APK}{8}
 \contentsline {paragraph}{}{8}
 \contentsline {paragraph}{}{8}
-\contentsline {subsubsection}{\numberline {2.1.1}Androguard usage example}{8}
+\contentsline {subsection}{\numberline {1.4}Malware Analysis}{8}
 \contentsline {paragraph}{}{8}
-\contentsline {paragraph}{}{8}
+\contentsline {subsubsection}{\numberline {1.4.1}Static Analysis}{8}
+\contentsline {subsubsection}{\numberline {1.4.2}Dynamic Analysis}{8}
+\contentsline {paragraph}{}{9}
+\contentsline {section}{\numberline {2}Static Analysis}{10}
 \contentsline {paragraph}{}{10}
 \contentsline {paragraph}{}{10}
 \contentsline {paragraph}{}{10}
-\contentsline {paragraph}{}{11}
-\contentsline {paragraph}{}{11}
+\contentsline {subsection}{\numberline {2.1}Androguard}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsubsection}{\numberline {2.1.1}Androguard usage example}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
 \contentsline {paragraph}{}{12}
 \contentsline {paragraph}{}{12}
-\contentsline {subsection}{\numberline {2.2}Information Extracted from an APK using Androguard}{12}
-\contentsline {paragraph}{}{12}
-\contentsline {paragraph}{}{12}
-\contentsline {subsubsection}{\numberline {2.2.1}Example usage}{14}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
 \contentsline {paragraph}{}{14}
 \contentsline {paragraph}{}{14}
+\contentsline {subsection}{\numberline {2.2}Information Extracted from an APK using Androguard}{14}
 \contentsline {paragraph}{}{14}
-\contentsline {section}{\numberline {3}Dynamic Analysis: CuckooDroid based on Cuckoo sandbox}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {subsection}{\numberline {3.1}CuckooDroid architecture}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{18}
-\contentsline {subsection}{\numberline {3.2}CuckooDroid Installation}{18}
+\contentsline {paragraph}{}{14}
+\contentsline {subsubsection}{\numberline {2.2.1}Example usage}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {subsection}{\numberline {2.3}Chapter Conclusion}{16}
+\contentsline {section}{\numberline {3}Dynamic Analysis: CuckooDroid based on Cuckoo sandbox}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
+\contentsline {subsection}{\numberline {3.1}CuckooDroid architecture}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{19}
-\contentsline {subsection}{\numberline {3.3}CuckooDroid required patching for Android 4.1}{19}
-\contentsline {paragraph}{}{19}
-\contentsline {subsubsection}{\numberline {3.3.1}Android 4.1 Persistent Rooting}{19}
-\contentsline {paragraph}{}{19}
-\contentsline {subsubsection}{\numberline {3.3.2}Bug fixes in Analyzer code}{19}
+\contentsline {subsection}{\numberline {3.2}CuckooDroid Installation}{19}
 \contentsline {paragraph}{}{19}
 \contentsline {paragraph}{}{19}
-\contentsline {subsection}{\numberline {3.4}CuckooDroid with Android 5.1}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {subsubsection}{\numberline {3.4.1}Android 5.1 AVD persistent rooting procedure}{20}
+\contentsline {subsection}{\numberline {3.3}CuckooDroid required patching for Android 4.1}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {subsubsection}{\numberline {3.4.2}Python 2.7 on Android 5.1}{22}
-\contentsline {paragraph}{}{22}
-\contentsline {paragraph}{Compiling C code for Android 5.1+}{22}
-\contentsline {paragraph}{Pre-Compiled python for Android 5.1+}{23}
+\contentsline {subsubsection}{\numberline {3.3.1}Android 4.1 Persistent Rooting}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {subsubsection}{\numberline {3.3.2}Bug fixes in Analyzer code}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{21}
+\contentsline {subsection}{\numberline {3.4}CuckooDroid with Android 5.1}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsubsection}{\numberline {3.4.1}Android 5.1 AVD persistent rooting procedure}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsubsection}{\numberline {3.4.2}Python 2.7 on Android 5.1}{23}
 \contentsline {paragraph}{}{23}
-\contentsline {subsection}{\numberline {3.5}CuckooDroid with Android 7.0}{25}
-\contentsline {paragraph}{}{25}
-\contentsline {subsection}{\numberline {3.6}Chapter Conclusion}{25}
-\contentsline {paragraph}{}{25}
-\contentsline {paragraph}{Emulator Anti Detection}{25}
-\contentsline {paragraph}{}{25}
-\contentsline {paragraph}{Support for higher version android}{25}
-\contentsline {paragraph}{Slow emulator performance}{25}
-\contentsline {section}{\numberline {4}Dynamic Analysis: Anti-Emulator Detection}{26}
+\contentsline {paragraph}{Compiling C code for Android 5.1+}{23}
+\contentsline {paragraph}{Pre-Compiled python for Android 5.1+}{24}
+\contentsline {paragraph}{}{24}
+\contentsline {subsection}{\numberline {3.5}CuckooDroid with Android 7.0}{26}
+\contentsline {paragraph}{}{26}
+\contentsline {subsection}{\numberline {3.6}Chapter Conclusion}{26}
+\contentsline {paragraph}{}{26}
+\contentsline {paragraph}{Emulator Anti Detection}{26}
+\contentsline {paragraph}{Support for higher version android}{26}
+\contentsline {paragraph}{Slow emulator performance}{26}
+\contentsline {section}{\numberline {4}Dynamic Analysis: Anti-Emulator Detection}{27}

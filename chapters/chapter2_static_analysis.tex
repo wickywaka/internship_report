@@ -4,8 +4,9 @@
 	
 		\paragraph{} Static analysis is the analysis of a sample without actually executing its code. Various techniques and tools are used like decompiling, string searches, data flow analysis etc. The purpose is to understand the behavior of a malware and sometimes extract some useful intel for dynamic analysis. In this project there are two kinds of static analysis being performed.
 		\paragraph{} Frist type of analysis is being performed during or before dynamic analysis to improve code coverage during. It include extracting activites, intent messages(experimental stages), services which are later used as parameters to the android Activity Manager Utitliy to increase code coverage. Have a look to apendix \ref{app::android_am} for more on Activity Manager and how to use it. We will talk about this type in next chapter.
+		\todo[inline]{fix reference to appendix}
 		
-		\paragraph{} Second type of static analysis is performed to extract as much useful information from a sample as possible. The goal of later is to have a lot of information about sample statically analyzed that will be stored in a database and can be used detect similarities between different malware families. We will talk about this type of static analysis in more details in this chapter. For tools, Androguard is used for these analysis because it can be easily automated and had a very rich community support.
+		\paragraph{} Second type of static analysis is performed to extract as much useful information from a sample as possible. The goal of this is to have a lot of information about sample statically analyzed that will be stored in a database and can be used detect similarities between different malware families. We will talk about this type of static analysis in more details in this chapter. For tools, Androguard is used for these analysis because it can be easily automated and had a very rich community support.
 
 		%\todo[inline]{Add info about similarity search to identify malwares or relation between them}
 		%\todo[inline]{Add info from http://orbilu.uni.lu/bitstream/10993/26879/1/tr\textunderscore slr\textunderscore article.pdf}
@@ -215,23 +216,15 @@
 		\end{itemize}
 		
 		\subsubsection{Example usage}
-		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code they share. We analyzed 16 samples \todo[inline]{Add hashes, probably redo the whole analysis} and the result is shown in figure \ref{fig:sonicspy_freq}.
+		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code they share. We analyzed 16 samples and the result is shown in figure \ref{fig:sonicspy_freq}.
 		
 		\begin{figure}
 			\includegraphics[width=\textwidth]{sonicspy_freq.png}
 			\caption{Reused methods in sonicspy variants}
 			\label{fig:sonicspy_freq}
 		\end{figure}
-		\paragraph{} Line 23 in figure prints the result, in this dictionary keys represent frequency or number of times a method is been reused. Value represent numbers i.e, number of methods reused a specific number of times. From this analysis we can see that a large portion of code is common between these samples but a large part of this code is not malicious. Most of it standard android API methods and non-malicious general purpose methods like wrappers etc. It would be very interesting to identify and separate API code from this chunk. It can be topic for further research to identify common non-malicious pieces of code to make analysis easier.
+		\paragraph{} Line 23 in figure prints the result, in this dictionary keys represent frequency or number of samples in which a method is used. Value represent numbers i.e, number of all such methods that has been used in "key" samples, or number of all methods with corresponding frequency. From this analysis we can see that a large portion of code is common between these samples but also that all of this code is not malicious. Most of it is standard android API methods and non-malicious general purpose methods like wrappers etc. It would be very interesting to identify and separate API code from this chunk. It can be topic for further research to identify common non-malicious pieces of code to make analysis easier. \todo[inline]{Add to future work}
 		
-		\paragraph{} In the code snippet, "jp" is an object of a class JasonParser which we wrote just to verify information extracted from APKs. In line 24 we get the hash of a specific method and in line 25 and 26, we print its Java source code. 		
-		
-		\todo[inline]{TODO: Do androguard basic usage examples}
-		\todo[inline]{Discuss the changes we made including normalization, canonical hasing for similarity search}
-		\todo[inline]{Discuss the info we are extracting from apks for platform}
-		\todo[inline]{TODO: Do androguard comparison apks to see how many functions has added and how many removed, make a table out of it}
-		\todo[inline]{TODO: Find reused code section in sonicspy or bankbots or lokibot}
-		\todo[inline]{Usage of androguard for extracting features for AI/ML, prepare for talk in AIOLI-FFM group}
-		\todo[inline]{Ask lukas for some results from platform}
-		\todo[inline]{Improvements in androguard}
+		\paragraph{} In the code snippet, "jp" is an object of a class JasonParser which we wrote just to verify information extracted from APKs. In line 24 we get the hash of a specific method and in line 25 and 26, we print its Java source code. Here we can see that its a very general method and its been used in all of the 16 samples analyzed.
+		\subsection{Chapter Conclusion} In this chapter we discussed the information extraction that can be used to find similarities between different samples. During the course of this work we also identified some bugs in androguard and communicated them to the maintiners of the official github androguard repository \cite{desnos2017androguard}. Example of these are issues number 324, 325, 529, 329. I really appreciate the maintainers of github for their quick responses especially reox \cite{reox}.
 \end{document}

@@ -42,12 +42,21 @@
 		
 		\subsubsection{Android 4.1 Persistent Rooting}
 		\paragraph{} Now coming towards the first fix which was that the root wasn't staying persistent across reboots. It was the result of changes in Android emulator. More details and solutions about this problem can be found in issue 4 of CuckooDroid github repository \cite{cuckoodroid_root_issue}. The solution can be found in the same issue, according to which we needed to copy the system.img file from the android SDK directory to the AVD directory. The following command can be used to do that, make sure you replace the paths according to the location of your android SDK and AVD.
+		
 		\begin{lstlisting}
-			cp ~/Android/Sdk/system-images/android-16/default/armeabi-v7a/system.img ~/.android/avd/aosx.avd/system-qemu.img
+			$ cp ~/Android/Sdk/system-images/android-16/default/armeabi-v7a/system.img ~/.android/avd/aosx.avd/system-qemu.img
 		\end{lstlisting}
+		
+		\paragraph{} After the above step, we need to start the emulator with command given below:
+		\begin{lstlisting}
+			$ emulator -avd aosx -qemu -nand -system,size=0x1f400000,file=~/.android/avd/aosx.avd/system-qemu.img&
+		\end{lstlisting}
+		
+		The follow the standard steps of rooting described in cuckoodroid documentations \cite{cuckoodroid_docs}. I also made some youtube tutorials to help the readers with the process. You can find the related video tutorial here \cite{rooting_youtube}
+		
 				
 		\subsubsection{Bug fixes in Analyzer code}
-		\paragraph{} The second fix is in the python code that is executed on Android. The CuckooDroid analyzer and agent code heavily relies on Subprocess Management library \cite{subprocess_management_library} (specifically subprocess.Popen() method). During debugging we noticed that Most of the calls to subprocess.Popen() method never returns resulting in analysis critical time out. Upon further research we found an issue relating to a similar problem in python 3.7 \cite{subprocess.popen_issue16255}, which seems to be the case here. The subprocess.Popen function uses /bin/sh in Unix environments. Android is detected as a Unix environment, but has moved that executable to /system/bin/sh. This can be worked around by adding a parameter "executable='/system/bin/sh'" to all the subprocess.Popen calls. One related problem was that in some parts of the analyzer, like in adb.py os.popen was used to execute shell commands. This function was also failing to return so we have to replace it with subprocess.Popen.
+		\paragraph{} The second fix is in the python code that is executed on Android. The CuckooDroid analyzer and agent code heavily relies on Subprocess Management library \cite{subprocess_management_library} (specifically subprocess.Popen() method). During debugging we noticed that Most of the calls to subprocess.Popen() method never returns resulting in analysis critical time out. Upon further research we found an issue relating to a similar problem in python 3.7 \cite{subprocess.popen_issue16255}, which seems to be the case here. The subprocess.Popen function uses /bin/sh in Unix environments. Android is detected as a Unix environment, but has moved that executable to "/system/bin/sh". This can be worked around by adding a parameter executable="/system/bin/sh" to all the subprocess.Popen calls. One related problem was that in some parts of the analyzer, like in adb.py os.popen was used to execute shell commands. This function was also failing to return so we have to replace it with subprocess.Popen. The video related video tutorial can be found here \cite{subprocess_youtube}
 		
 		\paragraph{} The next limitation that we faced was that CuckooDroid only supports Android upto 4.1, which is quiet older and in order to analyze applications that are targeting higher version of androids we need to find a way to run CuckooDroid on higher version of Androids. In the next sections we will describe the steps and results of our attempts to upgrade to Android 5.1 and Android 7.0.
 
@@ -250,13 +259,11 @@
 		
 		\subsection{Chapter Conclusion}
 		\paragraph{} After the work described in this chapter we came to some conclusions which will be described in this section.
-		\paragraph{Emulator Anti Detection} 
-				\todo[inline]{Emulator anti detection}
-		\paragraph{} Although during our dynamic analysis we didn't analyzed enough malicous samples make an estimate the usage of emulation detection techniques in malicious samples, but a little search on the Internet revealed a several techniques that were very easy to implement and or integrate into an application.
-		\todo[inline]{Frida good because can adapt quickly to new threats and good support for higher version of android}
-		\paragraph{Support for higher version android}
-		\paragraph{Slow emulator performance}
+		\paragraph{Emulator Anti Detection} Although during our dynamic analysis we didn't analyzed enough malicious samples make an estimate of the usage of emulation detection techniques in these samples, but a little search on the Internet revealed a several techniques that were very easy to implement and or integrate into an application and we reached the conclusion that it can be very easy for a determined threat actor to evade analysis and thus can make its way to popular android application distribution paltforms like google play store. We will give a bit more information about this topic in the next chapter.
 		
-		\todo[inline]{Slow android emulator}
+		%\todo[inline]{Frida good because can adapt quickly to new threats and good support for higher version of android}
+		\paragraph{Support for higher version android} We also reached a conclusion that there is dire need for android malware analysis paltforms that run latest android operating systems. We identified Frida, a dynamic instrumentation framework as a best candidate for instrumentation in CuckooDroid, because it is well maintained and support latest android operating systems.
+		
+		\paragraph{Slow emulator performance} With the android emulators running higher versions of Android, there is big performance penalty. Running an arm image of android on x86 based PC system is also one of the reason of performance degradation. One solution to the problem can be using Houdini translation that allows android apps written for arm processors to be executed on x86 android image. We didn't investigated this solutions further and can be done as a separate project. \todo[inline]{Add to future work}
 
 \end{document}
