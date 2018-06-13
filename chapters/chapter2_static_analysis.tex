@@ -208,11 +208,48 @@
 		
 		
 		\begin{itemize}
-			\item \textbf{APK information} This contain general information about the APK like Permissions, Package name, Libraries, Certificates, components (activities,services, receivers) and information about all classes contained in this APK. We also wrote some code to extract strings from layout files and other binary xml files contained in the APK. Most of Malwares bitcoin wallet addresses were hard coded in the those files.
-			\item \textbf{Class information} It represent a single element of the class\textunderscore dictionary contained in APK information. It contains information like fields in the class, its access flags, name, superclass name, number of internal methods, inherited methods etc. It also contain information about methods which are part of this class in the form of a list.
-			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, Java decompiled source code for that method, Control flow graph of that method and the calculated hash for this method.
-			\item \textbf{Control Flow Graph} Control flow graph contain edges and nodes. Nodes are basic blocks and are basically a list of instructions.
-			\item \textbf{Canonical Certificate} In order to compare two control flow graphs, we need to find the Canonical form of this Control flow graph. Fore more details about the topic readers are encouraged to search the Internet for "Graph canonization" and also have a look at the webpage of "bliss" \cite{bliss}. We used pybliss python library \cite{bliss} \cite{junttila2007engineering} to get the canonical certificate of this graph. Before computing this certificate, the smali instructions are normalized according to a specific criteria so that compilation specific changes are ignored like offsets etc.
+			\item \textbf{APK information} This contain general information about the APK like Permissions, Package name, Libraries, Certificates, components (activities,services, receivers) and information about all classes contained in this APK. We also wrote some code to extract strings from layout files and other binary xml files contained in the APK. Most of Malwares bitcoin wallet addresses were hard coded in the those files. Figure \ref{fig:apk_info} shows this part of information extracted from an apk and stored in JSON format.
+			\begin{figure}
+						\includegraphics[width=\textwidth]{apk_info.png}
+						\caption{APK info}
+						\label{fig:apk_info}	
+			\end{figure}
+			
+			\item \textbf{Class information} It represent a single element of the class\textunderscore dictionary contained in APK information. It contains information like fields in the class, its access flags, name, superclass name, number of internal methods, inherited methods etc. It also contain information about methods which are part of this class in the form of a list. Figure \ref{fig:class_info} shows this part of information extracted from an apk and stored in JSON format.
+			\begin{figure}
+				\includegraphics[width=\textwidth]{class_info.png}
+				\caption{Class info}
+				\label{fig:class_info}	
+			\end{figure}
+			
+			
+			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, Java decompiled source code for that method, Control flow graph of that method and the calculated hash for this method. Figure \ref{fig:method_info} shows this part of information extracted from an apk and stored in JSON format.
+			\begin{figure}
+				\includegraphics[width=\textwidth]{method_info.png}
+				\caption{Method info}
+				\label{fig:method_info}	
+			\end{figure}
+			\item \textbf{Control Flow Graph} Control flow graph contain edges and nodes. Nodes are basic blocks and are basically a list of instructions. Figures \ref{fig:nodes_info} and \ref{fig:edges_info} shows this part of information extracted from an apk and stored in JSON format.
+
+			\begin{figure}
+				\includegraphics[width=\textwidth]{nodes.png}
+				\caption{Nodes info}
+				\label{fig:nodes_info}	
+			\end{figure}
+
+			\begin{figure}
+				\includegraphics[width=\textwidth]{edges.png}
+				\caption{Edges info}
+				\label{fig:edges_info}	
+			\end{figure}
+		
+
+			\item \textbf{Canonical Certificate} In order to compare two control flow graphs, we need to find the Canonical form of this Control flow graph. Fore more details about the topic readers are encouraged to search the Internet for "Graph canonization" and also have a look at the webpage of "bliss" \cite{bliss}. We used pybliss python library \cite{bliss} \cite{junttila2007engineering} to get the canonical certificate of this graph. Before computing this certificate, the smali instructions are normalized according to a specific criteria so that compilation specific changes are ignored like offsets etc. It can be seen in Figure \ref{fig:hash_info}.
+			\begin{figure}
+				\includegraphics[width=\textwidth]{hash.png}
+				\caption{Canonical Certificate}
+				\label{fig:hash_info}	
+			\end{figure}
 		\end{itemize}
 		
 		\subsubsection{Example usage}
@@ -224,7 +261,34 @@
 			\label{fig:sonicspy_freq}
 		\end{figure}
 		\paragraph{} Line 23 in figure prints the result, in this dictionary keys represent frequency or number of samples in which a method is used. Value represent numbers i.e, number of all such methods that has been used in "key" samples, or number of all methods with corresponding frequency. From this analysis we can see that a large portion of code is common between these samples but also that all of this code is not malicious. Most of it is standard android API methods and non-malicious general purpose methods like wrappers etc. It would be very interesting to identify and separate API code from this chunk. It can be topic for further research to identify common non-malicious pieces of code to make analysis easier. \todo[inline]{Add to future work}
-		
+
 		\paragraph{} In the code snippet, "jp" is an object of a class JasonParser which we wrote just to verify information extracted from APKs. In line 24 we get the hash of a specific method and in line 25 and 26, we print its Java source code. Here we can see that its a very general method and its been used in all of the 16 samples analyzed.
+		
+		\paragraph{} Figure \ref{fig:sonicspy_graph} shows the code reuse graphically. Here we still have the same problem that we can't separate standard API code and malicious parts of code. Figure \ref{fig:sonicspy_graph} was result of processing following samples:
+		\begin{itemize}
+			\item 9a6b7418729d0b6dc22e8e4925006c6567b303a9
+			\item 5a341606fc391d669f1c01c5dd7e93fc49dca0d7
+			\item ed84300fb1ba7feef63351e49ddd2930f865bea9
+			\item 515453379a26d19c49e60edb8affd801b6001234
+			\item ea9079c800cf8d77cccdc393de1d7366b00ba7ec
+			\item 96548a4054aa1c798a8318302ab416cdbbedd5bb
+			\item 82bc64931d5e86d02792685141da0cfc5fcf147a
+			\item 275b55b2addb08912d973a6e181fd70e6bbe5d90
+			\item a8b3013c4998196672967028f5612f73c0be23ef
+			\item 7bd0f90e75941939671e430f960674c566f7167c
+			\item 9f69841f38501e4e527d4563d97838c21006083c
+			\item 3f33367040dc423ff97aab7196aa6748ff11cc45
+			\item b22f7611916ff2c57514bc40e59924268fb64452
+			\item 9d2aa0bcecaf564eb06238086c53ce56e8ca1bf4
+			\item 29967d4afd2e11beb85e2f7eec5ce4c1778026a2
+		\end{itemize}
+		
+		\begin{figure}
+			\includegraphics[width=\textwidth]{sonicspy_code_reuse.png}
+			\caption{Reused of methods in sonicspy variants}
+			\label{fig:sonicspy_graph}			
+		\end{figure}
+		
+		
 		\subsection{Chapter Conclusion} In this chapter we discussed the information extraction that can be used to find similarities between different samples. During the course of this work we also identified some bugs in androguard and communicated them to the maintiners of the official github androguard repository \cite{desnos2017androguard}. Example of these are issues number 324, 325, 529, 329. I really appreciate the maintainers of github for their quick responses especially reox \cite{reox}.
 \end{document}
