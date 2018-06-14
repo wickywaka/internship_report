@@ -2,10 +2,85 @@
 \documentclass[../main.tex]{subfile}
 
 \begin{document}
-\subsection{Android Activity Manager}
-\label{app::android_am}
-	\paragraph Some text here
-\subsection{title}
-
+	\todo[inline]{fix appendices}
+	\begin{appendices}
+		\section{Android Activity Manager}
+		\label{app::android_am}
+			\paragraph{} Some text here
 		
+		\section{Compiling C code for android}
+		Below is an example on how to compile a C program with PIE support using Android Native Development Kit (NDK).
+		\paragraph{Compiling C code for Android 4.1}
+		\begin{enumerate}
+			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
+			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
+			\begin{lstlisting}[language=bash]
+				python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch arm --api 16 --install-dir ~/android-ndk-r16/toolchains/arm-16
+			\end{lstlisting}
+			\item Write your c program and compile it
+			\begin{lstlisting}[language=bash]
+			cd ~/android-ndk-r16/toolchains/arm-16/bin
+			touch main.c
+			cat > main.c
+			#include<stdio.h>
+			int main()
+			{
+				printf("Hello world!\n");
+				return 0;
+			}
+			^C
+			# Compiling
+			arm-linux-androideabi-gcc main.c -o main.o
+			\end{lstlisting}
+			
+			\item Start emulator, copy file to it, make it executable and run it
+			
+			\begin{lstlisting}[language=bash]
+			emulator @aosx_1 -writable-system # Recently the emulator is not starting without writable, check if yours do
+			adb push main.o /data/local
+			adb shell chmod 06755 /data/local/main.o
+			adb shell /data/local/main.o
+			
+			Hello world!
+			\end{lstlisting}
+		\end{enumerate}		
+
+
+		\paragraph{Compiling C code for Android 5.1+}
+		\begin{enumerate}
+			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
+			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
+			\begin{lstlisting}[language=bash]
+			python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch x86 --api 22 --install-dir ~/android-ndk-r16/toolchains/x86-22
+			\end{lstlisting}
+			\item Write your c program, compile it and link it separately with required flags for PIE.
+			\begin{lstlisting}[language=bash]
+			cd ~/android-ndk-r16/toolchains/x86-22/bin
+			touch main.c
+			cat > main.c
+			
+			#include<stdio.h>
+			int main()
+			{
+			printf("Hello world!\n");
+			return 0;
+			}
+			^C
+			# compiling and linking
+			./i686-linux-android-gcc -c main.c  -fPIE
+			./i686-linux-android-gcc -lm main.o -pie
+			\end{lstlisting}
+			\item Start emulator, copy file to it, make it executable and run it
+			\begin{lstlisting}[language=bash]
+			emulator @Nexus_One_API_22_x86 -writable-system
+			adb push a.out /data/local
+			adb shell chmod 06755 /data/local/a.o
+			adb shell /data/local/a.o
+			WARNING: linker: /data/local/a.out: unused DT entry: type 0x6ffffffe arg 0x32c
+			WARNING: linker: /data/local/a.out: unused DT entry: type 0x6fffffff arg 0x1
+			Hello world!
+			\end{lstlisting}
+		\end{enumerate}
+	\end{appendices}
+
 \end{document}

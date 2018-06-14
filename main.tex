@@ -1,7 +1,6 @@
 \documentclass{report}
 
 % Packages goes here
-% snytax \usepackage{amsmath}
 
 \usepackage{todonotes}
 \usepackage{graphicx}
@@ -13,6 +12,8 @@
 \usepackage[a4paper, total={6in, 10in}]{geometry}
 %\usepackage[margin=0.5in]{geometry}
 \usepackage{dirtytalk}
+
+\usepackage{appendix}
 
 \usepackage{xcolor}
 \usepackage{listings}
@@ -27,20 +28,60 @@
 }
 
 
-\begin{document}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+	keywords={do, if, in, for, let, new, try, var, case, else, enum, eval, null, this, true, void, with, await, break, catch, class, const, false, super, throw, while, yield, delete, export, import, public, return, static, switch, typeof, default, extends, finally, package, private, continue, debugger, function, arguments, interface, protected, implements, instanceof},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	sensitive=true
+}
 
-	% Make the title page here
-	\begin{titlepage}
-		\begin{center}
-			\line(1,0){300}\\
-			\huge{\bfseries Automatic Android Malware Analysis}\\
-			\line(1,0){300}\\
-		\end{center}
-	\end{titlepage}
+\lstset{
+	language=JavaScript,
+	backgroundcolor=\color{lightgray},
+	extendedchars=true,
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	numbersep=9pt,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	captionpos=b
+}
+
+
+
+\begin{document}
+	\pagenumbering{gobble}
+	\subfile{./chapters/orignality}
+	\pagebreak
+	\subfile{./chapters/title}
+	\pagebreak
+	\subfile{./chapters/dedications}
+	\pagebreak
+	\subfile{./chapters/abstract}
+	\pagebreak
+	\subfile{./chapters/acknowledgements}
+	\pagebreak
+	
 	
 	\tableofcontents
 	\cleardoublepage
-	
+	\pagenumbering{arabic}
 	\chapter{Introduction}\label{sec:intro}
 		\subfile{./chapters/chapter1_introduction}
 		\pagebreak
@@ -63,11 +104,19 @@
 		\subfile{./chapters/conclusion}
 		\pagebreak
 
-	\chapter{Appendix} \label{app:appendix}
-		\subfile{./chapters/appendix}
-		\pagebreak
 
 
 	\bibliographystyle{ieeetr}
 	\bibliography{References}
+	\pagebreak
+	\subfile{./chapters/symbols_and_acronyms}
+	\pagebreak
+	\subfile{./chapters/list_of_figures}
+	\pagebreak
+	\subfile{./chapters/list_of_tables}
+	\pagebreak
+
+	\subfile{./chapters/appendix}
+	\pagebreak
+	
 \end{document}

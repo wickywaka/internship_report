@@ -4,18 +4,17 @@
 \begin{document}
 	\section{Introduction}\label{sec::intorduction}
 	\paragraph{} Fundamentally, the concept of emulator detection is rooted in the fact that complete system emulation is an arduous task. By discovering or observing differences between virtual and physical execution an attacker can create software virtualization checks that can be used to alter overall program behavior. Such differences may be an artifact of hardware state not correctly implemented in the virtual CPU, hardware or software components that have yet to be virtualized, or observable execution duration \cite{vidas2014evading}
-	\paragraph{} Emulator detection and anti-emulator detection is an interesting area of research because its a continuous arms race on both ends. There are some valid reasons for developers to employ emulator detection techniques into their apps and these same techniques can easily be applied by malicious actors to avoid detection or analysis. But on the other hand there are valid reasons for researchers to check for apps that uses emulation detection to hide their true face. Because of the popularity and wide use of Android based smartphones, we felt the urge to study the common tricks and techniques that are used today in this area. Before diving into detailed discussion on these techniques, we will first introduce emulator detection and anti-emulator detection. Then at the end of this chapter we will show some results from our own application that can be used to test emualtor against some detection techniques.
+	\paragraph{} Emulator detection and anti-emulator detection is an interesting area of research because its a continuous arms race on both ends. There are some valid reasons for developers to deploy emulator detection techniques into their apps and these same techniques can easily be applied by malicious actors to avoid detection or analysis. But on the other hand there are valid reasons for researchers etc to deploy the counter measures against emulation detection. Because of the popularity and wide use of Android based smartphones, we felt the urge to study the common tricks and techniques that are used today in this area. Before diving into detailed discussion on these techniques, we will first introduce emulation detection and anti-emulation detection. Then at the end of this chapter we will show some results from our own application that can be used to test emulator against some detection techniques.
 
 	\subsection{Emulator Detection or Evasion}\label{sec::emu_detection}
-	\paragraph{} Its the technique that used by malicious or no malicious applications to detect whether its being executed in emulated environment. The goal of employing this technique is to change the behavior of the application if its being executed inside an emulator. Malicious actors can use this technique to avoid analysis or detection. Non Malicious actors can use it to protect their intellectual property or to stop illegal access to premium features in apps or games.
+	\paragraph{} Its the techniques that are used by malicious or no malicious applications to detect whether its being executed in emulated environment. The goal  is to change the behavior of the application if its being executed inside an emulator. Malicious actors can use this technique to avoid analysis or detection. Non Malicious actors can use it to protect their intellectual property or to stop cracking of their apps for accessing premium features in apps or games.
 	
 	\section{Anti-Emulator Detection or Cloaking}\label{sec::anti_emu_detection}
-	\paragraph{} On the other hand there are people (mostly security researchers) who wants to know what an application is doing and mostly the use emulators to do the analysis of applications. Now an app that uses emulator detection techniques, its not possible to see the actual behavior of this application. In order to solve this problem, anti-emulator detection techniques are used that tries to evade the emulator detection checks and thus the application will be executed as it should on a real device. We would like to note here that due to time constraints we couldn't explore this topic as much as we would have liked to. This topic seems to be not well researched that much and we can recommend a study to come up with solutions on how to cloak against applications that checks for emulator.\todo[inline]{future work} At the end we would like to mention a very interesting approach that is discussed in \cite{rasthofer2016harvesting} which is based on splitting an APK to multiple smaller apks and then dynamically analyzing these smaller apks, furthermore cuckoodroid does have an xposed framework module installed that is called "Android Blue Pill" and during its reversing we found out that it is hooking some of the methods that are commonly used for emulation detection. We tried figuring out the exactly how many techniques it uses to cloak the emulator but there was no information available online and we didn't wanted to spend more time reversing it.
+	\paragraph{} On the other hand there are people (mostly security researchers) who wants to know what an application is doing and mostly they use emulators to do the analysis of applications. Now for an app that uses emulator detection techniques, its not possible to see the actual behavior of this application. In order to solve this problem, anti-emulator detection techniques are used that tries to cloak the emulator from emulation detection checks and thus the application will be executed as it should on a real device.
+	\paragraph{} We would like to note here that due to time constraints we couldn't explore this topic as much as we would have liked to. This topic seems to be not well researched and we can recommend a study to come up with solutions on how to cloak against applications that checks for emulator.\todo[inline]{future work} At the end we would like to mention a very interesting approach that is discussed in \cite{rasthofer2016harvesting} which is based on splitting an APK to multiple smaller apks and then dynamically analyzing these smaller apks, furthermore cuckoodroid does have an xposed framework module installed that is called "Android Blue Pill" and during its reversing we found out that it is hooking some of the methods that are commonly used for emulation detection. We tried figuring out the exactly which and how many techniques it uses to cloak the emulator but there was no information available online and we didn't want to spend more time reversing it.
 	
 	\section{Common emulation Detection or evasion Methods}\label{sec::common_methods_detection}
-	\paragraph{} In this section we will describe some of the well known techniques used for emulator detection and will present a list of the emulator detection techniques that was the result of our thorough research on the internet.
-
-	\paragraph{} A general introduction to some of well known techniques can be found in \cite{geist2016jailbreak} and readers are encouraged to have a look at it. There is also another category of detection techniques that can be used in conjunction with emulator detection. These are called root detection and some of these techniques are described in \cite{sun2015android}. These techniques can be easily evaded by using method hooking as demonstarted by \cite{lim2016android}. Figure \ref{fig:root_detection} from \cite{lim2016android} lists the root detection techniques presented in \cite{sun2015android}. There are also several open source packages on github which provides very easy to integrate root checking capibilities to android application, one such example is "root beer" \cite{rootbeer}
+	\paragraph{} In this section we will describe some of the well known techniques used for emulator detection and will present a list of the emulator detection techniques that was the result of our thorough research on the internet. A general introduction to some of well known techniques can be found in \cite{geist2016jailbreak} and readers are encouraged to have a look at it. There is also another category of detection techniques that can be used in conjunction with emulator detection. These are called root detection and some of these techniques are described in \cite{sun2015android}. These techniques can be easily evaded by using method hooking as demonstarted by \cite{lim2016android}. Figure \ref{fig:root_detection} from \cite{lim2016android} lists the root detection techniques presented in \cite{sun2015android}. There are also several open source packages on github which provides very easy to integrate root checking capibilities to android application, one such example is "root beer" \cite{rootbeer}
 	
 	\begin{figure}
 		\includegraphics[width=\textwidth]{root_detection.png}
@@ -23,7 +22,7 @@
 		\label{fig:root_detection}			
 	\end{figure}
 
-	\paragraph{} The paper \cite{lim2016android} also present its own approach to avoid analysis or reverse engineering. They use a stub dex file which contains all of emulation detection code, root detection code. The repackaged the APK so that it loads the stub dex first, which performs emulator checking and if it detects no emulation, then it loads the original dex file otherwise it doesn't load the original dex file.
+	\paragraph{} The paper \cite{lim2016android} also present its own approach to avoid analysis or reverse engineering. They use a stub dex file which contains all of emulation detection code, root detection code and code for loading original Dex file. They repackage the APK so that it loads the stub dex first, which performs emulator checking and if it detects no emulation, then it loads the original dex file from resources otherwise it doesn't load the original dex file.
 	\begin{figure}
 		\includegraphics[width=\textwidth]{stub_dex_methods.png}
 		\caption{Methods in stub dex \cite{lim2016android}}
@@ -41,7 +40,7 @@
 	\end{figure}
 	
 	
-	\paragraph{} We create the below list with the help of \cite{vidas2014evading} \cite{sophos_anti_emulation} and with our own experience. We also implemented some of easier to implement tests and will talk about it in the next section. \cite{ares} implemented different evasion techniques into 22 samples and for those samples please refer to their paper.
+	\paragraph{} We create the below list with the help of \cite{vidas2014evading} \cite{sophos_anti_emulation} and with our own techniques. We also implemented some of easier to implement tests and will talk about it in the next section. \cite{ares} implemented different evasion techniques into 22 samples and for those samples please refer to their paper.
 		
 	\begin{enumerate}
 		\item Reading telephone number \cite{sophos_anti_emulation} \cite{vidas2014evading}
@@ -55,7 +54,7 @@
 			\item Emulated network (IP address: 10.0.2.15)
 		\end{enumerate}
 		\item Checking device uptime
-		\item Checking ping example.com
+		\item Checking ping www.example.com results
 		\item CPU serial number mostly in 0's \cite{vidas2014evading}
 		\item CPU frequency files absent \cite{vidas2014evading}
 		\item Number of sensors (SensorManager API) \cite{vidas2014evading}
@@ -67,7 +66,7 @@
 		\item Checking for marketplace application \cite{vidas2014evading}
 		\item Checking for carrier added applications \cite{vidas2014evading}
 		\item Delaying execution \cite{sophos_anti_emulation}
-		\item Detecting lack or abundance of use input
+		\item Detecting lack or abundance of user input
 		\item Checking if Qemu can handle interrupt while executing blocks \cite{sophos_anti_emulation}
 		\item isUserMonkey(), setRunAsMonkey(false) in Android API
 		\item Checking other network configurations
@@ -157,6 +156,6 @@
 		\item 532079B31E3ACEF2D71C75B31D77480304B2F7B9 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
 	\end{itemize}
 	\section{Chapter Conclusion}
-	
+	\paragraph{} In this chapter we gave an overview of the android emulation detection and anti-emulator detection techniques. We listed some of the techniques that can be used to check for emulators. We showed how we made a basic android application to detect emulator and showed us the call trace of function when hooked and when not hooked. We also came to the conclusion that the anti-emulation detection part is worthy of future research.
 			
 \end{document}

@@ -89,7 +89,7 @@
 	\end{enumerate}
 	\paragraph{} The above code comprises of two languages, one is the python code that is being executed on the host. Second is the JavaScript code that is injected in the target process. The python script is doing the following:
 	\begin{enumerate}
-		\item (Start reading from line 35) It connects with adb,
+		\item It connects with adb in line "device = frida.get\textunderscore usb\textunderscore device()",
 		\item Opens the application process (its paused and need to be resumed)
 		\item Attach it to process, adds the JavaScript code store in jscode variable
 		\item Registers the callback function to receive messages from guest (send using send("message")
@@ -165,6 +165,134 @@
 		\caption{interactive frida output }
 		\label{fig:interactive_frida}
 	\end{figure}
+
+	\paragraph{Example 4: Compile a Frida script comprised of one or more Node.js modules (File reading test case):} Its not much useful to code in simple JavaScript in our use case scenario. Our use case scenario is same as server side programming using JavaScript and its important to be able to use NodeJS. Frida provides a tool for that called "Frida-Compile" \cite{frida_compile}. This tool compile a Frida script comprised of one or more Node.js modules. In layman terms, its takes a NodeJS projects and create a single file payload/agent that we can load using the "load\textunderscore script" method that comes with frida.
+	\paragraph{} Before using first we need to install frida-compile and it comes a node package and we can use node package manager (npm) to install it. We will install it with -g parameter to make it available globally.
+	\begin{lstlisting}
+	$ sudo npm install frida-compile -g
+	\end{lstlisting}
 	
+	
+	\paragraph{} To make sure that frida-compile is installed correctly and to see help we will type the following command:
+	\begin{lstlisting}
+	$ frida-compile --help
+
+	Usage: frida-compile [options] <module>
+	
+	Options:
+	
+	-V, --version             output the version number
+	-o, --output <file>       set output <file>
+	-w, --watch               watch for changes and recompile
+	-b, --bytecode            output bytecode
+	-x, --no-babelify         skip Babel transforms
+	-S, --no-sourcemap        omit sourcemap
+	-c, --compress            compress using UglifyJS2
+	-a, --use-absolute-paths  use absolute source paths
+	-h, --help                output usage information	
+
+	\end{lstlisting}	
+	
+	\paragraph{} Now the command to compile a NodeJS project/code is below. Here app.js the NodeJS main file and payload.js is the output file that we will load in python binding using load\textunderscore script.
+	\begin{lstlisting}
+	$ frida-compile app.js -o payload.js
+	\end{lstlisting}
+	
+	Below are scripts that I used to open a text file located on the device and send its content to host. Make sure that you install the required packages frida-fs \cite{frida_fs} using npm. Here is the source code of app.js:
+	
+	\begin{lstlisting}[language=JavaScript]
+
+		'use strict';		
+		const fs = require("frida-fs");
+		Java.perform(function () {
+			var readStream = fs.createReadStream("/data/local/tmp/hooks.json");
+			var text = "";
+			readStream
+				.on('readable', function () {
+					var chunk;
+					while (null !== (chunk = readStream.read())) {
+						text = text.concat(chunk);
+					}
+				})
+			.on('end', function () {
+			send(text);
+			});
+			});
+	\end{lstlisting}
+
+	\paragraph{} In this python code we first compile the NodeJS code using frida-compile and then use the output script as a normal JavaScript payload shown in every other example.
+	\begin{lstlisting}
+	import frida, sys, time, os, subprocess
+	
+	def on_message(message, data):
+		try:
+			if message['type'] == 'send':
+				print("[*] {0}".format(message['payload']))
+			else:
+				print(message)
+		except:
+			print(message)
+		
+	frida_ready = False
+	device = frida.get_usb_device()
+	while not frida_ready:
+		try:
+			time.sleep(5)
+			pid = device.spawn(['com.wiki.hello_world'])
+			frida_ready = True
+		except Exception as e:
+			print("Frida not ready yet " + str(e))
+	
+	time.sleep(1)
+	
+	cwd = os.path.dirname(__file__)
+	print("Working Directory is : "+ cwd)
+	
+	print ("Compilation result is: \n")
+	print(subprocess.Popen("frida-compile index.js -o compiled.js", shell=True).communicate())
+	
+	
+	try:
+		process = device.attach(pid)
+		script = process.create_script(
+			open("/home/wra/workspace/cuckoodroid/frida-scripts/file_io/compiled.js").read())
+		script.on('message', on_message)
+		print('[*] Running Frida')
+		script.load()
+		device.resume(pid) # At end Important, otherwise app will start and you will miss some early code execution as hooks won't be inplace at that time.
+	except Exception as e:
+		print("Frida python binding code error :" + str(e))
+	
+	sys.stdin.read(1)
+	
+	\end{lstlisting}
+
+	\paragraph{} Below the output, you can see that the contents of hooks.json file was sent by guest and we displayed it on host.
+	\begin{lstlisting}
+	Working Directory is : 
+	Compilation result is: 
+	
+	(None, None)
+	[*] Running Frida
+	[*] {
+	"hookConfigs": [
+	{
+	"class_name": "android.telephony.TelephonyManager", 
+	"method": "getDeviceId", 
+	"thisObject": false, 
+	"type": "fingerprint" 
+	}, 
+	{
+	"class_name": "android.telephony.TelephonyManager", 
+	"method": "getSubscriberId", 
+	"thisObject": false, 
+	"type": "fingerprint" 
+	}
+	], 
+	"trace": false
+	}
+	\end{lstlisting}
+	
+	\section{Conclusion} In this chapter we gave an introduction to Frida. We tried to show how powerful it is by some simple examples. We also concluded that integrating Frida to CuckooDroid can have several benefits and it will help keep the CuckooDroid in supporting higher versions of Android. 
 
 \end{document}

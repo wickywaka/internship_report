@@ -38,7 +38,7 @@
 		\paragraph{} The basic components of CuckooDroid can be seen in figure \ref{fig:cuckoodroid_avd_arch}. There are two basic parts of CuckooDroid host and guest. We run the cuckoo sandbox on host which handles the emulator. In order to do analysis our guest needs to be a rooted AVD with Xposed Framework \cite{xposed_module_repo} two of its modules Droidmon and Emulator Anti-Detection. We also need Python 2.7 to run the python agent and analyzer code on our guest.
 		\paragraph{} Once we run the Cuckoo sandbox and submit a sample to it, it makes a new copy of our specified AVD and launches it. Once the machine boots, the cuckoo sandbox runs the python agent using Android Debugger (adb) and sends the APK file, configuration file, and analysis code to it and orders it to start executing the analysis code. The analysis code uses the apk module to install the sample and executes it. The DroidMon module of xposed Framework monitors the specified function calls using hooks and prints it on the logcat. Screenshot modules takes screenshots of the android screen and sends it to host. Once the analysis is completed, the analyzer sends all the required files back to host and terminates. Then host kills the emulator and starts making a report out of these files.
 		\section{CuckooDroid required patching for Android 4.1}\label{sec:cuckoodroid_patching}
-		\paragraph{} In this section we will talk about some of the changes which were required to make CuckooDroid work with Android 4.1. There are two main steps, one is the persistent root problem and the second one is some bug fixes in python analyzer code.
+		\paragraph{} Initially, we were expecting that CuckooDroid will work out of the box but that wasn't the case. In this section we will talk about some of the changes which were required to make CuckooDroid work with Android 4.1. There are two main steps, one is the persistent root problem and the second one is some bug fixes in python analyzer code.
 		
 		\subsection{Android 4.1 Persistent Rooting}
 		\paragraph{} Now coming towards the first fix which was that the root wasn't staying persistent across reboots. It was the result of changes in Android emulator. More details and solutions about this problem can be found in issue 4 of CuckooDroid github repository \cite{cuckoodroid_root_issue}. The solution can be found in the same issue, according to which we needed to copy the system.img file from the android SDK directory to the AVD directory. The following command can be used to do that, make sure you replace the paths according to the location of your android SDK and AVD.
@@ -153,54 +153,19 @@
 					
 		\end{enumerate}
 		\subsection{Python 2.7 on Android 5.1} \label{sec:android_5.1_python}
-		\paragraph{} In order to do the analysis we need to have python 2.7 in our Android 5.1 guest. CuckooDroid comes with python 2.7 binaries which are compiled for Android 4.1, which doesn't work with Android 5.1 because with the release of Android 5.1 Android requires all dynamically linked executables to support PIE (position-independent executables). So we either need python compiled with PIE support. We can either compile it ourselves or we can use pre-compiled python with PIE support. We opted for the pre-compiled solution because of simplicity. Below is an example on how to compile a C program with PIE support using Android Native Development Kit (NDK).
-		
-		\paragraph{Compiling C code for Android 5.1+}
-		\begin{enumerate}
-				\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
-				\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
-				\begin{lstlisting}[language=bash]
-				python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch x86 --api 22 --install-dir ~/android-ndk-r16/toolchains/x86-22
-				\end{lstlisting}
-				\item Write your c program, compile it and link it separately with required flags for PIE.
-				\begin{lstlisting}[language=bash]
-				cd ~/android-ndk-r16/toolchains/x86-22/bin
-				touch main.c
-				cat > main.c
-				
-				#include<stdio.h>
-				int main()
-				{
-				printf("Hello world!\n");
-				return 0;
-				}
-				
-				./i686-linux-android-gcc -c main.c  -fPIE
-				./i686-linux-android-gcc -lm main.o -pie
-				\end{lstlisting}
-				\item Start emulator, copy file to it, make it executable and run it
-				\begin{lstlisting}[language=bash]
-				emulator @Nexus_One_API_22_x86 -writable-system
-				adb push a.out /data/local
-				adb shell chmod 06755 /data/local/a.o
-				adb shell /data/local/a.o
-				WARNING: linker: /data/local/a.out: unused DT entry: type 0x6ffffffe arg 0x32c
-				WARNING: linker: /data/local/a.out: unused DT entry: type 0x6fffffff arg 0x1
-				Hello world!
-				\end{lstlisting}
-		\end{enumerate}
+		\paragraph{} In order to do the analysis we need to have python 2.7 in our Android 5.1 guest. CuckooDroid comes with python 2.7 binaries which are compiled for Android 4.1, which doesn't work with Android 5.1 because with the release of Android 5.1 Android requires all dynamically linked executables to support PIE (position-independent executables). So we either need python compiled with PIE support. We can either compile it ourselves or we can use pre-compiled python with PIE support. Compiling python from source for Android was harder than we thought and we left it in favor of the pre-compiled solution because of simplicity. 
 		
 		\paragraph{Pre-Compiled python for Android 5.1+}
-		\paragraph{} Now, as we said above we used the pre-compiled python 2.7 that can be installed inside the Termux application \cite{termux_website}. Termux is an Android terminal emulator and Linux environment application that provides several linux command line tools an android making it really powerful. The app doesn't require root permissions which means it can't access or modify files outside of application. We needed a workaround so that we can run termux shell as root and have access to all system. Below are steps required to achieve that:	
+		\paragraph{} Now, as we said above we used the pre-compiled python 2.7 that can be installed inside the Termux application \cite{termux_website}. Termux is an Android terminal emulator and Linux environment application that provides several linux command line tools on android making it really powerful. The app doesn't require root permissions which means it can't access or modify files outside of application. We needed a workaround so that we can run termux shell as root and have access to all system. Below are steps required to achieve that:	
 				
 		\begin{enumerate}
-		\item Download Termux apk from google playstore or apkmirror and install it to rooted emulator
+		\item Download Termux apk from google playstore or apkmirror and install it to a rooted emulator
 		\item Open the installed app and type "pkg search python"
 		\item Install python2 using pkg install python2 (take help from step2 to determine exact command)
 		\item Now type python2 and you will have a working python. But this only works inside the app and can't be run as sudo/root.
-		\item To be able to run python as root from adb, we will need to download the script https://github.com/cswl/tsu (A fork of this which support optional command is here https://github.com/kiney/tsu)
+		\item To be able to run python(that comes with termux) as root from adb, we will need to download the script \cite{tsu_cswl}  (A fork of this which support optional command is here \cite{tsu_kiney}). Tsu is an su wrapper for the terminal emulator, Termux \cite{termux_website}.
 		\item Push this script to your emulator and run it with -e option.
-		\item It will give you a bash shell (whatever) which support most of linux commands and others can be installed as well. (You need to have rooted device to run this script)
+		\item It will drop you into root shell from termux.
 		\item Now we need to add the code inside the script so that instead of launching a shell it run our agent.py script.
 		\item To do that go to line 100 which is:
 		\begin{lstlisting}[language=bash]
@@ -211,9 +176,9 @@
 		exec "$s" --preserve-environment -c "LD_LIBRARY_PATH=$LD_LIBRARY_PATH python2 /data/local/agent.py" 
 		\end{lstlisting}
 		
-		\item Now run this script with "-e" and you will see that our agent.py script is been fired.
-		\item Now we need to change part of the code which fires up agent.sh
-		\item Due to some unknown reasons we ran into some permissions problems like not being able to read hooks.json file. In logcat droidmon was complaining about not having permission to read hooks.json. This can be fixed by setting the global read flag on hooks.json after it is copied in cuckoodroid/analyzer/android/analyzer.py Below is the snippet of code:
+		\item Now run this script with "-e" and you will see that our agent.py script is been fired. We will save this script as agent.sh and replace our old agent.sh by it.
+		\item Now we need to add "-e" option to the part of code which fires up agent.sh, it can be located in the start\textunderscore agent() method of "cuckoo-droid/modules/machinery/avd.py"
+		\item Due to some reasons we ran into some permissions problems like not being able to read hooks.json file. In logcat droidmon was complaining about not having permission to read hooks.json. This can be fixed by setting the global read flag on hooks.json after it is copied in cuckoodroid/analyzer/android/analyzer.py Below is the snippet of code:
 		\begin{lstlisting}[language=python]
 		def prepare(self):
 			# Initialize logging.
@@ -233,7 +198,7 @@
 			self.target = self.config.target
 		\end{lstlisting}
 		
-		\item Another problem was in the screenshot module, it wasn't able to read to screenshots taken and this can be solved by using the same method as above i.e, setting global read at the time the file is created and also changing the location of file in this case sdcard was readonly and this function wasn't able to save the image there. Below is the modified code of take\textunderscore screenshot() method in adb file:
+		\item Another problem was in the screenshot module, it wasn't able to read screenshots and this can be solved by using the same method as above i.e, setting global read at the place where the file is created and also changing the location of file, which in this case was because of sdcard being read-only and this function wasn't able to save the image there. Below is the modified code of take\textunderscore screenshot() method in adb file:
 		\begin{lstlisting}[language=python]
 			def take_screenshot(filename):
 				proc1= subprocess.Popen("/system/bin/screencap -p /data/local/screenshots/"+filename, # "/data/local/screenshots/" Fix for /sdcard read only
@@ -255,15 +220,37 @@
 		\end{enumerate}
 		
 		\section{CuckooDroid with Android 7.0}
-		\paragraph{} We didn't have much success with Android 7.0. We could't pass the persistent rooting problem and the machine wouldn't boot after the rooting procedure as described for Android 5.1.
+		\paragraph{} We didn't have much success with Android 7.0. We could't pass the persistent rooting problem and the machine wouldn't boot after the rooting procedure as described for Android 5.1. Furthermore it was extremely slow and was almost unusable so we decided to move on to more pressing matters.
+		
+		\section{Improvements in CuckooDroid}
+		\paragraph{} Once we had the cuckoodroid working, we decided to add some features to it. We wrote one additional module for CuckooDroid analyzer. The goal was to improve code coverage by interacting with app in intelligent manner and then to introduce some random events using Monkey \cite{monkey_tool} tool. Monkey tool is described as "The Monkey is a program that runs on your emulator or device and generates pseudo-random streams of user events such as clicks, touches, or gestures, as well as a number of system-level events. You can use the Monkey to stress-test applications that you are developing, in a random yet repeatable manner" \cite{monkey_tool}. Our module is called IntentGun and the meaning of this name will become apparent in the next paragraph.
+		\paragraph{} As we said in chapter \ref{sec:intro} that an android application have different entry points called activities, receivers and services and that these can be started using intents. So in this module we make a list of all activities, receivers and services contained inside an app and then use the activity manager utility \cite{am} to start these activities, receivers and services. The commands are give below:
+		
+		\begin{lstlisting}[language=bash]
+			# For Activity
+			$ am start -n Package/Activity -a action -c category data
+			
+			# For receivers
+			$ am broadcast -n Package/Receiver -a action -c category
+			
+			# For servicies
+			$ am start -n Package/Activity -a action -c category data
+		\end{lstlisting}
+		\paragraph{} This module is still work in progress as the data section is not easy because only Multipurpose Internet Mail Extensions (MIME) type is given in the Manifest.xml file and we need to provide data as input to this command and on top of that sometimes these MIMEs are custom defined by the app developers. \todo[inline]{Future todo} Once we are done with executing all entry points to an application, then we run the Monkey to generate random events. We used the following command to run the Monkey:
+		\begin{lstlisting}[language=bash]
+			$ monkey --ignore-crashes --ignore-security-exceptions --monitor-native-crashes -p package --throttle 500 500
+		\end{lstlisting}
+		
+		\paragraph{} Its important to note here that this tool is used to stress test applications and we couldn't manage to make it work in stable condition. Usually it crashes the emulator altogether \cite{issue52}.
 		
 		\section{Chapter Conclusion}
-		\paragraph{} After the work described in this chapter we came to some conclusions which will be described in this section.
-		\paragraph{Emulator Anti Detection} Although during our dynamic analysis we didn't analyzed enough malicious samples make an estimate of the usage of emulation detection techniques in these samples, but a little search on the Internet revealed a several techniques that were very easy to implement and or integrate into an application and we reached the conclusion that it can be very easy for a determined threat actor to evade analysis and thus can make its way to popular android application distribution paltforms like google play store. We will give a bit more information about this topic in the next chapter.
+		\paragraph{} In this chapter we explained how CuckooDroid works, which kind of changes did we need to make in order to make it work and what improvements did me make in it. After doing the work described, in this chapter we also reached to following conclusions:
+		\paragraph{Emulator Anti Detection} Although during our dynamic analysis we didn't analyzed enough malicious samples to make an estimate of the usage of emulation detection techniques in these samples, but a little search on the Internet revealed several techniques that were very easy to implement and integrate into an application and thus it can be very easy for a determined threat actor to add them to their code and can make its way to popular android application stores like google play store easily or can stay undetected in general. We will further explore this topic in the chapter \ref{sec:Chp4}.
 		
-		%\todo[inline]{Frida good because can adapt quickly to new threats and good support for higher version of android}
-		\paragraph{Support for higher version android} We also reached a conclusion that there is dire need for android malware analysis paltforms that run latest android operating systems. We identified Frida, a dynamic instrumentation framework as a best candidate for instrumentation in CuckooDroid, because it is well maintained and support latest android operating systems.
+		\paragraph{Support for higher version android} We also reached a conclusion that there is dire need for android malware analysis paltforms that run the latest Android because only 1.5\% users are using Android 4.1 \cite{distribution_dashboard} and this number is declining, also more and more apps are dropping support for android 4.1. For future development of cuckoodroid we think Frida, a dynamic instrumentation framework is a best candidate for instrumentation, because it is well maintained, support latest android operating systems, can be modified very quickly and is cross-platform. We will introduce Frida in Chapter \ref{sec:Chp5}. For a more quick solution, we recommend to compile python with PIE support or get it the way we did it i.e from Termux.
 		
 		\paragraph{Slow emulator performance} With the android emulators running higher versions of Android, there is big performance penalty. Running an arm image of android on x86 based PC system is also one of the reason of performance degradation. One solution to the problem can be using Houdini translation that allows android apps written for arm processors to be executed on x86 android image. We didn't investigated this solutions further and can be done as a separate project. \todo[inline]{Add to future work}
+		
+		\paragraph{Native Code} Currently CuckooDroid only detects if native code is being used in an application. It would be nice to have the capabilities of decompiling/disassembling of native code and include that into analysis results. \todo[inline]{Future Work}
 
 \end{document}
