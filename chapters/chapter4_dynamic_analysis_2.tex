@@ -11,30 +11,33 @@
 	
 	\section{Anti-Emulator Detection or Cloaking}\label{sec::anti_emu_detection}
 	\paragraph{} On the other hand there are people (mostly security researchers) who wants to know what an application is doing and mostly they use emulators to do the analysis of applications. Now for an app that uses emulator detection techniques, its not possible to see the actual behavior of this application. In order to solve this problem, anti-emulator detection techniques are used that tries to cloak the emulator from emulation detection checks and thus the application will be executed as it should on a real device.
-	\paragraph{} We would like to note here that due to time constraints we couldn't explore this topic as much as we would have liked to. This topic seems to be not well researched and we can recommend a study to come up with solutions on how to cloak against applications that checks for emulator.\todo[inline]{future work} At the end we would like to mention a very interesting approach that is discussed in \cite{rasthofer2016harvesting} which is based on splitting an APK to multiple smaller apks and then dynamically analyzing these smaller apks, furthermore cuckoodroid does have an xposed framework module installed that is called "Android Blue Pill" and during its reversing we found out that it is hooking some of the methods that are commonly used for emulation detection. We tried figuring out the exactly which and how many techniques it uses to cloak the emulator but there was no information available online and we didn't want to spend more time reversing it.
+	\paragraph{} We would like to note here that due to time constraints we couldn't explore this topic as much as we would have liked to. This topic seems to be not well researched and we can recommend a study to come up with solutions on how to cloak against applications that checks for emulator. At the end we would like to mention a very interesting approach that is discussed in \cite{rasthofer2016harvesting} which is based on splitting an APK to multiple smaller apks and then dynamically analyzing these smaller apks, furthermore cuckoodroid does have an xposed framework module installed that is called "Android Blue Pill" and during its reversing we found out that it is hooking some of the methods that are commonly used for emulation detection. We tried figuring out the exactly which and how many techniques it uses to cloak the emulator but there was no information available online and we didn't want to spend more time reversing it.
 	
 	\section{Common emulation Detection or evasion Methods}\label{sec::common_methods_detection}
 	\paragraph{} In this section we will describe some of the well known techniques used for emulator detection and will present a list of the emulator detection techniques that was the result of our thorough research on the internet. A general introduction to some of well known techniques can be found in \cite{geist2016jailbreak} and readers are encouraged to have a look at it. There is also another category of detection techniques that can be used in conjunction with emulator detection. These are called root detection and some of these techniques are described in \cite{sun2015android}. These techniques can be easily evaded by using method hooking as demonstarted by \cite{lim2016android}. Figure \ref{fig:root_detection} from \cite{lim2016android} lists the root detection techniques presented in \cite{sun2015android}. There are also several open source packages on github which provides very easy to integrate root checking capibilities to android application, one such example is "root beer" \cite{rootbeer}
 	
 	\begin{figure}
-		\includegraphics[width=\textwidth]{root_detection.png}
+		\centering
+		\includegraphics[scale=0.5]{root_detection.png}
 		\caption{Root detection techniques \cite{lim2016android} \cite{sun2015android}}
 		\label{fig:root_detection}			
 	\end{figure}
 
 	\paragraph{} The paper \cite{lim2016android} also present its own approach to avoid analysis or reverse engineering. They use a stub dex file which contains all of emulation detection code, root detection code and code for loading original Dex file. They repackage the APK so that it loads the stub dex first, which performs emulator checking and if it detects no emulation, then it loads the original dex file from resources otherwise it doesn't load the original dex file.
 	\begin{figure}
-		\includegraphics[width=\textwidth]{stub_dex_methods.png}
+		\centering
+		\includegraphics[width=\linewidth]{stub_dex_methods.png}
 		\caption{Methods in stub dex \cite{lim2016android}}
 		\label{fig:stub_dex_methods}			
 	\end{figure}
 	They use an effective detection scheme called "call stack analysis" which can be used to detect method hooking and the application is then terminated. For more details on this topic, have a look at section \ref{sec::hooking}
 
 
-	\paragraph{} The paper \cite{amro2018malware} provides on some introductory information about Mobile Malware and some statistics which gives a general idea of mobile malware evasion techniques in use that can be seen in figure \ref{fig:pie_evasion}. We couldn't find any up-to date study discussing Mobile malware evasion techniques currently in use and that can be topic for future research. \todo[inline]{Add to future work} The most complete works on the topic that we found were \cite{vidas2014evading} and recently published \cite{ares}\todo[inline]{Add \cite{ares} references according to their website}.
+	\paragraph{} The paper \cite{amro2018malware} provides on some introductory information about Mobile Malware and some statistics which gives a general idea of mobile malware evasion techniques in use that can be seen in figure \ref{fig:pie_evasion}. We couldn't find any up-to date study discussing Mobile malware evasion techniques currently in use and that can be topic for future research. The most complete works on the topic that we found were \cite{vidas2014evading} and recently published \cite{ares}\todo[inline]{Add \cite{ares} references according to their website}.
 	
 	\begin{figure}
-		\includegraphics[width=\textwidth]{evasion_techniques_used_by_malwares_amro2018malware.png}
+		\centering
+		\fbox{\includegraphics[width=\linewidth]{evasion_techniques_used_by_malwares_amro2018malware.png}}
 		\caption{Pie chart of evasion techniques \cite{amro2018malware}}
 		\label{fig:pie_evasion}			
 	\end{figure}
@@ -129,32 +132,20 @@
 	\end{itemize}
 	\paragraph{} Our app will print the result of these tests on the screen. The screenshots of our app can be seen in figure \ref{fig:no_hooking_execute} and figure \ref{fig:hooking_execute}. Figure \ref{fig:no_hooking_execute} shows result when the method "getPhone" is not hooked. Also notice the absence of Bluetooth device, device uptime, ping result, device ID and rootbeer showing that device is rooted. In the next chapter we will explain the output of this app in more details along with introduction to another instrumentation tool called "Frida".
 		\begin{figure}
-			\includegraphics{hello_world_no_hooking.png}
+			\centering
+			\includegraphics[scale=0.4]{hello_world_no_hooking.png}
 			\caption{Executing our test app without hooking "getPhone"}
 			\label{fig:no_hooking_execute}			
 		\end{figure}
 		
 		\begin{figure}
-			\includegraphics[width=\textwidth]{hello_word_after_hooking.png}
+			\centering
+			\includegraphics[scale=0.4]{hello_word_after_hooking.png}
 			\caption{Executing our test app with hooking  "getPhone"}
 			\label{fig:hooking_execute}			
 		\end{figure}	
 	
 	
-	\section{Malwares that uses Anti-Emulator detection}
-	\todo[inline]{Probably move to appendix}
-	The purpose of this list is to help other researchers who are looking for samples that uses anit-emulation detection.
-	\begin{itemize}
-		\item 0ef01f50b829355b73418adcb30b20a3a1f6cb95123afce2c5469cdb25c7f7d0 Skinner
-		\item 9AB5A05BC3C8F1931A3A49278E18D2116F529704 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item 2E47C816A517548A0FBF809324D63868708D00D0 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item DE64139E6E91AC0DDE755D2EF49D60251984652F (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item 6AB844C8FD654AAEC29DAC095214F4430012EE0E (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item C8DD6815F30367695938A7613C11E029055279A2 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item 47442BFDFBC0FB350B8B30271C310FE44FFB119A (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item 604E6DCDF1FA1F7B5A85892AC3761BED81405BF6 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-		\item 532079B31E3ACEF2D71C75B31D77480304B2F7B9 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
-	\end{itemize}
 	\section{Chapter Conclusion}
 	\paragraph{} In this chapter we gave an overview of the android emulation detection and anti-emulator detection techniques. We listed some of the techniques that can be used to check for emulators. We showed how we made a basic android application to detect emulator and showed us the call trace of function when hooked and when not hooked. We also came to the conclusion that the anti-emulation detection part is worthy of future research.
 			

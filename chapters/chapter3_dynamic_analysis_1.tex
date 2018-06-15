@@ -16,7 +16,8 @@
 		\paragraph{} We will be configuring CuckooDroid with Android Emulator (Goldfish) and figure \ref{fig:cuckoodroid_avd_arch} shows the architecture CuckooDroid with Android Emulator. As it can be seen in the figure \ref{fig:cuckoodroid_avd_arch} that there are two main parts, Cuckoo Sandbox and Android Emulator.
 		
 		\begin{figure}
-			\includegraphics[width=\textwidth]{android_avd_arch.png}
+			\centering
+			\fbox{\includegraphics[scale=0.4]{android_avd_arch.png}}
 			\caption{CuckooDroid architecture with AVD}
 			\label{fig:cuckoodroid_avd_arch}
 		\end{figure}
@@ -249,8 +250,8 @@
 		
 		\paragraph{Support for higher version android} We also reached a conclusion that there is dire need for android malware analysis paltforms that run the latest Android because only 1.5\% users are using Android 4.1 \cite{distribution_dashboard} and this number is declining, also more and more apps are dropping support for android 4.1. For future development of cuckoodroid we think Frida, a dynamic instrumentation framework is a best candidate for instrumentation, because it is well maintained, support latest android operating systems, can be modified very quickly and is cross-platform. We will introduce Frida in Chapter \ref{sec:Chp5}. For a more quick solution, we recommend to compile python with PIE support or get it the way we did it i.e from Termux.
 		
-		\paragraph{Slow emulator performance} With the android emulators running higher versions of Android, there is big performance penalty. Running an arm image of android on x86 based PC system is also one of the reason of performance degradation. One solution to the problem can be using Houdini translation that allows android apps written for arm processors to be executed on x86 android image. We didn't investigated this solutions further and can be done as a separate project. \todo[inline]{Add to future work}
+		\paragraph{Slow emulator performance} With the android emulators running higher versions of Android, there is big performance penalty. Running an arm image of android on x86 based PC system is also one of the reason of performance degradation. One solution to the problem can be using Houdini translation that allows android apps written for arm processors to be executed on x86 android image. We didn't investigated this solutions further and can be done as a separate project.
 		
-		\paragraph{Native Code} Currently CuckooDroid only detects if native code is being used in an application. It would be nice to have the capabilities of decompiling/disassembling of native code and include that into analysis results. \todo[inline]{Future Work}
+		\paragraph{Native Code} Currently CuckooDroid only detects if native code is being used in an application. It would be nice to have the capabilities of decompiling/disassembling of native code and include that into analysis results.
 
 \end{document}

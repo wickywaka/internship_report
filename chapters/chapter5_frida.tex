@@ -37,13 +37,14 @@
 	\paragraph{example 1: Hooking a method} \label{sec::hooking} In this example we will run one of our own developed application. This is application is for testing the anti-emulator capabilities of our device. It obtains different information from the system which can be used to detect emulation environment or root. It also displays stack trace of some its methods and that information can be used to detect hooking. In this example we will use Frida to hook the "getPhone( )" method inside MainActivity. Figure \ref{fig:getPhone_source} shows the source code of this method and Figure \ref{fig:getPhone_trace} stack trace or call trace of this method. From the call trace it can be seen that there are no unexpected calls.
 	
 	\begin{figure}
-		\includegraphics[width=\textwidth]{getPhone_source.png}
+		\fbox{\includegraphics[width=\textwidth]{getPhone_source.png}}
 		\caption{Source code of the method getPhone( )}
 		\label{fig:getPhone_source}
 	\end{figure}
 	
 	\begin{figure}
-		\includegraphics[width=\textwidth]{stack_trace_getPhone_unhooked.png}
+		\centering
+		\includegraphics[scale=0.6]{stack_trace_getPhone_unhooked.png}
 		\caption{Stack/call trace of the non-hooked method getPhone( )}
 		\label{fig:getPhone_trace}
 	\end{figure}
@@ -104,7 +105,8 @@
 	\paragraph{} Figure \ref{fig:hello_world_app_hooked} shows the messages sent by frida-server to host including our messages and confirms that the method getPhone is hooked by sending back the string "getPhone" and return value of this method. We made this output(build info+ stack trace) rather short to be able to show it in on one screen. and figure \ref{fig:hello_world_terminal_hooked} , and modified returned value in app window by appending an easy to spot string of "NNNNNOOOOOOOTTTTT" to the return string of the getPhone and this can be seen in figure \ref{fig:hello_world_app_hooked}. Also notice the extra calls in stack trace and compare it with the previous one in which no hooking was involved.
 	
 \begin{figure}
-	\includegraphics[width=\textwidth]{hello_word_after_hooking.png}
+	\centering
+	\includegraphics[scale=0.4]{hello_word_after_hooking.png}
 	\caption{Hooked output on app screen}
 	\label{fig:hello_world_app_hooked}
 \end{figure}
@@ -157,10 +159,12 @@
 	
 	\paragraph{Example 3: Interactive Frida (Frida-CLI):}
 	One can get an interactive frida shell by entering the following command:
-	frida -U --no-pause -f com.package.name
+	\begin{lstlisting}[language=bash]
+		frida -U --no-pause -f com.package.name
+	\end{lstlisting}
 	This command will launch the app and gives an interactive shell where you can type Javascript to do your stuff. If you want to write your
-	script before the app launches, omit the --no-pause parameter.
-	\begin{figure}
+	script before the app launches, omit the --no-pause parameter. Because of the auto-complete feature as show in figure \ref{fig:interactive_frida} this is a great place to discover methods and features supported by frida.
+	\begin{figure}[h]
 		\includegraphics[width=\textwidth]{interactive_frida.png}
 		\caption{interactive frida output }
 		\label{fig:interactive_frida}
@@ -293,6 +297,6 @@
 	}
 	\end{lstlisting}
 	
-	\section{Conclusion} In this chapter we gave an introduction to Frida. We tried to show how powerful it is by some simple examples. We also concluded that integrating Frida to CuckooDroid can have several benefits and it will help keep the CuckooDroid in supporting higher versions of Android. 
+	\section{Chapter conclusion} In this chapter we gave an introduction to Frida. We tried to show how powerful it is by some simple examples. We also concluded that integrating Frida to CuckooDroid can have several benefits and it will help keep the CuckooDroid in supporting higher versions of Android. 
 
 \end{document}
