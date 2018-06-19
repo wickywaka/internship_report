@@ -237,7 +237,7 @@
 			# For servicies
 			$ am start -n Package/Activity -a action -c category data
 		\end{lstlisting}
-		\paragraph{} This module is still work in progress as the data section is not easy because only Multipurpose Internet Mail Extensions (MIME) type is given in the Manifest.xml file and we need to provide data as input to this command and on top of that sometimes these MIMEs are custom defined by the app developers. \todo[inline]{Future todo} Once we are done with executing all entry points to an application, then we run the Monkey to generate random events. We used the following command to run the Monkey:
+		\paragraph{} This module is still work in progress as the data section is not easy because only Multipurpose Internet Mail Extensions (MIME) type is given in the Manifest.xml file and we need to provide data as input to this command and on top of that sometimes these MIMEs are custom defined by the app developers. Once we are done with executing all entry points to an application, then we run the Monkey to generate random events. We used the following command to run the Monkey:
 		\begin{lstlisting}[language=bash]
 			$ monkey --ignore-crashes --ignore-security-exceptions --monitor-native-crashes -p package --throttle 500 500
 		\end{lstlisting}
