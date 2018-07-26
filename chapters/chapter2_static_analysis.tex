@@ -12,30 +12,30 @@
 		
 		\subsection{Androguard usage example}\label{subsec:androguard_usage}
 			\paragraph{} Installing androguard is very simple. You can download it from its official github repository \cite{desnos2017androguard} and then can install it by executing the following in androguard directory:
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				$ python setup.py install
 			\end{lstlisting}
 			On Ubuntu it can be installed with simply executing:
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				$ sudo apt-get install androguard
 			\end{lstlisting}
 			It can be also be installed using python pip by executing:
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				$ pip install androguard
 			\end{lstlisting}
 			\paragraph{} We recommend downloading it from github repository under releases link, because there you can download the specific version that you need. Currently, pip and Ubuntu repositories doesn't have the same version of androguard.
 
 			\paragraph{} As we mentioned above, androgaurd can be used in two way, its a good idea to start with interactive CLI mode of androguard just to get some idea of what it is capable of. You can use the below command in your terminal to start the interactive shell. It will import all the required androguard packages and you can start analyzing APKs right away. Depending on how you installed androguard, you may need to execute androlyze.py or just androlyze.
-				\begin{lstlisting}[language=bash, xrightmargin = 0.7\textwidth]
+				\begin{lstlisting}[language=bash, xrightmargin = 0.7\textwidth, numbers=none]
 					androlyze -s
 				\end{lstlisting}
 			\paragraph{} This will open a python interactive shell and you can now specify the APK file as show below:
-				\begin{lstlisting}[language=python]
+				\begin{lstlisting}[language=python, numbers=none]
 					apk, dvm, dx = AnalyzeAPK("path/to/app.apk")
 				\end{lstlisting}
 			\paragraph{} The analyzeAPK method returned three objects. These classes are also described in table \ref{table:androguard_classes}. The first returned class is an object of APK class. This one can be used to get information about the APK most of which are extracted from manifest.xml file. Below is the example on how to get some information:
 			
-			\begin{table}
+			\begin{table}[H]
 				\begin{center}
 					\begin{tabular}{|p{5cm}|p{5cm}|}
 						\hline \textbf{Classes for Parsing} & \textbf{Classes for Analysis}\\ \hline
@@ -106,15 +106,15 @@
 			\paragraph{} There are a lot of methods that can be called on the APK object, to see them just type "apk." in the CLI and then press tab. The auto-complete feature will show you all the possible methods you can call. For more details you can have a look at the source code or the documentation for this class.
 			
 			\paragraph{} The dvm class represent DalvikVMFormat class, which basically parse the dex file contained inside the apk and gives us information about the classes, methods, Basic Blocks and instructions.
-				\begin{lstlisting}[language=python]
-					In [12]: type(dvm)
-					Out[12]: androguard.core.bytecodes.dvm.DalvikVMFormat
+				\begin{lstlisting}[language=python, firstnumber=39]
+					In [10]: type(dvm)
+					Out[10]: androguard.core.bytecodes.dvm.DalvikVMFormat
 				\end{lstlisting}
 			\paragraph{} In below script we will demonstrate how to get the name of some of the methods using this dvm object:
-				\begin{lstlisting}[language=python]
-					In [13]: methods = dvm.get_methods()[10:15]
+				\begin{lstlisting}[language=python, firstnumber=41]
+					In [11]: methods = dvm.get_methods()[10:15]
 					
-					In [14]: for method in methods:
+					In [12]: for method in methods:
 					...:     print(method.get_name())
 					...:     
 					getSettingsActivityName
@@ -125,8 +125,8 @@
 				\end{lstlisting}
 				
 			\paragraph{} The auto-complete feature, documentation or source code can be used in similar way as mentioned above to discover more features more methods or fields of these objects. The dx object is an instance of Analysis class which also provide access to analysis parts classes and methods like cross references, string analysis as shown below:
-				\begin{lstlisting}[language=python]
-					In [23]: for key in dx.get_strings_analysis():
+				\begin{lstlisting}[language=python, firstnumber=51]
+					In [13]: for key in dx.get_strings_analysis():
 					...:     print(key)
 					...:     
 					Unable to create files subdir 
@@ -171,19 +171,19 @@
 					 
 				\end{lstlisting}
 			\paragraph{} Below script demonstrates how to further examine the results provided by Analysis class object dx.
-				\begin{lstlisting}[language=python]
-					In [30]: string_analysis = list(dx.get_strings_analysis().values())[10]
+				\begin{lstlisting}[language=python, firstnumber=93]
+					In [14]: string_analysis = list(dx.get_strings_analysis().values())[10]
 										
-					In [31]: string_analysis.get_orig_value()
-					Out[31]: "Can't change tag of fragment "
+					In [15]: string_analysis.get_orig_value()
+					Out[15]: "Can't change tag of fragment "
 					
-					In [32]: string_analysis.get_xref_from()
-					Out[32]: 
+					In [16]: string_analysis.get_xref_from()
+					Out[16]: 
 					{(<androguard.core.analysis.analysis.ClassAnalysis at 0x7fd62588d320>,
 					<androguard.core.bytecodes.dvm.EncodedMethod at 0x7fd626197b00>)}
 					
-					In [33]: string_analysis.get_value()
-					Out[33]: "Can't change tag of fragment "
+					In [17]: string_analysis.get_value()
+					Out[17]: "Can't change tag of fragment "
 					
 				\end{lstlisting}
 				
@@ -194,9 +194,9 @@
 		\paragraph{} Before getting into details, we would like to mention that the information we extract will be stored in a database and similarity search would be performed on this data to figure out its relations with other malware or goodware samples. The more information we have about an APK, more relations we can find.
 		\paragraph{} Now coming towards, the extracted information, we divide it into different groups as shown in figure \ref{fig:info_extracted}.
 		
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
-			\fbox{\includegraphics[scale=0.5]{information_extracted.png}}
+			\fbox{\includegraphics[scale=0.45]{information_extracted.png}}
 			\caption{Groups of information extracted using APK}
 			\label{fig:info_extracted}
 		\end{figure}
@@ -204,15 +204,15 @@
 		
 		\begin{itemize}
 			\item \textbf{APK information} This contain general information about the APK like Permissions, Package name, Libraries, Certificates, components (activities,services, receivers) and information about all classes contained in this APK. We also wrote some code to extract strings from layout files and other binary xml files contained in the APK because most of the bitcoin wallet addresses contained in malware samples were hard coded in the those files. Figure \ref{fig:apk_info} shows the APK information stored in JSON format.
-			\begin{figure}[h]
+			\begin{figure}[H]
 				\centering
-				\fbox{\includegraphics[scale=0.5]{apk_info.png}}
+				\fbox{\includegraphics[scale=0.45]{apk_info.png}}
 				\caption{APK info}
 				\label{fig:apk_info}	
 			\end{figure}
 			
 			\item \textbf{Class information} It represents a single element of the class\textunderscore dictionary contained in APK information. It contains information like fields in the class, its access flags, name, superclass name, number of internal methods, inherited methods etc. It also contain information about methods which are part of this class in the form of a list. This information can be seen in figure \ref{fig:class_info}.
-			\begin{figure}[h]
+			\begin{figure}[H]
 				\centering
 				\fbox{\includegraphics[scale=0.5]{class_info.png}}
 				\caption{Class info}
@@ -221,7 +221,7 @@
 			
 			
 			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, Java decompiled source code for that method, Control flow graph of that method and the calculated hash(canonical certificate) for this method. Method information can be seen in \ref{fig:method_info}.
-			\begin{figure}
+			\begin{figure}[H]
 				\centering
 				\fbox{\includegraphics[scale=0.5]{method_info.png}}
 				\caption{Method info}
@@ -229,14 +229,14 @@
 			\end{figure}
 			\item \textbf{Control Flow Graph} Control flow graph contain edges and nodes. Nodes are basic blocks and are basically a list of instructions. Figures \ref{fig:nodes_info} and \ref{fig:edges_info} shows this part of information extracted from an apk and stored in JSON format.
 
-			\begin{figure}
+			\begin{figure}[H]
 				\centering
 				\fbox{\includegraphics[scale=0.5]{nodes.png}}
 				\caption{Nodes info}
 				\label{fig:nodes_info}	
 			\end{figure}
 
-			\begin{figure}
+			\begin{figure}[H]
 				\centering
 				\fbox{\includegraphics[scale=0.5]{edges.png}}
 				\caption{Edges info}
@@ -250,7 +250,7 @@
 		\subsection{Example usage}
 		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code they share. We analyzed 16 samples and the result is shown in figure \ref{fig:sonicspy_freq}.
 		
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\fbox{\includegraphics[scale=0.5]{sonicspy_freq.png}}
 			\caption{Reused methods in sonicspy variants}
@@ -279,7 +279,7 @@
 			\item 29967d4afd2e11beb85e2f7eec5ce4c1778026a2
 		\end{itemize}
 		
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\fbox{\includegraphics[scale=0.5]{sonicspy_code_reuse.png}}
 			\caption{Reused of methods in sonicspy variants}

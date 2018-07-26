@@ -44,12 +44,12 @@
 		\subsection{Android 4.1 Persistent Rooting}
 		\paragraph{} Now coming towards the first fix which was that the root wasn't staying persistent across reboots. It was the result of changes in Android emulator. More details and solutions about this problem can be found in issue 4 of CuckooDroid github repository \cite{cuckoodroid_root_issue}. The solution can be found in the same issue, according to which we needed to copy the system.img file from the android SDK directory to the AVD directory. The following command can be used to do that, make sure you replace the paths according to the location of your android SDK and AVD.
 		
-		\begin{lstlisting}
+		\begin{lstlisting}[numbers=none]
 			$ cp ~/Android/Sdk/system-images/android-16/default/armeabi-v7a/system.img ~/.android/avd/aosx.avd/system-qemu.img
 		\end{lstlisting}
 		
 		\paragraph{} After the above step, we need to start the emulator with command given below:
-		\begin{lstlisting}
+		\begin{lstlisting}[numbers=none]
 			$ emulator -avd aosx -qemu -nand -system,size=0x1f400000,file=~/.android/avd/aosx.avd/system-qemu.img&
 		\end{lstlisting}
 		
@@ -68,13 +68,13 @@
 		\paragraph{} The rooting procedure for Android 5.1 is a bit different than that of Android 4.1 in the sense that we needed updated version of tools like SuperSU, XposedFramework etc. Below are the required steps to root Android 5.1 AVD and keep the root persistent.
 		\begin{enumerate}
 			\item First copy the system.img to your avd directory and rename it as system-qemu.img: For example for Nexus One API 22 x86: \newline 
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 			cp ~/Android/Sdk/system-images/android-22/default/x86/system.img ~/.android/avd/Nexus_One_API_22_x86.avd/system-qemu.img
 			\end{lstlisting}
 						
 			
 			\item Then start the AVD Machine with \newline 
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 			emulator @Nexus_One_API_22_x86 -verbose -writable-system
 			\end{lstlisting}
 						
@@ -169,11 +169,11 @@
 		\item It will drop you into root shell from termux.
 		\item Now we need to add the code inside the script so that instead of launching a shell it run our agent.py script.
 		\item To do that go to line 100 which is:
-		\begin{lstlisting}[language=bash]
+		\begin{lstlisting}[language=bash, numbers=none]
 		exec "$s" --preserve-environment -c "LD_LIBRARY_PATH=$LD_LIBRARY_PATH $ROOT_SHELL" 
 		\end{lstlisting}
 		Step 10: Edit the line as follows:
-		\begin{lstlisting}[language=bash]
+		\begin{lstlisting}[language=bash, numbers=none]
 		exec "$s" --preserve-environment -c "LD_LIBRARY_PATH=$LD_LIBRARY_PATH python2 /data/local/agent.py" 
 		\end{lstlisting}
 		
@@ -238,7 +238,7 @@
 			$ am start -n Package/Activity -a action -c category data
 		\end{lstlisting}
 		\paragraph{} This module is still work in progress as the data section is not easy because only Multipurpose Internet Mail Extensions (MIME) type is given in the Manifest.xml file and we need to provide data as input to this command and on top of that sometimes these MIMEs are custom defined by the app developers. Once we are done with executing all entry points to an application, then we run the Monkey to generate random events. We used the following command to run the Monkey:
-		\begin{lstlisting}[language=bash]
+		\begin{lstlisting}[language=bash, numbers=none]
 			$ monkey --ignore-crashes --ignore-security-exceptions --monitor-native-crashes -p package --throttle 500 500
 		\end{lstlisting}
 		

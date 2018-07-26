@@ -2,7 +2,6 @@
 \documentclass[../main.tex]{subfile}
 
 \begin{document}
-	\todo[inline]{fix appendices}
 	\appendix
 		\chapter{Android Activity Manager}
 		\label{app::android_am}
@@ -14,7 +13,7 @@
 		\begin{enumerate}
 			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
 			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch arm --api 16 --install-dir ~/android-ndk-r16/toolchains/arm-16
 			\end{lstlisting}
 			\item Write your c program and compile it
@@ -50,7 +49,7 @@
 		\begin{enumerate}
 			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
 			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 			python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch x86 --api 22 --install-dir ~/android-ndk-r16/toolchains/x86-22
 			\end{lstlisting}
 			\item Write your c program, compile it and link it separately with required flags for PIE.
@@ -71,7 +70,7 @@
 			./i686-linux-android-gcc -lm main.o -pie
 			\end{lstlisting}
 			\item Start emulator, copy file to it, make it executable and run it
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, firstnumber=15]
 			emulator @Nexus_One_API_22_x86 -writable-system
 			adb push a.out /data/local
 			adb shell chmod 06755 /data/local/a.o
