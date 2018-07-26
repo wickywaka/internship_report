@@ -13,13 +13,16 @@
 \usepackage{subfiles}
 \usepackage{longtable}
 
+\usepackage[bottom]{footmisc}
+
 \usepackage{float}
 
 \usepackage[a4paper, total={6in, 10in}]{geometry}
 %\usepackage[margin=0.5in]{geometry}
 \usepackage{dirtytalk}
 
-\usepackage{appendix}
+\usepackage[titletoc]{appendix}
+
 
 \usepackage{xcolor}
 \usepackage{listings}
@@ -77,12 +80,12 @@
 	\pagebreak
 	\subfile{./chapters/title}
 	\pagebreak
-	%\subfile{./chapters/dedications}
-	%\pagebreak
+	\subfile{./chapters/dedications}
+	\pagebreak
 	\subfile{./chapters/abstract}
 	\pagebreak
-	%\subfile{./chapters/acknowledgements}
-	%\pagebreak
+	\subfile{./chapters/acknowledgements}
+	\pagebreak
 	
 	
 	\tableofcontents

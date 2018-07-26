@@ -2,12 +2,8 @@
 \documentclass[../main.tex]{subfile}
 
 \begin{document}
-	\appendix
-		\chapter{Android Activity Manager}
-		\label{app::android_am}
-			\paragraph{} Some text here
-		
-		\chapter{Compiling C code for android}
+	\begin{appendices}
+		\chapter{Compiling C/C++ code for android}
 		Below is an example on how to compile a C program with PIE support using Android Native Development Kit (NDK).
 		\paragraph{Compiling C code for Android 4.1}
 		\begin{enumerate}
@@ -81,7 +77,7 @@
 			\end{lstlisting}
 		\end{enumerate}
 	
-		\chapter{Malwares that uses Anti-Emulator detection}
+	\chapter{Malwares that uses Anti-Emulator detection}
 	The purpose of this list is to help other researchers who are looking for samples that uses anit-emulation detection.
 	\begin{itemize}
 		\item 0ef01f50b829355b73418adcb30b20a3a1f6cb95123afce2c5469cdb25c7f7d0 Skinner
@@ -94,5 +90,6 @@
 		\item 604E6DCDF1FA1F7B5A85892AC3761BED81405BF6 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
 		\item 532079B31E3ACEF2D71C75B31D77480304B2F7B9 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
 	\end{itemize}
+\end{appendices}
 
 \end{document}
