@@ -223,7 +223,7 @@
 		\section{CuckooDroid with Android 7.0}
 		\paragraph{} We didn't have much success with Android 7.0. We could't pass the persistent rooting problem and the machine wouldn't boot after the rooting procedure as described for Android 5.1. Furthermore it was extremely slow and was almost unusable so we decided to move on to more pressing matters.
 		
-		\section{Improvements in CuckooDroid}
+		\section{Improvements in CuckooDroid and pull request}
 		\paragraph{} Once we had the cuckoodroid working, we decided to add some features to it. We wrote one additional module for CuckooDroid analyzer. The goal was to improve code coverage by interacting with app in intelligent manner and then to introduce some random events using Monkey \cite{monkey_tool} tool. Monkey tool is described as "The Monkey is a program that runs on your emulator or device and generates pseudo-random streams of user events such as clicks, touches, or gestures, as well as a number of system-level events. You can use the Monkey to stress-test applications that you are developing, in a random yet repeatable manner" \cite{monkey_tool}. Our module is called IntentGun and the meaning of this name will become apparent in the next paragraph.
 		\paragraph{} As we said in chapter \ref{sec:intro} that an android application have different entry points called activities, receivers and services and that these can be started using intents. So in this module we make a list of all activities, receivers and services contained inside an app and then use the activity manager utility \cite{am} to start these activities, receivers and services. The commands are give below:
 		
@@ -244,6 +244,8 @@
 		
 		\paragraph{} Its important to note here that this tool is used to stress test applications and we couldn't manage to make it work in stable condition. Usually it crashes the emulator altogether \cite{issue52}.
 		
+		\paragraph{} We also upgraded Cuckoo-Droid to support latest androgaurd and made a pull request to the Cuckoo-Droid official repository\cite{cuckoodroid_github}. We decided not to include the intent gun module because of its unstable nature. The pull request can be found here \cite{cuckoodroid_pullreq}. Due to the Cuckoo-Droid maintainers being inactive, we also decided to keep a mirror of the update version at QuoScient github with updated documentation so that people who want to use it can see the updated documentation \cite{cuckoodroid_quoscient}. With this pull request we hope to make cuckoodroid stable enough that it works right out of the box. We were also continuously in touch with the Cuckoo Sandbox team.
+		
 		\section{Chapter Conclusion}
 		\paragraph{} In this chapter we explained how CuckooDroid works, which kind of changes did we need to make in order to make it work and what improvements did me make in it. After doing the work described, in this chapter we also reached to following conclusions:
 		\paragraph{Emulator Anti Detection} Although during our dynamic analysis we didn't analyzed enough malicious samples to make an estimate of the usage of emulation detection techniques in these samples, but a little search on the Internet revealed several techniques that were very easy to implement and integrate into an application and thus it can be very easy for a determined threat actor to add them to their code and can make its way to popular android application stores like google play store easily or can stay undetected in general. We will further explore this topic in the chapter \ref{sec:Chp4}.
@@ -252,6 +254,6 @@
 		
 		\paragraph{Slow emulator performance} With the android emulators running higher versions of Android, there is big performance penalty. Running an arm image of android on x86 based PC system is also one of the reason of performance degradation. One solution to the problem can be using Houdini translation that allows android apps written for arm processors to be executed on x86 android image. We didn't investigated this solutions further and can be done as a separate project.
 		
-		\paragraph{Native Code} Currently CuckooDroid only detects if native code is being used in an application. It would be nice to have the capabilities of decompiling/disassembling of native code and include that into analysis results.
+		\paragraph{Native Code} Currently CuckooDroid only detects if native code is being used in an application. It would be nice to have the capabilities of decompiling/disassembling of native code and include that into analysis results. In Chapter \ref{sec:Chp5}, We will talk about a tool called Frida, which supports hooking native code on Android and be xposed framework can be replaced by it.
 
 \end{document}
