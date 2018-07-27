@@ -2,13 +2,13 @@
 \documentclass[../main.tex]{subfile}
 \begin{document}
 	
-		\paragraph{} Static analysis is the analysis of a sample without actually executing its code. Various techniques and tools are used like decompiling, string searches, data flow analysis etc. The purpose is to understand the behavior of a malware and sometimes extract some useful information that can be used in cuckoodroid for dynamic analysis. In this project there are two kinds of static analysis that are being performed.
-		\paragraph{} First type of analysis is being performed during or before dynamic analysis to improve code coverage during. It include extracting activites, intent messages(experimental stages), services which are later used as parameters to the android Activity Manager Utitliy to increase code coverage. Have a look to appendix \ref{app::android_am} for more on Activity Manager and how to use it. We will talk about this type in next chapter.
+		\paragraph{} Static analysis is the analysis of a sample without actually executing it. Various techniques and tools are used like decompiling, string searches, data flow analysis etc. The purpose is to understand the behavior of a malware and sometimes extract some useful information that can be used in cuckoodroid for dynamic analysis. In this project there are two kinds of static analysis that are being performed.
+		\paragraph{} First type of analysis is being performed during or before dynamic analysis to improve code coverage or just to be added to the final report. It include extracting activites, intent messages, services which are later used as parameters to the android Activity Manager Utility to increase code coverage (section \ref{sec:improvements_cuckoodroid}). Other information extracted in this category are extracting permissions, package name, signatures, looking for specific function calls(encryption, decryption etc). Have a look at appendix \ref{app::android_am} for more on Activity Manager and how to use it. %In chapter \ref{sec:cuckoodroid} we will talk more about this category.
 		
-		\paragraph{} Second type of static analysis is performed to extract as much useful information as possible. The goal of this is to have a lot of information about a sample that will be stored in a database and can be compared detect similarities between different malware families. We will talk about this type of static analysis in more details in this chapter. For tools, Androguard is used for these analysis because it can be easily automated and have very good community support. For a literature review on android static analysis please have a look at \cite{android_static_literature}	
+		\paragraph{} Second type of static analysis is performed to extract as much useful information as possible. The goal of this is to have a lot of information about a sample that will be stored in a database and can be compared to detect similarities between malwares or to identify new malware as most of them share code. It can also be used to find newly added features to a malware family as they adapt with time. We will talk about this type of static analysis in more details in this chapter. Androguard is used for these analysis because it can be easily automated and have very good community support. For a literature review on android static analysis please have a look at \cite{android_static_literature}.
 		
 		\section{Androguard}\label{sec:androguard}
-		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process and one can make desired improvements. The analysis is done on need-to basis which means we only use our CPU cycles for the stuff that we need. It has the also the option to be used in interactive mode by using androlyze.py script. We will give more information about how to use androgaurd in section \ref{subsec:androguard_usage}.
+		\paragraph{} Androguard is an open source tool written in python for analyzing android applications. Its been used in several tools including Virustotal and Cuckoodroid among others. It can process APK files, dex files or odex files. It can disassemble Dex/Odex files to smali code and can decompile Dex/Odex to Java code. Being python based and open source it allows for automating most the analysis process. The analysis is done on need-to basis which means we only use our CPU cycles for the tasks that we need. It has the also the option to be used in interactive mode by using androlyze.py script.
 		
 		\subsection{Androguard usage example}\label{subsec:androguard_usage}
 			\paragraph{} Installing androguard is very simple. You can download it from its official github repository \cite{desnos2017androguard} and then can install it by executing the following in androguard directory:
@@ -27,13 +27,13 @@
 
 			\paragraph{} As we mentioned above, androgaurd can be used in two way, its a good idea to start with interactive CLI mode of androguard just to get some idea of what it is capable of. You can use the below command in your terminal to start the interactive shell. It will import all the required androguard packages and you can start analyzing APKs right away. Depending on how you installed androguard, you may need to execute androlyze.py or just androlyze.
 				\begin{lstlisting}[language=bash, xrightmargin = 0.7\textwidth, numbers=none]
-					androlyze -s
+					$ androlyze -s
 				\end{lstlisting}
 			\paragraph{} This will open a python interactive shell and you can now specify the APK file as show below:
 				\begin{lstlisting}[language=python, numbers=none]
-					apk, dvm, dx = AnalyzeAPK("path/to/app.apk")
+					In [1]: apk, dvm, dx = AnalyzeAPK("path/to/app.apk")
 				\end{lstlisting}
-			\paragraph{} The analyzeAPK method returned three objects. These classes are also described in table \ref{table:androguard_classes}. The first returned class is an object of APK class. This one can be used to get information about the APK most of which are extracted from manifest.xml file. Below is the example on how to get some information:
+			\paragraph{} The analyzeAPK method returned three objects. These classes are also described in table \ref{table:androguard_classes}. Keep reading after the table \ref{table:androguard_classes} to know more about these returned objects.
 			
 			\begin{table}[H]
 				\begin{center}
@@ -61,7 +61,7 @@
 				\caption{Some classes of androguard and their description}
 				\label{table:androguard_classes}
 			\end{table}
-		
+			\paragraph{apk}  The first returned class is an object of APK class. This one can be used to get information about the APK most of which are extracted from manifest.xml file. Below is the example on how to get some information:
 		
 				\begin{lstlisting}[language=python]
 					user@workstation:~$ androlyze.py -s
@@ -105,7 +105,7 @@
 				\end{lstlisting}
 			\paragraph{} There are a lot of methods that can be called on the APK object, to see them just type "apk." in the CLI and then press tab. The auto-complete feature will show you all the possible methods you can call. For more details you can have a look at the source code or the documentation for this class.
 			
-			\paragraph{} The dvm class represent DalvikVMFormat class, which basically parse the dex file contained inside the apk and gives us information about the classes, methods, Basic Blocks and instructions.
+			\paragraph{dvm} Second returned object, the dvm class represent DalvikVMFormat class, which basically parse the dex file and gives us information about the classes, methods, Basic Blocks and instructions.
 				\begin{lstlisting}[language=python, firstnumber=39]
 					In [10]: type(dvm)
 					Out[10]: androguard.core.bytecodes.dvm.DalvikVMFormat
@@ -124,7 +124,8 @@
 					feedbackTypeToString
 				\end{lstlisting}
 				
-			\paragraph{} The auto-complete feature, documentation or source code can be used in similar way as mentioned above to discover more features more methods or fields of these objects. The dx object is an instance of Analysis class which also provide access to analysis parts classes and methods like cross references, string analysis as shown below:
+			\paragraph{} The auto-complete feature, documentation or source code can be used in similar way as mentioned above to discover more features more methods or fields of these objects.
+			\paragraph{dx} The third returned object is an instance of Analysis class which contain cross reference information of classes and methods, string analysis. This object also allows us to access more analysis classes like ClassAnalysis and MethodAnalysis. Decompilation is performed here and on slower systems it can take some time.
 				\begin{lstlisting}[language=python, firstnumber=51]
 					In [13]: for key in dx.get_strings_analysis():
 					...:     print(key)
@@ -220,7 +221,7 @@
 			\end{figure}
 			
 			
-			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, Java decompiled source code for that method, Control flow graph of that method and the calculated hash(canonical certificate) for this method. Method information can be seen in \ref{fig:method_info}.
+			\item \textbf{Method information} A we said above, class\textunderscore information contain a list of methods\textunderscore info. Each element of that list contain information about a method such as method name, class name, address, method descriptor, length of method, its cross references, shorty descriptor, java decompiled source code for that method, control flow graph of that method and the calculated hash(canonical certificate) for this method. Method information can be seen in \ref{fig:method_info}.
 			\begin{figure}[H]
 				\centering
 				\fbox{\includegraphics[scale=0.5]{method_info.png}}
@@ -244,11 +245,11 @@
 			\end{figure}
 		
 
-			\item \textbf{Canonical Certificate} In order to compare two control flow graphs, we need to find the Canonical form of this Control flow graph. Fore more details about the topic readers are encouraged to search the Internet for "Graph canonization" and also have a look at the webpage of "bliss" \cite{bliss}. We used pybliss python library \cite{bliss} \cite{junttila2007engineering} to get the canonical certificate of this graph. Before computing this certificate, the smali instructions are normalized according to a specific criteria so that compilation specific changes are ignored like offsets etc. The canonical certificate can be seen in figure \ref{fig:method_info} with key of "hash". An example of normalized instruction can be seen in figure \ref{fig:nodes_info} with key of "normalized\textunderscore ops\textunderscore str".
+			\item \textbf{Canonical Certificate} In order to compare two methods, we basically have to compare the corresponding control flow graphs. The control flow graph can change for the same method so  we need to find the Canonical form of this Control flow graph. Fore more details about the topic readers are encouraged to search the Internet for "Graph canonization" and also have a look at the webpage of "bliss" \cite{bliss}. We used pybliss python library \cite{bliss} \cite{junttila2007engineering} to get the canonical certificate of this graph. Before computing this certificate, the operands  of smali instructions are normalized according to a specific criteria so that compilation specific changes like offsets etc are ignored. The canonical certificate can be seen in figure \ref{fig:method_info} with key of "hash". An example of normalized instruction can be seen in figure \ref{fig:nodes_info} with key of "normalized\_ops\_str".
 		\end{itemize}
 		
 		\subsection{Example usage}
-		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and tried to figure out how much code they share. We analyzed 16 samples and the result is shown in figure \ref{fig:sonicspy_freq}.
+		\paragraph{}Just to make the usage of this extracted data more clear. In this example we process some of the sonicspy samples and will try to figure out how much code they share. We analyzed 16 samples and the result is shown in figure \ref{fig:sonicspy_freq}.
 		
 		\begin{figure}[H]
 			\centering
@@ -256,7 +257,7 @@
 			\caption{Reused methods in sonicspy variants}
 			\label{fig:sonicspy_freq}
 		\end{figure}
-		\paragraph{} Line 23 in figure prints the result, in this dictionary keys represent frequency or number of samples in which a method is used. Value represent numbers i.e, number of all such methods that has been used in "key" samples, or number of all methods with corresponding frequency. From this analysis we can see that a large portion of code is common between these samples but also that all of this code is not malicious. Most of it is standard android API methods and non-malicious general purpose methods like wrappers etc. It would be very interesting to identify and separate API code from this chunk. It can be topic for further research to identify common non-malicious pieces of code to make analysis easier. 
+		\paragraph{} Output line 23 in figure prints the result, in this dictionary keys represent frequency or number of samples in which a method is used. Value represent numbers i.e, number of all such methods that has been used in "key" samples, or number of all methods with corresponding frequency. From this analysis we can see that a large portion of code is shared between these samples but later we found that most of this code is not malicious. Most of it is standard android API methods and non-malicious general purpose methods like wrappers etc. It would be very interesting to identify and separate API code from this as it is just noise. It can be topic for further research to identify common non-malicious pieces of code to make analysis easier. 
 
 		\paragraph{} In the figure \ref{fig:sonicspy_freq}, "jp" is an object of a class JasonParser which we wrote just to verify information extracted from APKs. In line 24 we get the hash of a specific method and in line 25 and 26, we print its Java source code. Here we can see that its a very general method and its been used in all of the 16 samples analyzed.
 		
@@ -287,5 +288,5 @@
 		\end{figure}
 		
 		
-		\section{Chapter Conclusion} In this chapter, we introduced androgaurd and showed how to use it with a few examples. After that, we discussed the information extraction that can be used to find similarities between different samples or for other purposes. During the course of this work we also identified some bugs in androguard and communicated them to the maintainers of the official androguard github repository \cite{desnos2017androguard}. Example of these are issues number 324, 325, 529, 329. At the end,I would appreciate the maintainers of androgaurd repository for their help especially reox \cite{reox}.
+		\section{Chapter Conclusion} In this chapter, we introduced androgaurd and showed how to use it with a few examples. After that, we discussed the information extraction that can be used to find similarities between different samples or for other purposes. During the course of this work we also identified some bugs in androguard and communicated them to the maintainers of the official androguard github repository \cite{desnos2017androguard}. Example of these are issues number 324, 325, 529, 329. At the end, I would appreciate the maintainers of androgaurd repository for their help especially reox \cite{reox}.
 \end{document}

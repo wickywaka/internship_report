@@ -4,7 +4,7 @@
 
 \begin{document}
 	\section{Introduction}
-	\paragraph{}  Frida is a dynamic instrumentation toolkit that supports  Windows, macOS, GNU/Linux, iOS, Android, and QNX. Its widely availabel for these platforms and It lets you inject snippets of JavaScript or your own library into native apps on supported platforms. Frida also provides you with some simple tools built on top of the Frida API. These can be used as-is, tweaked to your needs, or serve as examples of how to use the API. It injects Google’s V8 engine into the target processes, where your JS gets executed with full access to memory, hooking functions and even calling native functions inside the process. \cite{frida}
+	\paragraph{}  Frida is a dynamic instrumentation toolkit that supports  Windows, macOS, GNU/Linux, iOS, Android, and QNX. Its widely availabel for these platforms and lets you inject snippets of JavaScript or your own library into native apps on supported platforms. Frida also provides you with some simple tools built on top of the Frida API. These can be used as-is, tweaked to your needs, or serve as examples for how to use the API. It injects Google’s V8 engine into the target processes, where your JS gets executed with full access to memory, hooking functions and even calling native functions inside the process. \cite{frida}
 	\paragraph{} The goal of this chapter is to give readers an introduction to this tool as the work we did on Frida during this internship is still incomplete and can not be reported here. In the next section, We will show you how to install Frida and will do a few examples that will explain the use cases of this tool.
 	\section{Frida with Android}
 	\subsection{Installation}
@@ -34,7 +34,7 @@
 	\subsection{Examples}
 	In this section we will show you some examples on how frida can be used.
 
-	\paragraph{example 1: Hooking a method} \label{sec::hooking} In this example we will run one of our own developed application. This is application is for testing the anti-emulator capabilities of our device. It obtains different information from the system which can be used to detect emulation environment or root. It also displays stack trace of some its methods and that information can be used to detect hooking. In this example we will use Frida to hook the "getPhone( )" method inside MainActivity. Figure \ref{fig:getPhone_source} shows the source code of this method and Figure \ref{fig:getPhone_trace} stack trace or call trace of this method. From the call trace it can be seen that there are no unexpected calls.
+	\paragraph{example 1: Hooking a method} \label{sec::hooking} In this example we will run one of our own developed application. This is application is for testing the anti-emulator capabilities of our AVD that is used for dynamic analysis. It obtains different information from the system which can be used to detect emulation environment or root. It also displays stack trace of some its methods and that information can be used to detect hooking. In this example we will use Frida to hook the "getPhone( )" method inside MainActivity. Figure \ref{fig:getPhone_source} shows the source code of this method and Figure \ref{fig:getPhone_trace} stack trace or call trace of this method. From the call trace it can be seen that there are no unexpected calls.
 	
 	\begin{figure}[H]
 		\fbox{\includegraphics[width=\textwidth]{getPhone_source.png}}
