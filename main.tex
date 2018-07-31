@@ -2,6 +2,10 @@
 
 % Packages goes here
 
+\usepackage{url}
+\usepackage{IEEEtrantools}
+\usepackage{cite} % to cite as [1-2], not [1], [2]
+
 \usepackage{todonotes}
 \usepackage{graphicx}
 \graphicspath{ {images/} {../images/}}
@@ -9,11 +13,16 @@
 \usepackage{subfiles}
 \usepackage{longtable}
 
+\usepackage[bottom]{footmisc}
+
+\usepackage{float}
+
 \usepackage[a4paper, total={6in, 10in}]{geometry}
 %\usepackage[margin=0.5in]{geometry}
 \usepackage{dirtytalk}
 
-\usepackage{appendix}
+\usepackage[titletoc]{appendix}
+
 
 \usepackage{xcolor}
 \usepackage{listings}
@@ -67,19 +76,27 @@
 
 \begin{document}
 	\pagenumbering{gobble}
-	\subfile{./chapters/orignality}
-	\pagebreak
 	\subfile{./chapters/title}
 	\pagebreak
-	%\subfile{./chapters/dedications}
-	%\pagebreak
+		
+	\tableofcontents
+	
+	\subfile{./chapters/list_of_figures}
+	\pagebreak
+	\subfile{./chapters/list_of_tables}
+	\pagebreak
+	
+	
+	\subfile{./chapters/orignality}
+	\pagebreak
+	\subfile{./chapters/dedications}
+	\pagebreak
+	\subfile{./chapters/acknowledgements}
+	\pagebreak
 	\subfile{./chapters/abstract}
 	\pagebreak
-	%\subfile{./chapters/acknowledgements}
-	%\pagebreak
 	
 	
-	\tableofcontents
 	\cleardoublepage
 	\pagenumbering{arabic}
 	\chapter{Introduction}\label{sec:intro}
@@ -88,11 +105,11 @@
 	\chapter{Static Analysis}\label{sec:static_analysis}
 		\subfile{chapters/chapter2_static_analysis}
 		\pagebreak
-	\chapter{Dynamic Analysis: CuckooDroid based on Cuckoo sandbox}\label{sec:cuckoodroid}
+	\chapter{Dynamic Analysis: CuckooDroid}\label{sec:cuckoodroid}
 		\subfile{./chapters/chapter3_dynamic_analysis_1}
 		\pagebreak
 	
-	\chapter{Dynamic Analysis: Emulator Detection and Anti-Emulator Detection} \label{sec:Chp4}
+	\chapter{Dynamic Analysis: Evasion and Cloaking} \label{sec:Chp4}
 		\subfile{./chapters/chapter4_dynamic_analysis_2}
 		\pagebreak
 	
@@ -109,14 +126,9 @@
 	\bibliographystyle{ieeetr}
 	\bibliography{References}
 	\pagebreak
-	\subfile{./chapters/symbols_and_acronyms}
-	\pagebreak
-	\subfile{./chapters/list_of_figures}
-	\pagebreak
-	\subfile{./chapters/list_of_tables}
-	\pagebreak
-
-	\chapter{Appendix}
+	%\subfile{./chapters/symbols_and_acronyms}
+	%\pagebreak
+	%\chapter{Appendix}
 	\subfile{./chapters/appendix}
 	\pagebreak
 	

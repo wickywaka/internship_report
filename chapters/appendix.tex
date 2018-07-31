@@ -2,19 +2,38 @@
 \documentclass[../main.tex]{subfile}
 
 \begin{document}
-	\todo[inline]{fix appendices}
 	\begin{appendices}
-		\section{Android Activity Manager}
-		\label{app::android_am}
-			\paragraph{} Some text here
+		\chapter{Android Activity Manager tool(am)} \label{app::android_am}
+		\paragraph{} Within an adb shell, you can issue commands with the activity manager (am) tool \cite{am} to perform various system actions, such as start an activity, force-stop a process, broadcast an intent, modify the device screen properties, and more. While in a shell, the syntax is:
+		\begin{lstlisting}[numbers=none]
+			am command
+		\end{lstlisting}
+		\paragraph{} You can also issue an activity manager command directly from adb without entering a remote shell. For example:
+		\begin{lstlisting}[numbers=none]
+			adb shell am start -a android.intent.action.VIEW
+		\end{lstlisting}
+		For detailed documentation on activity manager commands please visit \cite{am}.
+		\paragraph{} In this project we used this tool in the IntentGun module. We pass the intent message to this tool as parameter and it starts the corresponding Activity or Service or Broadcast that intent message. Some common used commands are:
+
+		\begin{lstlisting}[language=bash, numbers=none]
+		# For Activity
+		$ am start -n Package/Activity -a action -c category data
 		
-		\section{Compiling C code for android}
+		# For receivers
+		$ am broadcast -n Package/Receiver -a action -c category
+		
+		# For services
+		$ am startservice -n Package/Activity -a action -c category data
+		\end{lstlisting}
+		
+		
+		\chapter{Compiling C/C++ code for android} \label{app:ndk_c++}
 		Below is an example on how to compile a C program with PIE support using Android Native Development Kit (NDK).
 		\paragraph{Compiling C code for Android 4.1}
 		\begin{enumerate}
 			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
 			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch arm --api 16 --install-dir ~/android-ndk-r16/toolchains/arm-16
 			\end{lstlisting}
 			\item Write your c program and compile it
@@ -50,7 +69,7 @@
 		\begin{enumerate}
 			\item Download and extract NDK (My NDK directory is ~/android-ndk-r16)
 			\item Create a new standalone toolchain using the script ~/android-ndk-r16/build/tools/make\textunderscore standalone\textunderscore toolchain.py
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 			python ~/android-ndk-r16/build/tools/make_standalone_toolchain.py --arch x86 --api 22 --install-dir ~/android-ndk-r16/toolchains/x86-22
 			\end{lstlisting}
 			\item Write your c program, compile it and link it separately with required flags for PIE.
@@ -71,7 +90,7 @@
 			./i686-linux-android-gcc -lm main.o -pie
 			\end{lstlisting}
 			\item Start emulator, copy file to it, make it executable and run it
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, firstnumber=15]
 			emulator @Nexus_One_API_22_x86 -writable-system
 			adb push a.out /data/local
 			adb shell chmod 06755 /data/local/a.o
@@ -82,7 +101,7 @@
 			\end{lstlisting}
 		\end{enumerate}
 	
-		\section{Malwares that uses Anti-Emulator detection}
+	\chapter{Malwares that uses Anti-Emulator detection}
 	The purpose of this list is to help other researchers who are looking for samples that uses anit-emulation detection.
 	\begin{itemize}
 		\item 0ef01f50b829355b73418adcb30b20a3a1f6cb95123afce2c5469cdb25c7f7d0 Skinner
@@ -95,7 +114,6 @@
 		\item 604E6DCDF1FA1F7B5A85892AC3761BED81405BF6 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
 		\item 532079B31E3ACEF2D71C75B31D77480304B2F7B9 (Android/TrojanDropper.Agent.BKY) Uses delayed execution \cite{eset_multi_stage_malware}
 	\end{itemize}
-	
-	\end{appendices}
+\end{appendices}
 
 \end{document}

@@ -4,29 +4,29 @@
 
 \begin{document}
 	\section{Introduction}
-	\paragraph{}  Frida is a dynamic instrumentation toolkit that supports  Windows, macOS, GNU/Linux, iOS, Android, and QNX. Its widely availabel for these platforms and It lets you inject snippets of JavaScript or your own library into native apps on supported platforms. Frida also provides you with some simple tools built on top of the Frida API. These can be used as-is, tweaked to your needs, or serve as examples of how to use the API. It injects Google’s V8 engine into the target processes, where your JS gets executed with full access to memory, hooking functions and even calling native functions inside the process. \cite{frida}
+	\paragraph{}  Frida is a dynamic instrumentation toolkit that supports  Windows, macOS, GNU/Linux, iOS, Android, and QNX. Its widely availabel for these platforms and lets you inject snippets of JavaScript or your own library into native apps on supported platforms. Frida also provides you with some simple tools built on top of the Frida API. These can be used as-is, tweaked to your needs, or serve as examples for how to use the API. It injects Google’s V8 engine into the target processes, where your JS gets executed with full access to memory, hooking functions and even calling native functions inside the process. \cite{frida}
 	\paragraph{} The goal of this chapter is to give readers an introduction to this tool as the work we did on Frida during this internship is still incomplete and can not be reported here. In the next section, We will show you how to install Frida and will do a few examples that will explain the use cases of this tool.
 	\section{Frida with Android}
 	\subsection{Installation}
 	\paragraph{} We will be using Ubuntu 16.04 for installation but its pretty simple on other platforms as well.
 	\begin{enumerate}
 		\item Download frida using
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				pip install frida
 			\end{lstlisting}
 		
 		\item Check version by using
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				frida --version
 			\end{lstlisting}
 		\item Go to frida github and download the same version of server for android and correct architecture. (Currently x86 server on x86 image
 		is crashing the app)
 		\item Push frida-server to android device, chmod 775 it and execute it with
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				adb shell "/path/to/frida-server -D"
 			\end{lstlisting}
 		\item On host test frida with
-			\begin{lstlisting}[language=bash]
+			\begin{lstlisting}[language=bash, numbers=none]
 				frida-ps -U
 			\end{lstlisting}
 	\end{enumerate}
@@ -34,15 +34,15 @@
 	\subsection{Examples}
 	In this section we will show you some examples on how frida can be used.
 
-	\paragraph{example 1: Hooking a method} \label{sec::hooking} In this example we will run one of our own developed application. This is application is for testing the anti-emulator capabilities of our device. It obtains different information from the system which can be used to detect emulation environment or root. It also displays stack trace of some its methods and that information can be used to detect hooking. In this example we will use Frida to hook the "getPhone( )" method inside MainActivity. Figure \ref{fig:getPhone_source} shows the source code of this method and Figure \ref{fig:getPhone_trace} stack trace or call trace of this method. From the call trace it can be seen that there are no unexpected calls.
+	\paragraph{example 1: Hooking a method} \label{sec::hooking} In this example we will run one of our own developed application. This is application is for testing the anti-emulator capabilities of our AVD that is used for dynamic analysis. It obtains different information from the system which can be used to detect emulation environment or root. It also displays stack trace of some its methods and that information can be used to detect hooking. In this example we will use Frida to hook the "getPhone( )" method inside MainActivity. Figure \ref{fig:getPhone_source} shows the source code of this method and Figure \ref{fig:getPhone_trace} stack trace or call trace of this method. From the call trace it can be seen that there are no unexpected calls.
 	
-	\begin{figure}
+	\begin{figure}[H]
 		\fbox{\includegraphics[width=\textwidth]{getPhone_source.png}}
 		\caption{Source code of the method getPhone( )}
 		\label{fig:getPhone_source}
 	\end{figure}
 	
-	\begin{figure}
+	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{stack_trace_getPhone_unhooked.png}
 		\caption{Stack/call trace of the non-hooked method getPhone( )}
@@ -104,14 +104,14 @@
 	\end{enumerate}
 	\paragraph{} Figure \ref{fig:hello_world_app_hooked} shows the messages sent by frida-server to host including our messages and confirms that the method getPhone is hooked by sending back the string "getPhone" and return value of this method. We made this output(build info+ stack trace) rather short to be able to show it in on one screen. and figure \ref{fig:hello_world_terminal_hooked} , and modified returned value in app window by appending an easy to spot string of "NNNNNOOOOOOOTTTTT" to the return string of the getPhone and this can be seen in figure \ref{fig:hello_world_app_hooked}. Also notice the extra calls in stack trace and compare it with the previous one in which no hooking was involved.
 	
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{hello_word_after_hooking.png}
 	\caption{Hooked output on app screen}
 	\label{fig:hello_world_app_hooked}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 	\includegraphics[width=\textwidth]{hello_world_terminal_output.png}
 	\caption{terminal output of app with hooked getPhone()}
 	\label{fig:hello_world_terminal_hooked}
@@ -150,7 +150,7 @@
 	\end{lstlisting}
 	
 	\paragraph{} The result of running this script can be seen in figure \ref{fig:wrapping_logcat}. This example demonstrate the power of frida, we can use all the Java functionality inside our script.
-	\begin{figure}
+	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{wrapping_logcat.png}
 		\caption{Terminal output }
 		\label{fig:wrapping_logcat}
@@ -159,12 +159,12 @@
 	
 	\paragraph{Example 3: Interactive Frida (Frida-CLI):}
 	One can get an interactive frida shell by entering the following command:
-	\begin{lstlisting}[language=bash]
+	\begin{lstlisting}[language=bash, numbers=none]
 		frida -U --no-pause -f com.package.name
 	\end{lstlisting}
 	This command will launch the app and gives an interactive shell where you can type Javascript to do your stuff. If you want to write your
 	script before the app launches, omit the --no-pause parameter. Because of the auto-complete feature as show in figure \ref{fig:interactive_frida} this is a great place to discover methods and features supported by frida.
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{interactive_frida.png}
 		\caption{interactive frida output }
 		\label{fig:interactive_frida}
@@ -172,7 +172,7 @@
 
 	\paragraph{Example 4: Compile a Frida script comprised of one or more Node.js modules (File reading test case):} Its not much useful to code in simple JavaScript in our use case scenario. Our use case scenario is same as server side programming using JavaScript and its important to be able to use NodeJS. Frida provides a tool for that called "Frida-Compile" \cite{frida_compile}. This tool compile a Frida script comprised of one or more Node.js modules. In layman terms, its takes a NodeJS projects and create a single file payload/agent that we can load using the "load\textunderscore script" method that comes with frida.
 	\paragraph{} Before using first we need to install frida-compile and it comes a node package and we can use node package manager (npm) to install it. We will install it with -g parameter to make it available globally.
-	\begin{lstlisting}
+	\begin{lstlisting}[numbers=none]
 	$ sudo npm install frida-compile -g
 	\end{lstlisting}
 	
